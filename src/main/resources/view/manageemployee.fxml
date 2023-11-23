@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root3" prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageEmployeeController">
+   <children>
+      <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="21.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <TableView fx:id="tmEmployee" layoutX="32.0" layoutY="29.0" prefHeight="413.0" prefWidth="1426.0">
+                    <columns>
+                      <TableColumn fx:id="empname_tbl" prefWidth="198.0" text="Name" />
+                      <TableColumn fx:id="empmobile_tbl" prefWidth="250.0" text="Mobile no" />
+                        <TableColumn fx:id="empadress_tbl" prefWidth="270.0" text="Address" />
+                        <TableColumn fx:id="empjobtype_tbl" prefWidth="185.0" text="Job Type" />
+                        <TableColumn fx:id="empid_tbl" prefWidth="123.0" text="EMP ID" />
+                        <TableColumn fx:id="empnic_tbl" prefWidth="209.0" text="nic" />
+                        <TableColumn fx:id="empsalary_tbl" prefWidth="190.0" text="Salary" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="name_txt" layoutX="31.0" layoutY="464.0" prefHeight="30.0" prefWidth="480.0" promptText="name" style="-fx-background-color: white;" />
+                  <TextField fx:id="mobilenumber_txt" layoutX="31.0" layoutY="514.0" prefHeight="30.0" prefWidth="480.0" promptText="mobile number" style="-fx-background-color: white;" />
+                  <TextField fx:id="address_txt" layoutX="31.0" layoutY="563.0" prefHeight="30.0" prefWidth="480.0" promptText="address" style="-fx-background-color: white;" />
+                  <TextField fx:id="jobtype_txt" layoutX="31.0" layoutY="610.0" prefHeight="30.0" prefWidth="480.0" promptText="job type" style="-fx-background-color: white;" />
+                  <TextField fx:id="employeeid_txt" layoutX="31.0" layoutY="657.0" prefHeight="30.0" prefWidth="480.0" promptText="employee id" style="-fx-background-color: white;" />
+                  <TextField fx:id="nic_txt" layoutX="31.0" layoutY="703.0" prefHeight="30.0" prefWidth="480.0" promptText="nic" style="-fx-background-color: white;" />
+                  <TextField fx:id="salary_txt" layoutX="31.0" layoutY="751.0" prefHeight="30.0" prefWidth="480.0" promptText="salary" style="-fx-background-color: white;" />
+                  <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="495.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="546.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="188.0" layoutY="594.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="642.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="689.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="188.0" layoutY="735.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="784.0" startX="-158.0" startY="-1.0" />
+                  <JFXButton layoutX="204.0" layoutY="809.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="32.0" layoutY="808.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+ Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="377.0" layoutY="810.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="32.0" layoutY="862.0" onAction="#attendans_onaction" prefHeight="55.0" prefWidth="480.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="ATTENDANS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="1323.0" layoutY="872.0" onAction="#print_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Print" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

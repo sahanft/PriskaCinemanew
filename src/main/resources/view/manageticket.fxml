@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageTicketController">
+   <children>
+      <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <TableView fx:id="manageticket_tm" layoutX="460.0" layoutY="37.0" prefHeight="626.0" prefWidth="995.0">
+                    <columns>
+                      <TableColumn fx:id="ticketnum_tm" prefWidth="164.0" text="Ticket Number" />
+                      <TableColumn fx:id="type_tm" prefWidth="138.0" text="Ticket Type" />
+                        <TableColumn fx:id="id_tm" prefWidth="101.0" text="Movie Id" />
+                        <TableColumn fx:id="screen_tm" prefWidth="111.0" text="Screen" />
+                        <TableColumn fx:id="price_tm" prefWidth="93.0" text="Price" />
+                        <TableColumn fx:id="empid_tm" prefWidth="116.0" text="EMP ID" />
+                        <TableColumn fx:id="time_tm" prefWidth="106.0" text="Time" />
+                        <TableColumn fx:id="date_tm" prefWidth="164.0" text="Date" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="screen_txt" layoutX="23.0" layoutY="524.0" prefHeight="30.0" prefWidth="418.0" promptText="Screen" style="-fx-background-color: white;" />
+                  <TextField fx:id="movieid_txt" layoutX="23.0" layoutY="460.0" prefHeight="30.0" prefWidth="418.0" promptText="Movie Id" style="-fx-background-color: white;" />
+                  <TextField fx:id="tickettype_txt" layoutX="23.0" layoutY="395.0" prefHeight="30.0" prefWidth="418.0" promptText="Ticket Type" style="-fx-background-color: white;" />
+                  <JFXButton layoutX="307.0" layoutY="818.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="165.0" layoutY="818.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="23.0" layoutY="818.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+ Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="23.0" layoutY="184.0" prefHeight="118.0" prefWidth="418.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+                     <children>
+                        <Text fill="WHITE" layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Income">
+                           <font>
+                              <Font name="System Bold" size="31.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <TextField fx:id="price_txt" layoutX="23.0" layoutY="588.0" prefHeight="30.0" prefWidth="418.0" promptText="price" style="-fx-background-color: white;" />
+                  <Line endX="239.0" layoutX="202.0" layoutY="722.0" startX="-179.0" />
+                  <Line endX="239.0" layoutX="202.0" layoutY="675.0" startX="-179.0" />
+                  <Line endX="239.0" layoutX="202.0" layoutY="781.0" startX="-179.0" />
+                  <Line endX="239.0" layoutX="202.0" layoutY="619.0" startX="-179.0" />
+                  <TextField fx:id="empid_txt" layoutX="23.0" layoutY="644.0" prefHeight="30.0" prefWidth="418.0" promptText="EMP ID" style="-fx-background-color: white;" />
+                  <TextField fx:id="time_txt" layoutX="23.0" layoutY="691.0" prefHeight="30.0" prefWidth="418.0" promptText="Time" style="-fx-background-color: white;" />
+                  <DatePicker fx:id="date" layoutX="23.0" layoutY="747.0" prefHeight="30.0" prefWidth="412.0" />
+                  <JFXButton layoutX="1298.0" layoutY="825.0" onAction="#btnPrintOnAction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Print" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="ticketnumber_txt" layoutX="41.0" layoutY="349.0" prefHeight="30.0" prefWidth="418.0" promptText="Ticket Number" style="-fx-background-color: white;" />
+            <Line endX="239.0" layoutX="222.0" layoutY="575.0" startX="-179.0" />
+            <Line endX="239.0" layoutX="220.0" layoutY="380.0" startX="-179.0" />
+            <Line endX="239.0" layoutX="222.0" layoutY="447.0" startX="-179.0" />
+            <Line endX="239.0" layoutX="222.0" layoutY="512.0" startX="-179.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

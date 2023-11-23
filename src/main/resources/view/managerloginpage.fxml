@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManLoginPageController">
+    <children>
+        <AnchorPane fx:id="loginAnchor" prefHeight="1010.0" prefWidth="960.0">
+            <children>
+                <ImageView fx:id="image5" fitHeight="1010.0" fitWidth="960.0">
+                    <image>
+                        <Image url="@../image/image5.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;">
+            <children>
+                <Text layoutX="369.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                    <font>
+                        <Font name="System Bold" size="72.0" />
+                    </font>
+                </Text>
+                <JFXButton layoutX="263.0" layoutY="746.0" onAction="#login_onaction" prefHeight="40.0" prefWidth="435.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Log in" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <Line endX="204.0" endY="266.0" layoutX="494.0" layoutY="321.0" startX="-230.0" startY="266.0" />
+                <Line endX="204.0" endY="266.0" layoutX="492.0" layoutY="228.0" startX="-230.0" startY="266.0" />
+                <TextField fx:id="username_txt" layoutX="261.0" layoutY="461.0" prefHeight="32.0" prefWidth="435.0" promptText="Manager Username" style="-fx-background-color: white;" />
+                <Line endX="100.0" layoutX="445.0" layoutY="308.0" startX="-28.0" stroke="#ff6600" strokeWidth="3.0" />
+                <Text fill="#00000080" layoutX="263.0" layoutY="808.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Text>
+                <Hyperlink layoutX="393.0" layoutY="793.0" onAction="#register_onaction" text="Register" textFill="#ff6600">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Hyperlink>
+                <PasswordField fx:id="password_txt" layoutX="263.0" layoutY="554.0" prefHeight="32.0" prefWidth="435.0" promptText="Password" style="-fx-background-color: white;" />
+            <JFXButton layoutX="853.0" layoutY="969.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

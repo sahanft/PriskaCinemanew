@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManagerDashBoardController">
+   <children>
+      <AnchorPane prefHeight="1010.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ff6600" height="972.0" layoutX="20.0" layoutY="19.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />
+            <JFXButton layoutX="40.0" layoutY="284.0" onAction="#employee_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Employee">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="40.0" layoutY="471.0" onAction="#seat_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Seat">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="40.0" layoutY="346.0" onAction="#parking_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Parking">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="40.0" layoutY="410.0" onAction="#payment_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Payment">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="40.0" layoutY="534.0" onAction="#producer_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Producer">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="40.0" layoutY="598.0" onAction="#ticket_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Ticket">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="174.0" layoutY="944.0" onAction="#dashboard_onaction" prefHeight="35.0" prefWidth="164.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Dash board" textFill="#ff6600">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root2" layoutX="370.0" prefHeight="1010.0" prefWidth="1550.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+               <children>
+                  <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="34.0" layoutY="944.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Back" textFill="#ff6600">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

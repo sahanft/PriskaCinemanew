@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anroot" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.LoginController">
+   <children>
+      <AnchorPane prefHeight="1010.0" prefWidth="960.0" />
+      <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;" />
+      <ImageView fitHeight="1010.0" fitWidth="960.0">
+         <image>
+            <Image url="@../image/image5.png" />
+         </image>
+      </ImageView>
+      <Text fill="#00000080" layoutX="1223.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who are you?">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="1220.0" layoutY="442.0" onAction="#manager_onaction" prefHeight="45.0" prefWidth="435.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Manager" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1220.0" layoutY="508.0" onAction="#employee_onaction" prefHeight="45.0" prefWidth="435.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Employee" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

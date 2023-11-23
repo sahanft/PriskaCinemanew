@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.OopsPageController">
+   <children>
+      <AnchorPane prefHeight="1010.0" prefWidth="960.0" />
+      <ImageView fitHeight="1010.0" fitWidth="960.0">
+         <image>
+            <Image url="@../image/image5.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="397.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oops">
+               <font>
+                  <Font name="System Bold" size="55.0" />
+               </font>
+            </Text>
+            <Text layoutX="160.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please seek the assistance of the manager" />
+         </children></AnchorPane>
+      <JFXButton layoutX="1816.0" layoutY="970.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <Text fill="#00000080" layoutX="1144.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You cannot register in the system without the permission of the manager!">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

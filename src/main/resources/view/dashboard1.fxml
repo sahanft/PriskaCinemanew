@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.DashBoardController1">
+   <children>
+      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

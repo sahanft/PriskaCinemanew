@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1080.0" maxWidth="960.0" minHeight="1080.0" minWidth="960.0" prefHeight="1080.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.ijse.PriskaCinema.controller.ImageSliderController">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="1080.0" prefWidth="960.0">
+         <children>
+            <ImageView fx:id="image1" fitHeight="1080.0" fitWidth="960.0">
+               <image>
+                  <Image url="@../image/image1.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="image2" fitHeight="1080.0" fitWidth="960.0" layoutX="-960.0">
+               <image>
+                  <Image url="@../image/image2.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="image3" fitHeight="1080.0" fitWidth="960.0" layoutX="-960.0">
+               <image>
+                  <Image url="@../image/image3.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="image4" fitHeight="1080.0" fitWidth="960.0" layoutX="-960.0">
+               <image>
+                  <Image url="@../image/image4.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

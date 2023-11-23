@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="movieroot" prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageMoviesController">
+   <children>
+      <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <JFXButton layoutX="1383.0" layoutY="887.0" onAction="#next_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Next" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="1275.0" layoutY="887.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane layoutX="60.0" layoutY="54.0" prefHeight="820.0" prefWidth="520.0" style="-fx-background-color: green;" />
+                  <AnchorPane layoutX="580.0" layoutY="13.0" prefHeight="868.0" prefWidth="896.0" style="-fx-background-color: white;">
+                     <children>
+                        <TableView fx:id="movie_tm" layoutX="15.0" layoutY="42.0" prefHeight="340.0" prefWidth="834.0">
+                          <columns>
+                            <TableColumn fx:id="id_tm" prefWidth="75.0" text="Movie Id" />
+                            <TableColumn fx:id="name_tm" prefWidth="247.0" text="Movie Name" />
+                              <TableColumn fx:id="genre_tm" prefWidth="204.0" text="Genre" />
+                              <TableColumn fx:id="duration_tm" prefWidth="160.0" text="Duration" />
+                              <TableColumn fx:id="time_tm" prefWidth="152.0" text="Time" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="id_txt" layoutX="14.0" layoutY="399.0" prefHeight="30.0" prefWidth="480.0" promptText="Movie Id" />
+                        <TextField fx:id="name_txt" layoutX="14.0" layoutY="456.0" prefHeight="30.0" prefWidth="480.0" promptText="Movie Name" />
+                        <TextField fx:id="genre_txt" layoutX="24.0" layoutY="510.0" prefHeight="30.0" prefWidth="480.0" promptText="Genre" />
+                        <TextField fx:id="duration_txt" layoutX="24.0" layoutY="572.0" prefHeight="30.0" prefWidth="480.0" promptText="Duration" />
+                        <TextField fx:id="time_txt" layoutX="24.0" layoutY="655.0" prefHeight="30.0" prefWidth="480.0" promptText="Time" />
+                        <JFXButton layoutX="19.0" layoutY="747.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Add+" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="214.0" layoutY="765.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="362.0" layoutY="747.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root3" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.EmployeeDashBoardController">
+   <children>
+      <AnchorPane prefHeight="1010.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ff6600" height="972.0" layoutX="21.0" layoutY="20.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />
+            <JFXButton fx:id="parking" layoutX="41.0" layoutY="357.0" onAction="#parking_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Parking">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="tiket" layoutX="41.0" layoutY="420.0" onAction="#ticket_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Ticket">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="seat" layoutX="41.0" layoutY="288.0" onAction="#seat_onaction" prefHeight="40.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Seat">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="root4" layoutX="370.0" prefHeight="1010.0" prefWidth="1550.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane layoutY="21.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+               <children>
+                  <AnchorPane fx:id="root5" layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <JFXButton layoutX="32.0" layoutY="946.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Back" textFill="#ff6600">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="177.0" layoutY="947.0" onAction="#dashboard_onaction" prefHeight="35.0" prefWidth="164.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Dash board" textFill="#ff6600">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

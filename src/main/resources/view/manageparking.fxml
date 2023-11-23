@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageParkingController">
+   <children>
+      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <TableView fx:id="parkingmain_txt" layoutX="14.0" layoutY="18.0" prefHeight="904.0" prefWidth="737.0">
+                    <columns>
+                      <TableColumn fx:id="parkingspace_txt" prefWidth="127.0" text="space_num" />
+                      <TableColumn fx:id="parkingtype_txt" prefWidth="122.0" text="type" />
+                        <TableColumn fx:id="parkingfee_txt" minWidth="0.0" prefWidth="148.0" text="Parking Fee" />
+                        <TableColumn fx:id="parkingdate_txt" minWidth="0.0" prefWidth="178.0" text="Date" />
+                        <TableColumn fx:id="parkingdelete_txt" minWidth="0.0" prefWidth="160.0" text="Delete" />
+                    </columns>
+                  </TableView>
+                  <AnchorPane layoutX="762.0" layoutY="14.0" prefHeight="622.0" prefWidth="703.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+                     <children>
+                        <AnchorPane layoutX="13.0" layoutY="11.0" prefHeight="600.0" prefWidth="678.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+                           <children>
+                              <CheckBox layoutX="27.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="01">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="377.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="06">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="97.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="02">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="237.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="04">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="307.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="05">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="167.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="03">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="447.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="07">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="517.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="08">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="587.0" layoutY="12.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="09">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="237.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="18">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="97.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="11">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="167.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="12">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="237.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="30">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="22">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="167.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="29">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="447.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="21">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="377.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="20">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="307.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="19">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="517.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="34">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="447.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="33">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="377.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="32">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="307.0" layoutY="517.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="31">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="237.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="13">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="307.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="25">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="377.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="15">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="307.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="14">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="237.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="24">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="167.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="23">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="517.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="17">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="447.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="16">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="377.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="26">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="447.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="27">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="517.0" layoutY="346.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="28">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox layoutX="27.0" layoutY="167.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" style="-fx-border-color: black;" text="10">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton layoutX="1316.0" layoutY="669.0" onAction="#addparking_onaction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <TextField fx:id="parking_txt" layoutX="765.0" layoutY="776.0" prefHeight="30.0" prefWidth="480.0" promptText="Parking Fee" />
+                  <TextField fx:id="type_txt" layoutX="764.0" layoutY="714.0" prefHeight="30.0" prefWidth="480.0" promptText="Type" />
+                  <TextField fx:id="spacemen_txt" layoutX="763.0" layoutY="656.0" prefHeight="30.0" prefWidth="480.0" promptText="Space number" />
+                  <JFXButton layoutX="1315.0" layoutY="728.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="1316.0" layoutY="789.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <DatePicker fx:id="date_txt" layoutX="766.0" layoutY="836.0" prefHeight="30.0" prefWidth="480.0" />
+               </children>
+            </AnchorPane>
+            <Line endX="322.0" endY="-1.0" layoutX="941.0" layoutY="708.0" startX="-158.0" startY="-1.0" />
+            <Line endX="322.0" endY="-1.0" layoutX="944.0" layoutY="886.0" startX="-158.0" startY="-1.0" />
+            <Line endX="322.0" endY="-1.0" layoutX="943.0" layoutY="825.0" startX="-158.0" startY="-1.0" />
+            <Line endX="322.0" endY="-1.0" layoutX="941.0" layoutY="766.0" startX="-158.0" startY="-1.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
