@@ -136,14 +136,14 @@ public class ManageTicketController {
 
     }
     private void setData(TicketTm row) {
-        ticketnum_tm.setText(row.getTicketNum());
-        type_tm.setText(row.getTickettype());
-        id_tm.setText(row.getMovieid());
-        screen_tm.setText(row.getScreen());
-        price_tm.setText(row.getPrice());
-        empid_tm.setText(row.getEmpid());
-        time_tm.setText(row.getTime());
-        date_tm.setText(String.valueOf(row.getDate()));
+//        ticketnum_tm.setText(row.getTicketNum());
+//        type_tm.setText(row.getTickettype());
+//        id_tm.setText(row.getMovieid());
+//        screen_tm.setText(row.getScreen());
+//        price_tm.setText(row.getPrice());
+//        empid_tm.setText(row.getEmpid());
+//        time_tm.setText(row.getTime());
+//        date_tm.setText(String.valueOf(row.getDate()));
     }
     public void tableListener(){
         manageticket_tm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
