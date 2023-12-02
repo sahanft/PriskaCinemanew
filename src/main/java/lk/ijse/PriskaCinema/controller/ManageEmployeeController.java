@@ -47,6 +47,7 @@ public class ManageEmployeeController {
         setCellValueFactory();
         clearField();
         loadAllemployee();
+        tableListener();
         //setData();
     }
 
@@ -62,45 +63,39 @@ public class ManageEmployeeController {
     }
 
 
-
-
-
-    public void manageempadd_onaction(ActionEvent actionEvent) {
-
-    }
-
-    public void manageempdelete_onaction(ActionEvent actionEvent) {
-
-    }
-
-
-   
-
     public void update_onaction(ActionEvent actionEvent) {
-
         String id = employeeid_txt.getText();
         String name = name_txt.getText();
         String jobtype = jobtype_txt.getText();
-        String mobile =String.valueOf(mobilenumber_txt.getText());
+        String mobile = mobilenumber_txt.getText();
         String nic = nic_txt.getText();
-        Double salary = Double.parseDouble(salary_txt.getText());
+        String salary =salary_txt.getText();
         String address= address_txt.getText();
 
-
-        var dto = new ManageEmployeeDto(id, name, jobtype,mobile,nic,salary,address);
-
-     var model = new ManageEmployeeModel();
         try {
-            boolean isUpdated = ManageEmployeeModel.updateEmployee(dto);
+            if (!validateEmployee()) {
+                return;
+            }
+            clearField();
+            var dto = new ManageEmployeeDto(id, name, jobtype,mobile,nic, Double.valueOf(salary),address);
+            boolean isUpdated = ManageEmployeeModel.updateEmployee (dto);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-                //clearFields();
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee details updated").show();;
+                clearField();
+                loadAllemployee();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Employee details not updated").show();;
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            clearField();
         }
 
 
+
+}
+
+    private void clearFields() {
     }
 
     public void add_onaction(ActionEvent actionEvent) {
@@ -109,11 +104,11 @@ public class ManageEmployeeController {
         String jobtype = jobtype_txt.getText();
         String mobile = String.valueOf(mobilenumber_txt.getText());
         String nic = nic_txt.getText();
-      //  Double salary = Double.parseDouble(salary_txt.getText());
+
         double salary = Double.parseDouble(salary_txt.getText());
         String address = address_txt.getText();
 
-      //  var dto = new ManageEmployeeDto(id,name,jobtype,mobile,nic,salary,address);
+
 
         try {
             if (!validateEmployee()){
@@ -197,8 +192,11 @@ public class ManageEmployeeController {
         try{
             boolean isDelete = ManageEmployeeModel.deleteEmployee(id);
             if (isDelete){
-                new Alert(Alert.AlertType.CONFIRMATION,"customer delete").show();
+                new Alert(Alert.AlertType.CONFIRMATION,"employee delete").show();
                 loadAllemployee();
+                clearField();
+            }else{
+                new Alert(Alert.AlertType.CONFIRMATION,"employee not delete").show();
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -213,16 +211,11 @@ public class ManageEmployeeController {
 
     }
 
-  /*  public void print_onaction(ActionEvent actionEvent) {
 
-    }*/
 
     private boolean validateEmployee() {
         boolean isValidate = true;
-       /* if (!Pattern.matches("\\b[A-Z][a-z]( [A-Z][a-z])*\\b", txtName.getText())) {
-            showErrorNotification("Invalid Employee Name", "The employee name you entered is invalid");
-            isValidate = false;
-        }*/
+
         boolean name = Pattern.matches("[A-Za-z]{5,}", name_txt.getText());
         if (!name){
             showErrorNotification("Invalid Employee Name", "The Employee name you entered is invalid");

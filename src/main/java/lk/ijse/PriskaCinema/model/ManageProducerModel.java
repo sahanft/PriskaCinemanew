@@ -79,10 +79,11 @@ public class ManageProducerModel {
         String sql = "UPDATE Producers SET name = ?, pro_address = ?, pro_tele = ? WHERE pro_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, Dto.getProducerid_txt());
-        pstm.setString(2, Dto.getName_txt());
-        pstm.setString(3, Dto.getAddress_txt());
-        pstm.setString(4, Dto.getMobilenumber_txt());
+
+        pstm.setString(1, Dto.getName_txt());
+        pstm.setString(2, Dto.getAddress_txt());
+        pstm.setString(3, Dto.getMobilenumber_txt());
+        pstm.setString(4, Dto.getProducerid_txt());
 
         return pstm.executeUpdate() > 0;
     }
@@ -99,5 +100,8 @@ public class ManageProducerModel {
 
         return pstm.executeUpdate() > 0;
     }
+
+
+
 
 }

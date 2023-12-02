@@ -19,10 +19,11 @@ public class ManageTicketDto {
     private String tickettype_txt;
     private String movieid_txt;
     private String screen_txt;
-    private String price_txt;
+    private Double price_txt;
     private String empid_txt;
     private String time_txt;
     private LocalDate date_txt;
+
 
 
 }

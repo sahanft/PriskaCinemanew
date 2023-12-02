@@ -3,21 +3,24 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageTicketController">
    <children>
-      <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+      <AnchorPane layoutY="20.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                <children>
-                  <TableView fx:id="manageticket_tm" layoutX="460.0" layoutY="37.0" prefHeight="626.0" prefWidth="995.0">
+                  <TableView fx:id="manageticket_tm" layoutX="460.0" layoutY="54.0" prefHeight="357.0" prefWidth="995.0">
                     <columns>
                       <TableColumn fx:id="ticketnum_tm" prefWidth="164.0" text="Ticket Number" />
                       <TableColumn fx:id="type_tm" prefWidth="138.0" text="Ticket Type" />
@@ -56,15 +59,6 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <AnchorPane layoutX="23.0" layoutY="184.0" prefHeight="118.0" prefWidth="418.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
-                     <children>
-                        <Text fill="WHITE" layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Income">
-                           <font>
-                              <Font name="System Bold" size="31.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
                   <TextField fx:id="price_txt" layoutX="23.0" layoutY="588.0" prefHeight="30.0" prefWidth="418.0" promptText="price" style="-fx-background-color: white;" />
                   <Line endX="239.0" layoutX="202.0" layoutY="722.0" startX="-179.0" />
                   <Line endX="239.0" layoutX="202.0" layoutY="675.0" startX="-179.0" />
@@ -72,8 +66,8 @@
                   <Line endX="239.0" layoutX="202.0" layoutY="619.0" startX="-179.0" />
                   <TextField fx:id="empid_txt" layoutX="23.0" layoutY="644.0" prefHeight="30.0" prefWidth="418.0" promptText="EMP ID" style="-fx-background-color: white;" />
                   <TextField fx:id="time_txt" layoutX="23.0" layoutY="691.0" prefHeight="30.0" prefWidth="418.0" promptText="Time" style="-fx-background-color: white;" />
-                  <DatePicker fx:id="date" layoutX="23.0" layoutY="747.0" prefHeight="30.0" prefWidth="412.0" />
-                  <JFXButton layoutX="1298.0" layoutY="825.0" onAction="#btnPrintOnAction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Print" textFill="WHITE">
+                  <DatePicker fx:id="date_txt" layoutX="23.0" layoutY="749.0" prefHeight="30.0" prefWidth="412.0" style="-fx-background-color: white;" />
+                  <JFXButton layoutX="23.0" layoutY="863.0" onAction="#btnPrintOnAction" prefHeight="35.0" prefWidth="419.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Print" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -81,6 +75,17 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </JFXButton>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff8800" height="233.0" layoutX="22.0" layoutY="54.0" stroke="WHITE" strokeType="INSIDE" width="412.0" />
+                  <ImageView fitHeight="478.0" fitWidth="663.0" layoutX="639.0" layoutY="439.0">
+                     <image>
+                        <Image url="@../image/tickrt%20image.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbltickettotal" layoutX="73.0" layoutY="127.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <TextField fx:id="ticketnumber_txt" layoutX="41.0" layoutY="349.0" prefHeight="30.0" prefWidth="418.0" promptText="Ticket Number" style="-fx-background-color: white;" />

@@ -10,22 +10,64 @@
 
 <AnchorPane fx:id="root" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.OopsPageController">
    <children>
-      <AnchorPane prefHeight="1010.0" prefWidth="960.0" />
-      <ImageView fitHeight="1010.0" fitWidth="960.0">
-         <image>
-            <Image url="@../image/image5.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0">
          <children>
-            <Text layoutX="397.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oops">
-               <font>
-                  <Font name="System Bold" size="55.0" />
-               </font>
-            </Text>
-            <Text layoutX="160.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please seek the assistance of the manager" />
+            <AnchorPane fx:id="testingAnhcor5" layoutX="220.0" layoutY="145.0" prefHeight="720.0" prefWidth="520.0" style="-fx-background-color: purple;">
+               <children>
+                  <ImageView fitHeight="720.0" fitWidth="520.0">
+                     <image>
+                        <Image url="@../image/middleimage.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="865.0" prefHeight="145.0" prefWidth="960.0" style="-fx-background-color: green;">
+               <children>
+                  <ImageView fitHeight="145.0" fitWidth="960.0">
+                     <image>
+                        <Image url="@../image/mainfour.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="145.0" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: pink;" />
+            <AnchorPane prefHeight="145.0" prefWidth="960.0" style="-fx-background-color: green;">
+               <children>
+                  <ImageView fitHeight="145.0" fitWidth="960.0">
+                     <image>
+                        <Image url="@../image/maintwo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="740.0" layoutY="145.0" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: pink;" />
+            <ImageView fitHeight="1010.0" fitWidth="220.0">
+               <image>
+                  <Image url="@../image/mainone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="1010.0" fitWidth="220.0" layoutX="740.0">
+               <image>
+                  <Image url="@../image/mainthree.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;">
+         <children>
+            <Text fill="#00000080" layoutX="322.0" layoutY="807.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please seek the assistance of the manager!" />
+            <ImageView fitHeight="700.0" fitWidth="700.0" layoutX="126.0" layoutY="97.0">
+               <image>
+                  <Image url="@../image/oopsimage.jpeg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-      <JFXButton layoutX="1816.0" layoutY="970.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+      <Text fill="#00000080" layoutX="159.0" layoutY="783.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You cannot register in the system without the permission of the manager!">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="5.0" layoutY="970.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -33,10 +75,5 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
-      <Text fill="#00000080" layoutX="1144.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You cannot register in the system without the permission of the manager!">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

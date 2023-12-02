@@ -82,4 +82,17 @@ public class ManLoginPageController {
 
 
     }
+
+    public AnchorPane testingAnhcor2 ;
+
+    public void initialize() throws IOException {
+        loadslider();
+    }
+
+    private void loadslider() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
+        this.testingAnhcor2.getChildren();
+        this.testingAnhcor2.getChildren().add(root);
+    }
+
 }

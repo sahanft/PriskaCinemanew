@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.DashBoardController1">
    <children>
-      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: green;">
          <children>
-            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+            <ImageView fitHeight="970.0" fitWidth="1530.0">
+               <image>
+                  <Image url="@../image/welcomepage.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="360.0" fitWidth="600.0" layoutX="5.0" layoutY="151.0">
+               <image>
+                  <Image url="@../image/welcome.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="314.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+               <font>
+                  <Font name="System Bold" size="50.0" />
+               </font>
+            </Text>
+            <Text layoutX="209.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRISKA">
+               <font>
+                  <Font name="System Bold" size="70.0" />
+               </font>
+            </Text>
+            <Text layoutX="516.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CINEMA">
+               <font>
+                  <Font name="System Bold" size="70.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

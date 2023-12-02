@@ -76,4 +76,17 @@ public class EmpLoginPageController {
             //clearField();
         }
     }
+
+    public AnchorPane testingAnhcor4 ;
+
+    public void initialize() throws IOException {
+        loadslider();
+    }
+
+    private void loadslider() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
+        this.testingAnhcor4.getChildren();
+        this.testingAnhcor4.getChildren().add(root);
+    }
+
 }

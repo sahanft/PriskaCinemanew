@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -28,7 +29,7 @@ public class ERegisterPageController {
     public void back_onaction(ActionEvent actionEvent) throws IOException {
 
         root.getChildren().clear();
-        root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/" + "managerloginpage.fxml")));
+        root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/" + "mregisterpage.fxml")));
 
 
     }
@@ -58,4 +59,17 @@ public class ERegisterPageController {
 
     private void clearField() {
     }
+
+    public AnchorPane testingAnhcor7 ;
+
+    public void initialize() throws IOException {
+        loadslider();
+    }
+
+    private void loadslider() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
+        this.testingAnhcor7.getChildren();
+        this.testingAnhcor7.getChildren().add(root);
+    }
+
 }

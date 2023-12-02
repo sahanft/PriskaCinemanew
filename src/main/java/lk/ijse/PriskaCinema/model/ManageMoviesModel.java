@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.model;
 
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
+import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
 /*import lk.ijse.PriskaCinema.dto.ManageProducerDto;*/
 
 import java.sql.Connection;
@@ -29,6 +30,19 @@ public class ManageMoviesModel {
 
         return ptm.executeUpdate()>0;
     }
+
+    public static boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO ProducerDetails VALUES(?,?)";
+        PreparedStatement ptm = connection.prepareStatement(sql);
+
+        ptm.setString(1, producerDetailsDto.getPro_id());
+        ptm.setString(2, producerDetailsDto.getMovie_id());
+
+        return ptm.executeUpdate()>0;
+    }
+
 
     public static List<ManageMoviesDto> loadAllmovie() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -81,14 +95,15 @@ public class ManageMoviesModel {
     public static boolean updateMovie(ManageMoviesDto Dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE Movies SET id = ?, name = ?, genre = ?, duration = ?, time = ?";
+        String sql = "UPDATE Movies SET  name = ?, genre = ?, duration = ?, time = ? where movie_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, Dto.getId_txt());
-        pstm.setString(2, Dto.getName_txt());
-        pstm.setString(3, Dto.getGenre_txt());
-        pstm.setString(4, Dto.getDuration_txt());
-        pstm.setString(5, Dto.getTime_txt());
+
+        pstm.setString(1, Dto.getName_txt());
+        pstm.setString(2, Dto.getGenre_txt());
+        pstm.setString(3, Dto.getDuration_txt());
+        pstm.setString(4, Dto.getTime_txt());
+        pstm.setString(5, Dto.getId_txt());
 
         return pstm.executeUpdate() > 0;
     }
@@ -106,5 +121,13 @@ public class ManageMoviesModel {
         return pstm.executeUpdate() > 0;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    public static boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into ProducerDetails values(?,?)");
+        preparedStatement.setObject(1, producerDetailsDto.getPro_id());
+        preparedStatement.setObject(2, producerDetailsDto.getMovie_id());
+        return preparedStatement.executeUpdate()>0;
+    }
 
 }

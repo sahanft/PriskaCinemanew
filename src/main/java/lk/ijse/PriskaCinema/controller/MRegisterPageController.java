@@ -94,4 +94,18 @@ public class MRegisterPageController {
         root.getChildren().add(FXMLLoader.load(getClass().getResource("/view/" + "managerloginpage.fxml")));
 
     }
+
+    public AnchorPane testingAnhcor6 ;
+
+    public void initialize() throws IOException {
+        loadslider();
+    }
+
+    private void loadslider() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
+        this.testingAnhcor6.getChildren();
+        this.testingAnhcor6.getChildren().add(root);
+    }
+
+
 }

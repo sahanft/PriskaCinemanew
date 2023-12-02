@@ -13,11 +13,12 @@ import java.time.LocalDate;
 @ToString
 
 public class ParkingTm {
+
     private String spaceNum;
     private String type;
-    private String parkingFee;
+    private Double parkingFee;
     private LocalDate date;
-   // private Button delete;
+
 
 
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Landscape" pageWidth="400" pageHeight="600" orientation="Landscape" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="afc55245-d436-41b2-8b69-22c5e99b6813">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="price" class="java.lang.Double"/>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="time" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="2" width="360" height="71" backcolor="#FF8800" uuid="de28db0f-88e3-4624-9d40-33c1d9fee295"/>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="7" width="260" height="54" forecolor="#FFFFFF" uuid="94f0077b-a623-44ca-8bdf-54bd20e177e5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="aakar" size="30" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PRISKA CINEMA]]></text>
+				</staticText>
+				<textField pattern="MMMMM dd, yyyy">
+					<reportElement x="258" y="27" width="100" height="30" uuid="4e42c304-6b83-434f-bdea-493cea11e302"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="192" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="11" width="81" height="30" uuid="670baa70-5045-40fc-867c-39d6b60b72b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Type :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="168" y="10" width="100" height="30" uuid="15cb5ed1-5785-4c41-bbbe-efe02bd42146"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="98" width="100" height="30" uuid="99cf3bc4-f5e3-4a6d-8ea4-4dcafbbf0b3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="144" width="100" height="30" uuid="6e7b9ead-e29d-4829-9c2b-d3197107814d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="144" width="80" height="30" uuid="a12c88ae-2908-48a4-8cc7-f719ee1c4c08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Id :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="98" width="80" height="30" uuid="43e6cf25-b3a3-47ff-8365-bc79868ef96a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Time :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="52" width="80" height="30" uuid="38eaedd6-1653-4624-8665-c200bd15975a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Price :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="52" width="100" height="30" uuid="82d6366d-91b9-4c94-bed5-1b4b891c4012"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="330" height="47" uuid="579a5811-6e40-495c-bc5e-e1da0828f815"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="aakar" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thank you for Coming!]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -8,13 +8,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
+import lk.ijse.PriskaCinema.dto.ManageTicketDto;
 import lk.ijse.PriskaCinema.dto.Seat1Dto;
+import lk.ijse.PriskaCinema.model.ManageParkingModel;
 import lk.ijse.PriskaCinema.model.ManageProducerModel;
+import lk.ijse.PriskaCinema.model.ManageTicketModel;
 import lk.ijse.PriskaCinema.model.Seat1Model;
 import lk.ijse.PriskaCinema.tm.SeateTm;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,19 +93,52 @@ public class Seat1Controller {
     }
 
     public void update_onaction(ActionEvent actionEvent) {
+        String sNum = seatnumber_txt.getText();
+        String screen = screen_txt.getText();
+        String rowNum = rownumber_txt.getText();
 
+        try {
+            var dto = new Seat1Dto(sNum,screen,rowNum);
+            boolean isUpdated = Seat1Model.updateSeat(dto);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();
+                loadAllSeat();
+                clearField();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            clearField();
+        }
     }
 
     public void delete_onaction(ActionEvent actionEvent) {
+        String id = seatnumber_txt.getText();
+
+//        var model = new CustomerModel();
+        try {
+            boolean isDeleted = Seat1Model.deleteSeat(id);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "seat deleted!").show();
+                loadAllSeat();
+                clearField();
+
+            } else {
+                new Alert(Alert.AlertType.CONFIRMATION, "seat not deleted!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+
+
 
     }
 
     private void loadAllSeat(){
         ObservableList<SeateTm> obList = FXCollections.observableArrayList();
-      /*  var model = new Seat1Model();
-                try{
-                    List<Seat1Dto> dtoList = Seat1Model.getAllseat();
-*/
+
         try{
             ArrayList<Seat1Dto> dtoList = (ArrayList<Seat1Dto>) loadAllseat();
 

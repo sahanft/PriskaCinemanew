@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -13,7 +15,7 @@
 
 <AnchorPane prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.Seat1Controller">
    <children>
-      <AnchorPane layoutY="21.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+      <AnchorPane layoutY="21.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                <children>
@@ -24,9 +26,9 @@
                         <TableColumn fx:id="seatnumber_tm" prefWidth="101.0" text="Seat No" />
                      </columns>
                   </TableView>
-                  <AnchorPane layoutX="321.0" layoutY="17.0" prefHeight="622.0" prefWidth="550.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+                  <AnchorPane layoutX="321.0" layoutY="17.0" prefHeight="622.0" prefWidth="550.0" style="-fx-background-color: #ff8800; -fx-background-radius: 20;">
                      <children>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="600.0" prefWidth="528.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                        <AnchorPane layoutX="6.0" layoutY="5.0" prefHeight="613.0" prefWidth="538.0" style="-fx-background-color: white; -fx-background-radius: 15;">
                            <children>
                               <AnchorPane layoutX="16.0" layoutY="31.0" prefHeight="400.0" prefWidth="500.0">
                                  <children>
@@ -35,6 +37,16 @@
                                           <Font name="System Bold" size="96.0" />
                                        </font>
                                     </Text>
+                                    <AnchorPane layoutX="-9.0" layoutY="278.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                                    <AnchorPane layoutX="-9.0" layoutY="238.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;">
+                                       <children>
+                                          <AnchorPane layoutX="3.0" layoutY="2.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                             <children>
+                                                <Text fill="#ff8800" layoutX="8.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R4" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
                               <Line endX="148.0" layoutX="280.0" layoutY="27.0" startX="-173.0" strokeWidth="8.0" />
@@ -128,151 +140,102 @@
                               <CheckBox layoutX="431.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="50" />
                               <CheckBox layoutX="263.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="36" />
                               <CheckBox layoutX="305.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="37" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-                  <JFXButton layoutX="1043.0" layoutY="710.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+Add" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </JFXButton>
-                  <TextField fx:id="seatnumber_txt" layoutX="431.0" layoutY="712.0" prefHeight="30.0" prefWidth="480.0" promptText="seat number" />
-                  <TextField fx:id="rownumber_txt" layoutX="432.0" layoutY="834.0" prefHeight="30.0" prefWidth="480.0" promptText="row number" />
-                  <TextField fx:id="screen_txt" layoutX="432.0" layoutY="773.0" prefHeight="30.0" prefWidth="480.0" promptText="screen" />
-                  <JFXButton layoutX="1043.0" layoutY="771.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="1043.0" layoutY="832.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="228.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </JFXButton>
-                  <Line endX="322.0" endY="-1.0" layoutX="589.0" layoutY="744.0" startX="-158.0" startY="-1.0" />
-                  <Line endX="322.0" endY="-1.0" layoutX="591.0" layoutY="805.0" startX="-158.0" startY="-1.0" />
-                  <AnchorPane layoutX="907.0" layoutY="19.0" prefHeight="622.0" prefWidth="550.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
-                     <children>
-                        <AnchorPane layoutX="11.0" layoutY="11.0" prefHeight="600.0" prefWidth="528.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-                           <children>
-                              <AnchorPane prefHeight="400.0" prefWidth="500.0">
+                              <AnchorPane layoutX="39.0" layoutY="23.0" prefHeight="40.0" prefWidth="40.0" />
+                              <AnchorPane layoutX="7.0" layoutY="103.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                              <AnchorPane layoutX="9.0" layoutY="106.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
                                  <children>
-                                    <Text fill="#00000059" layoutX="203.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3D">
-                                       <font>
-                                          <Font name="System Bold" size="96.0" />
-                                       </font>
-                                    </Text>
+                                    <Text fill="#ff8800" layoutX="8.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R1" />
                                  </children>
                               </AnchorPane>
-                              <Line endX="148.0" layoutX="280.0" layoutY="27.0" startX="-173.0" strokeWidth="8.0" />
-                              <CheckBox layoutX="55.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="01" />
-                              <CheckBox layoutX="97.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="02" />
-                              <CheckBox layoutX="139.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="03" />
-                              <CheckBox layoutX="222.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="05" />
-                              <CheckBox layoutX="263.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="06" />
-                              <CheckBox layoutX="431.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="10" />
-                              <CheckBox layoutX="181.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="04" />
-                              <CheckBox layoutX="389.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="09" />
-                              <CheckBox layoutX="55.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="11" />
-                              <CheckBox layoutX="305.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="07" />
-                              <CheckBox layoutX="347.0" layoutY="102.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="08" />
-                              <CheckBox layoutX="305.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="17" />
-                              <CheckBox layoutX="263.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="16" />
-                              <CheckBox layoutX="181.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="14" />
-                              <CheckBox layoutX="223.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="15" />
-                              <CheckBox layoutX="97.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="12" />
-                              <CheckBox layoutX="347.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="18" />
-                              <CheckBox layoutX="139.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="13" />
-                              <CheckBox layoutX="431.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="30" />
-                              <CheckBox layoutX="389.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="29" />
-                              <CheckBox layoutX="347.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="28" />
-                              <CheckBox layoutX="305.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="27" />
-                              <CheckBox layoutX="263.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="26" />
-                              <CheckBox layoutX="223.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="25" />
-                              <CheckBox layoutX="181.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="24" />
-                              <CheckBox layoutX="139.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="23" />
-                              <CheckBox layoutX="97.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="22" />
-                              <CheckBox layoutX="55.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="21" />
-                              <CheckBox layoutX="431.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="20" />
-                              <CheckBox layoutX="389.0" layoutY="144.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="19" />
-                              <CheckBox layoutX="55.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="71" />
-                              <CheckBox layoutX="55.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="81" />
-                              <CheckBox layoutX="55.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="61" />
-                              <CheckBox layoutX="55.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="51" />
-                              <CheckBox layoutX="55.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="31" />
-                              <CheckBox layoutX="55.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="41" />
-                              <CheckBox layoutX="181.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="64" />
-                              <CheckBox layoutX="305.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="87" />
-                              <CheckBox layoutX="263.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="86" />
-                              <CheckBox layoutX="223.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="85" />
-                              <CheckBox layoutX="181.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="84" />
-                              <CheckBox layoutX="139.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="73" />
-                              <CheckBox layoutX="97.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="72" />
-                              <CheckBox layoutX="97.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="82" />
-                              <CheckBox layoutX="139.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="83" />
-                              <CheckBox layoutX="139.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="63" />
-                              <CheckBox layoutX="97.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="62" />
-                              <CheckBox layoutX="431.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="80" />
-                              <CheckBox layoutX="389.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="79" />
-                              <CheckBox layoutX="347.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="78" />
-                              <CheckBox layoutX="305.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="77" />
-                              <CheckBox layoutX="263.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="76" />
-                              <CheckBox layoutX="223.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="75" />
-                              <CheckBox layoutX="181.0" layoutY="491.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="74" />
-                              <CheckBox layoutX="431.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="90" />
-                              <CheckBox layoutX="389.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="89" />
-                              <CheckBox layoutX="347.0" layoutY="533.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="88" />
-                              <CheckBox layoutX="222.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="65" />
-                              <CheckBox layoutX="181.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="44" />
-                              <CheckBox layoutX="181.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="34" />
-                              <CheckBox layoutX="139.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="43" />
-                              <CheckBox layoutX="97.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="42" />
-                              <CheckBox layoutX="139.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="33" />
-                              <CheckBox layoutX="97.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="32" />
-                              <CheckBox layoutX="223.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="55" />
-                              <CheckBox layoutX="223.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="45" />
-                              <CheckBox layoutX="431.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="70" />
-                              <CheckBox layoutX="223.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="35" />
-                              <CheckBox layoutX="181.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="54" />
-                              <CheckBox layoutX="139.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="53" />
-                              <CheckBox layoutX="97.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="52" />
-                              <CheckBox layoutX="263.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="46" />
-                              <CheckBox layoutX="263.0" layoutY="347.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="56" />
-                              <CheckBox layoutX="305.0" layoutY="347.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="57" />
-                              <CheckBox layoutX="347.0" layoutY="347.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="58" />
-                              <CheckBox layoutX="389.0" layoutY="347.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="59" />
-                              <CheckBox layoutX="431.0" layoutY="349.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="60" />
-                              <CheckBox layoutX="389.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="69" />
-                              <CheckBox layoutX="347.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="68" />
-                              <CheckBox layoutX="305.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="67" />
-                              <CheckBox layoutX="264.0" layoutY="389.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="66" />
-                              <CheckBox layoutX="347.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="38" />
-                              <CheckBox layoutX="305.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="47" />
-                              <CheckBox layoutX="347.0" layoutY="305.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="48" />
-                              <CheckBox layoutX="389.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="39" />
-                              <CheckBox layoutX="431.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="40" />
-                              <CheckBox layoutX="389.0" layoutY="305.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="49" />
-                              <CheckBox layoutX="431.0" layoutY="307.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="50" />
-                              <CheckBox layoutX="263.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="36" />
-                              <CheckBox layoutX="305.0" layoutY="265.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-border-color: black;" text="37" />
+                              <AnchorPane layoutX="7.0" layoutY="143.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                              <AnchorPane layoutX="7.0" layoutY="183.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                              <AnchorPane layoutX="9.0" layoutY="145.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text fill="#ff8800" layoutX="9.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R2" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="9.0" layoutY="184.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text fill="#ff8800" layoutX="9.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R3" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="7.0" layoutY="389.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                              <AnchorPane layoutX="7.0" layoutY="349.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;" />
+                              <AnchorPane layoutX="8.0" layoutY="491.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;">
+                                 <children>
+                                    <AnchorPane layoutX="3.0" layoutY="3.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                       <children>
+                                          <Text fill="#ff8800" layoutX="9.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R8" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="8.0" layoutY="531.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff8800;">
+                                 <children>
+                                    <AnchorPane layoutX="3.0" layoutY="1.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                       <children>
+                                          <Text fill="#ff8800" layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R9" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="10.0" layoutY="310.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text fill="#ff8800" layoutX="9.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R5" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="10.0" layoutY="349.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text fill="#ff8800" layoutX="9.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R6" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="10.0" layoutY="390.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text fill="#ff8800" layoutX="10.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R7" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
                   </AnchorPane>
+                  <JFXButton layoutX="332.0" layoutY="881.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <TextField fx:id="seatnumber_txt" layoutX="330.0" layoutY="712.0" prefHeight="30.0" prefWidth="480.0" promptText="seat number" style="-fx-background-color: white;" />
+                  <TextField fx:id="rownumber_txt" layoutX="333.0" layoutY="834.0" prefHeight="30.0" prefWidth="480.0" promptText="row number" style="-fx-background-color: white;" />
+                  <TextField fx:id="screen_txt" layoutX="332.0" layoutY="773.0" prefHeight="30.0" prefWidth="480.0" promptText="screen" style="-fx-background-color: white;" />
+                  <JFXButton layoutX="503.0" layoutY="881.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="673.0" layoutY="881.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <Line endX="322.0" endY="-1.0" layoutX="488.0" layoutY="744.0" startX="-158.0" startY="-1.0" />
+                  <Line endX="322.0" endY="-1.0" layoutX="491.0" layoutY="805.0" startX="-158.0" startY="-1.0" />
                </children>
             </AnchorPane>
-            <Line endX="322.0" endY="-1.0" layoutX="610.0" layoutY="886.0" startX="-158.0" startY="-1.0" />
+            <Line endX="322.0" endY="-1.0" layoutX="511.0" layoutY="886.0" startX="-158.0" startY="-1.0" />
          </children>
       </AnchorPane>
+      <ImageView fitHeight="810.0" fitWidth="568.0" layoutX="938.0" layoutY="101.0">
+         <image>
+            <Image url="@../image/popcornimage.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -5,16 +5,19 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="hallroot" prefHeight="1010.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.ManageHallController">
    <children>
-      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6600; -fx-background-radius: 20;">
+      <AnchorPane layoutY="19.0" prefHeight="970.0" prefWidth="1530.0" style="-fx-background-color: #ff6white600; -fx-background-radius: 20;">
          <children>
             <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="930.0" prefWidth="1490.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                <children>
-                  <JFXButton layoutX="1383.0" layoutY="887.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+                  <JFXButton layoutX="1327.0" layoutY="887.0" onAction="#back_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Back" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -22,18 +25,27 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <AnchorPane layoutX="586.0" layoutY="31.0" prefHeight="846.0" prefWidth="891.0" style="-fx-background-color: white;">
+                  <AnchorPane fx:id="testingAnhcor9" layoutX="66.0" layoutY="102.0" prefHeight="720.0" prefWidth="520.0" style="-fx-background-color: green;">
                      <children>
-                        <TableView fx:id="hall_tm" layoutX="21.0" layoutY="25.0" prefHeight="432.0" prefWidth="819.0">
+                        <ImageView fitHeight="720.0" fitWidth="520.0">
+                           <image>
+                              <Image url="@../image/spiderman.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="586.0" layoutY="31.0" prefHeight="846.0" prefWidth="904.0" style="-fx-background-color: white;">
+                     <children>
+                        <TableView fx:id="hall_tm" layoutX="21.0" layoutY="70.0" prefHeight="432.0" prefWidth="819.0">
                           <columns>
                             <TableColumn fx:id="number_tm" prefWidth="238.0" text="Hall Number" />
                             <TableColumn fx:id="category_tm" prefWidth="298.0" text="Category" />
                               <TableColumn fx:id="count_tm" prefWidth="281.0" text="Seat Count" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="count_txt" layoutX="184.0" layoutY="625.0" prefHeight="30.0" prefWidth="480.0" promptText="Seat Count" />
-                        <TextField fx:id="category_txt" layoutX="149.0" layoutY="551.0" prefHeight="30.0" prefWidth="480.0" promptText="Category" />
-                        <JFXButton layoutX="149.0" layoutY="728.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Add+" textFill="WHITE">
+                        <TextField fx:id="count_txt" layoutX="24.0" layoutY="668.0" prefHeight="30.0" prefWidth="480.0" promptText="Seat Count" style="-fx-background-color: white;" />
+                        <TextField fx:id="category_txt" layoutX="24.0" layoutY="593.0" prefHeight="30.0" prefWidth="480.0" promptText="Category" style="-fx-background-color: white;" />
+                        <JFXButton layoutX="24.0" layoutY="758.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Add+" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -41,7 +53,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="346.0" layoutY="729.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                        <JFXButton layoutX="272.0" layoutY="758.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="235.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -49,21 +61,19 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="520.0" layoutY="746.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </JFXButton>
+                        <Line endX="342.0" layoutX="162.0" layoutY="555.0" startX="-138.0" />
+                        <Line endX="342.0" layoutX="162.0" layoutY="699.0" startX="-138.0" />
+                        <Line endX="342.0" layoutX="162.0" layoutY="624.0" startX="-138.0" />
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="number_txt" layoutX="614.0" layoutY="529.0" prefHeight="30.0" prefWidth="480.0" promptText="Hall Number" />
+                  <TextField fx:id="number_txt" layoutX="609.0" layoutY="555.0" prefHeight="30.0" prefWidth="480.0" promptText="Hall Number" style="-fx-background-color: white;" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="86.0" layoutY="75.0" prefHeight="820.0" prefWidth="520.0" style="-fx-background-color: green;" />
+            <AnchorPane layoutX="1510.0" layoutY="96.0" prefHeight="804.0" prefWidth="21.0" style="-fx-background-color: white;" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="20.0" layoutY="58.0" prefHeight="854.0" prefWidth="66.0" style="-fx-background-color: white;" />
+      <AnchorPane layoutY="35.0" prefHeight="930.0" prefWidth="21.0" style="-fx-background-color: white;" />
+      <AnchorPane layoutX="1531.0" layoutY="115.0" prefHeight="830.0" prefWidth="19.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,10 +38,12 @@ public class ManageHallController {
 
     private ManageHallModel manageHallModel = new ManageHallModel();
 
-    public void initialize() {
+    public void initialize() throws IOException {
         setCellValueFactory();
         clearField();
         loadAllhall();
+        loadslider();
+        tableListener();
 
     }
 
@@ -149,6 +152,7 @@ public class ManageHallController {
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Hall deleted!").show();
                 loadAllhall();
+                clearField();
 
             } else {
                 new Alert(Alert.AlertType.CONFIRMATION, "Hall not deleted!").show();
@@ -165,7 +169,31 @@ public class ManageHallController {
     @FXML
     void update_onaction(ActionEvent event) {
 
+        String number = number_txt.getText();
+        String category = category_txt.getText();
+        String count = count_txt.getText();
+
+        try {
+
+            var dto = new ManageHallDto(number,category,count);
+            boolean isUpdated = ManageHallModel.updateHall(dto);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "screens details updated").show();
+                clearField();
+                loadAllhall();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "screens details not updated").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            clearField();
+        }
+
+
+
     }
+
+
 
     public void back_onaction(ActionEvent actionEvent) throws IOException {
 
@@ -175,6 +203,20 @@ public class ManageHallController {
 
 
     }
+
+    public AnchorPane testingAnhcor9 ;
+
+ /*  public void initialize() throws IOException {
+        loadslider();
+    }*/
+
+    private void loadslider() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
+        this.testingAnhcor9.getChildren();
+        this.testingAnhcor9.getChildren().add(root);
+    }
+
+
 
 
 }

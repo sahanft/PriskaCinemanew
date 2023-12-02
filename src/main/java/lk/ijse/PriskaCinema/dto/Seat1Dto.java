@@ -11,7 +11,6 @@ import lombok.*;
 
 
 public class Seat1Dto {
-
     private String seatnumber_txt;
     private String screen_txt;
     private String rownumber_txt;

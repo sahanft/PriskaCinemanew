@@ -10,13 +10,38 @@
 
 <AnchorPane fx:id="anroot" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.PriskaCinema.controller.LoginController">
    <children>
-      <AnchorPane prefHeight="1010.0" prefWidth="960.0" />
+      <AnchorPane prefHeight="1010.0" prefWidth="960.0">
+         <children>
+            <AnchorPane fx:id="testingAnhcor" layoutX="220.0" layoutY="145.0" prefHeight="720.0" prefWidth="520.0" style="-fx-background-color: purple;">
+               <children>
+                  <ImageView fitHeight="720.0" fitWidth="520.0">
+                     <image>
+                        <Image url="@../image/middleimage.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutY="865.0" prefHeight="145.0" prefWidth="960.0" style="-fx-background-color: green;">
+               <children>
+                  <ImageView fitHeight="145.0" fitWidth="960.0">
+                     <image>
+                        <Image url="@../image/mainfour.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="145.0" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: pink;" />
+            <AnchorPane prefHeight="145.0" prefWidth="960.0" style="-fx-background-color: green;">
+               <children>
+                  <ImageView fitHeight="145.0" fitWidth="960.0">
+                     <image>
+                        <Image url="@../image/maintwo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="740.0" layoutY="145.0" prefHeight="720.0" prefWidth="220.0" style="-fx-background-color: pink;" />
+         </children></AnchorPane>
       <AnchorPane layoutX="960.0" prefHeight="1010.0" prefWidth="960.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="1010.0" fitWidth="960.0">
-         <image>
-            <Image url="@../image/image5.png" />
-         </image>
-      </ImageView>
       <Text fill="#00000080" layoutX="1223.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who are you?">
          <font>
             <Font size="11.0" />
@@ -38,5 +63,15 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="1010.0" fitWidth="220.0">
+         <image>
+            <Image url="@../image/mainone.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="1010.0" fitWidth="220.0" layoutX="740.0">
+         <image>
+            <Image url="@../image/mainthree.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

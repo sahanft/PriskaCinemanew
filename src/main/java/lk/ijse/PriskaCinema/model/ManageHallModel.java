@@ -77,12 +77,13 @@ public class ManageHallModel {
     public static boolean updateHall(ManageHallDto Dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE Movies SET number = ?,category = ?, count = ?";
+        String sql = "UPDATE Movies SET category = ?, seat_count = ? where hall_no = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, Dto.getNumber_txt());
-        pstm.setString(2, Dto.getCategory_txt());
-        pstm.setString(3, Dto.getCount_txt());
+
+        pstm.setString(1, Dto.getCategory_txt());
+        pstm.setString(2, Dto.getCount_txt());
+        pstm.setString(3, Dto.getNumber_txt());
 
 
         return pstm.executeUpdate() > 0;
@@ -93,7 +94,7 @@ public class ManageHallModel {
     public static boolean deleteHall(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "DELETE FROM Movies WHERE hall_no = ?";
+        String sql = "DELETE FROM Film_hall WHERE hall_no = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, id);
@@ -101,6 +102,8 @@ public class ManageHallModel {
 
         return pstm.executeUpdate() > 0;
     }
+
+
 
 
 

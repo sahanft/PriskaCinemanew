@@ -15,7 +15,7 @@ public class TicketTm {
     private String tickettype;
     private String movieid;
     private String screen;
-    private String price;
+    private Double price;
     private String empid;
     private String time;
     private LocalDate date;

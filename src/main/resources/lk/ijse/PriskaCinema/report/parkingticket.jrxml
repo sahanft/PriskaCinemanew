@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="parkingticket" pageWidth="400" pageHeight="600" columnWidth="40" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7b6dc7c-a8a6-4887-99a9-2b9d7a44f1ae">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="fee" class="java.lang.Double"/>
+	<parameter name="space" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="2" width="360" height="71" backcolor="#FF8800" uuid="c57201c9-fba8-4003-b308-b0b925a9de5b"/>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="7" width="260" height="54" forecolor="#FFFFFF" uuid="ade434f7-c6b0-4cad-8f98-c6915f290c02"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="aakar" size="30" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PRISKA CINEMA]]></text>
+				</staticText>
+				<textField pattern="MMMMM dd, yyyy">
+					<reportElement x="258" y="27" width="100" height="30" uuid="c68233ea-a43f-4b80-8dce-36a30edca2f7"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="4" width="100" height="30" uuid="63ff1b0f-4e17-44da-8add-742b8c64430c"/>
+				<textElement verticalAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="48" width="100" height="30" uuid="9b4fa3a6-375b-4dd2-9d54-1d11b5857d29"/>
+				<textElement verticalAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{space}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="94" width="100" height="30" uuid="aeb3c50e-35a8-44d6-915e-d51804313e21"/>
+				<textElement verticalAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="72" y="4" width="100" height="30" uuid="efa53512-b5c9-410a-a89a-d317d1a5df2e"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[parking fee :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="49" width="100" height="30" uuid="d734ff1d-1c01-4864-9b40-f91e4f97263c"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[space num :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="94" width="100" height="30" uuid="89f4a9d3-e0ea-44c5-955c-4d1a669773cf"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Vehicle Type :]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="330" height="47" uuid="c06bf631-aa99-411f-aaef-a49e9296cb0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="aakar" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thank you for Coming!]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
