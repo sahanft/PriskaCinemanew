@@ -1,28 +1,20 @@
-package lk.ijse.PriskaCinema.model;
+package lk.ijse.PriskaCinema.Bo.Impl;
 
-import javafx.scene.control.Alert;
+import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageParkingModel {
-    public static boolean saveParking(ManageParkingDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+public class ParkingBoImpl {
 
-        String sql = "INSERT INTO parking VALUES(?,?,?,?)";
-        PreparedStatement ptm = connection.prepareStatement(sql);
-
-        ptm.setString(1, dto.getSpacemen_txt());
-        ptm.setString(2, dto.getType_txt());
-        ptm.setDouble(3, Double.parseDouble(String.valueOf(dto.getParkingfee_txt())));
-        ptm.setDate(4, Date.valueOf(dto.getDate_txt()));
-
-
-        return ptm.executeUpdate()>0;
+    public static boolean saveParking(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
     public static List<ManageParkingDto> loadAllparking() throws SQLException {
@@ -46,7 +38,7 @@ public class ManageParkingModel {
         return itemList;
     }
 
-    /*public static ArrayList<ManageParkingDto> getAllseat() throws SQLException {
+   /* public static ArrayList<ManageParkingDto> getAllseat() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM parking";
@@ -71,37 +63,12 @@ public class ManageParkingModel {
 
     }
 */
-    public static boolean deleteParking(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM parking WHERE space_no = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,id);
-
-        return pstm.executeUpdate()>0;
+    public static boolean deleteParking(String id) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("DELETE FROM parking WHERE space_no = ?", id);
     }
 
-    public static boolean updateParking(ManageParkingDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-
-        pstm.setString(1, dto.getType_txt());
-
-
-        pstm.setDouble(2, dto.getParkingfee_txt());
-        pstm.setDate(3, Date.valueOf(dto.getDate_txt()));
-
-        pstm.setString(4, dto.getSpacemen_txt());
-
-
-
-
-
-
-
-        return pstm.executeUpdate() > 0;
+    public static boolean updateParking(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
 
@@ -128,7 +95,6 @@ public class ManageParkingModel {
         }
         return dto;
     }
-
 
 */
 

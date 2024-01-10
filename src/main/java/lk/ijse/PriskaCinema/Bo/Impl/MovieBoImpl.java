@@ -1,9 +1,9 @@
-package lk.ijse.PriskaCinema.model;
+package lk.ijse.PriskaCinema.Bo.Impl;
 
+import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
-/*import lk.ijse.PriskaCinema.dto.ManageProducerDto;*/
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,23 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageMoviesModel {
+public class MovieBoImpl {
 
+    public static boolean saveMovie(ManageMoviesDto dto) throws SQLException, ClassNotFoundException {
 
-    public static boolean saveMovie(ManageMoviesDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "INSERT INTO Movies VALUES(?,?,?,?,?)";
-        PreparedStatement ptm = connection.prepareStatement(sql);
-
-        ptm.setString(1, dto.getId_txt());
-        ptm.setString(2, dto.getName_txt());
-        ptm.setString(3, dto.getGenre_txt());
-        ptm.setString(4, dto.getDuration_txt());
-        ptm.setString(5, dto.getTime_txt());
-
-
-        return ptm.executeUpdate()>0;
+        return SqlUtil.test("INSERT INTO Movies VALUES(?,?,?,?,?)", dto.getId_txt(), dto.getName_txt(), dto.getGenre_txt(), dto.getDuration_txt(), dto.getTime_txt());
     }
 
    /* public static boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException {
@@ -92,40 +80,23 @@ public class ManageMoviesModel {
 
     }
 */
-    public static boolean updateMovie(ManageMoviesDto Dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "UPDATE Movies SET  name = ?, genre = ?, duration = ?, time = ? where movie_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-
-        pstm.setString(1, Dto.getName_txt());
-        pstm.setString(2, Dto.getGenre_txt());
-        pstm.setString(3, Dto.getDuration_txt());
-        pstm.setString(4, Dto.getTime_txt());
-        pstm.setString(5, Dto.getId_txt());
-
-        return pstm.executeUpdate() > 0;
+    public static boolean updateMovie(ManageMoviesDto Dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("UPDATE Movies SET  name = ?, genre = ?, duration = ?, time = ? where movie_id = ?", Dto.getName_txt(), Dto.getGenre_txt(), Dto.getDuration_txt(), Dto.getTime_txt(), Dto.getId_txt());
     }
 
 
 
-    public static boolean deleteMovie(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM Movies WHERE movie_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1, id);
-
-        return pstm.executeUpdate() > 0;
+    public static boolean deleteMovie(String id) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("DELETE FROM Movies WHERE movie_id = ?", id);
     }
 
-      public static boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException {
+    //------------------------------------------------------------------------------------------------------------------
+    public static boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("insert into ProducerDetails values(?,?)");
         preparedStatement.setObject(1, producerDetailsDto.getPro_id());
         preparedStatement.setObject(2, producerDetailsDto.getMovie_id());
         return preparedStatement.executeUpdate()>0;
     }
+
 }

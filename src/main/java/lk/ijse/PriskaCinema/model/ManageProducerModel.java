@@ -48,7 +48,7 @@ public class ManageProducerModel {
         return itemList;
     }
 
-    public static ArrayList<ManageProducerDto> getAllproducer() throws SQLException {
+   /* public static ArrayList<ManageProducerDto> getAllproducer() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM Seats";
@@ -71,7 +71,7 @@ public class ManageProducerModel {
         }
         return dtoList;
 
-    }
+    }*/
 
     public static boolean updateProducer(ManageProducerDto Dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();

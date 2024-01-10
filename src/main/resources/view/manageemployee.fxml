@@ -42,7 +42,7 @@
                   <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="689.0" startX="-158.0" startY="-1.0" />
                   <Line endX="322.0" endY="-1.0" layoutX="188.0" layoutY="735.0" startX="-158.0" startY="-1.0" />
                   <Line endX="322.0" endY="-1.0" layoutX="189.0" layoutY="784.0" startX="-158.0" startY="-1.0" />
-                  <JFXButton layoutX="204.0" layoutY="809.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+                  <JFXButton layoutX="204.0" layoutY="829.0" onAction="#update_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Update" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -50,7 +50,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="32.0" layoutY="808.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+ Add" textFill="WHITE">
+                  <JFXButton layoutX="32.0" layoutY="829.0" onAction="#add_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="+ Add" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -58,17 +58,12 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="377.0" layoutY="810.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+                  <JFXButton layoutX="377.0" layoutY="830.0" onAction="#delete_onaction" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ff6600; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <font>
                         <Font name="System Bold" size="17.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="32.0" layoutY="862.0" onAction="#attendans_onaction" prefHeight="55.0" prefWidth="480.0" style="-fx-background-color: #FF8800; -fx-background-radius: 10;" text="EMPLOYEE ATTENDANS" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
                      </font>
                   </JFXButton>
                </children>

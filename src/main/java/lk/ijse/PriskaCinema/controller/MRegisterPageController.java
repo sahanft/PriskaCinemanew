@@ -3,23 +3,14 @@ package lk.ijse.PriskaCinema.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.EmployeeRegisterDTO;
 import lk.ijse.PriskaCinema.dto.LoginDto;
-import lk.ijse.PriskaCinema.model.ERegisterPageModel;
-import lk.ijse.PriskaCinema.model.LoginModel;
 import lk.ijse.PriskaCinema.model.MRegisterPageModel;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MRegisterPageController {

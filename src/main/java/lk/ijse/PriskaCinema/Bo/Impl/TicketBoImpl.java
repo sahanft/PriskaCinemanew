@@ -1,38 +1,20 @@
-package lk.ijse.PriskaCinema.model;
+package lk.ijse.PriskaCinema.Bo.Impl;
 
+import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 import lk.ijse.PriskaCinema.dto.ManageTicketDto;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageTicketModel {
+public class TicketBoImpl {
 
-
-    public static boolean saveTicket(ManageTicketDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "INSERT INTO ticket VALUES(?,?,?,?,?,?,?,?)";
-        PreparedStatement ptm = connection.prepareStatement(sql);
-
-        ptm.setString(1, dto.getTicketnumber_txt());
-        ptm.setString(2, dto.getTickettype_txt());
-        ptm.setString(3, dto.getMovieid_txt());
-        ptm.setString(4, dto.getScreen_txt());
-        ptm.setDouble(5, dto.getPrice_txt());
-        ptm.setString(6, dto.getEmpid_txt());
-        ptm.setString(7, dto.getTime_txt());
-        ptm.setString(8, String.valueOf(dto.getDate_txt()));
-
-
-
-
-
-
-
-        return ptm.executeUpdate()>0;
+    public static boolean saveTicket(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("INSERT INTO ticket VALUES(?,?,?,?,?,?,?,?)", dto.getTicketnumber_txt(),dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),dto.getEmpid_txt(),dto.getTime_txt(),String.valueOf(dto.getDate_txt()));
     }
 
     public static List<ManageTicketDto> loadAllparking() throws SQLException {
@@ -91,49 +73,18 @@ public class ManageTicketModel {
 
 
 
-    }
-*/
-    public static boolean deleteTicket(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+    }*/
 
-        String sql = "DELETE FROM ticket WHERE t_num = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,id);
-
-        return pstm.executeUpdate()>0;
+    public static boolean deleteTicket(String id) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("DELETE FROM ticket WHERE t_num = ?",id);
     }
 
-    public static boolean updateTicket(ManageTicketDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "update ticket set t_type = ?, movie_id = ?,screen = ?,price = ?,time = ?,date = ?, e_id = ? where t_num =?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-
-        pstm.setString(1, dto.getTickettype_txt());
-        pstm.setString(2, dto.getMovieid_txt());
-        pstm.setString(3, dto.getScreen_txt());
-
-
-
-        pstm.setDouble(4, dto.getPrice_txt());
-        pstm.setString(5, dto.getTime_txt());
-        pstm.setDate(6, Date.valueOf(dto.getDate_txt()));
-        pstm.setString(7, dto.getEmpid_txt());
-        pstm.setString(8, dto.getTicketnumber_txt());
-
-
-
-
-
-
-
-
-
-        return pstm.executeUpdate() > 0;
+    public static boolean updateTicket(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
+               return SqlUtil.test("update ticket set t_type = ?, movie_id = ?,screen = ?,price = ?,time = ?,date = ?, e_id = ? where t_num =?",dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),dto.getTime_txt(),String.valueOf(dto.getDate_txt()),dto.getEmpid_txt(),dto.getTicketnumber_txt());
     }
 
 
-   /* public static ManageTicketDto searchTicket(String id) throws SQLException {
+  /*  public static ManageTicketDto searchTicket(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM ticket WHERE t_num = ?";
@@ -161,7 +112,8 @@ public class ManageTicketModel {
             dto = new ManageTicketDto();
         }
         return dto;
-    }*/
+    }
+*/
 
 
 
