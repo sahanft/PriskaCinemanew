@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
+import lk.ijse.PriskaCinema.Bo.Impl.ParkingBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
@@ -42,7 +44,7 @@ public class ManageParkingController implements Initializable {
 
     public Label lblParkingCount;
     @FXML
-    private TableView <ParkingTm>parkingmain_txt;
+    private TableView <ParkingTm> parkingmain_txt;
 
     @FXML
     private TableColumn<?,?> parkingspace_txt;
@@ -64,6 +66,8 @@ public class ManageParkingController implements Initializable {
 
     private ParkingTm tm = new ParkingTm();
 
+    ParkingBo parkingBo = new ParkingBoImpl();
+
 
 
     public void initialize() throws SQLException {
@@ -84,15 +88,19 @@ public class ManageParkingController implements Initializable {
         var dto = new ManageParkingDto(spacenum,spacetype,parkingfee,date);
 
         try {
-            boolean isSaved = ManageParkingModel.saveParking(dto);
+            boolean isSaved = parkingBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "vehicle Save").show();
                 loadAllParking();
                 totalParking();
                 clearField();
             }
+            parkingmain_txt.getItems().add(new ParkingTm(spacenum,spacetype,parkingfee,date));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         parkingmain_txt.refresh();
 
@@ -195,7 +203,7 @@ public class ManageParkingController implements Initializable {
         try {
 
             var dto = new ManageParkingDto(spaceNum, type, parkingfee,date);
-            boolean isUpdated = ManageParkingModel.updateParking (dto);
+            boolean isUpdated = parkingBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "parking details updated").show();;
                 clearField();
@@ -204,9 +212,13 @@ public class ManageParkingController implements Initializable {
             } else {
                 new Alert(Alert.AlertType.ERROR, "parking details not updated").show();;
             }
+            parkingmain_txt.getItems().add(new ParkingTm(spaceNum,type,parkingfee,date));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

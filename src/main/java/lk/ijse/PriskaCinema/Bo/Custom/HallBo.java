@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface HallBo extends CrudDAO<ManageHallDto> {
 
-     boolean saveHall(ManageHallDto dto) throws SQLException;
-     List<ManageHallDto> loadAllhall() throws SQLException ;
+     boolean save(ManageHallDto dto) throws SQLException, ClassNotFoundException;
+     List<ManageHallDto> loadAll() throws SQLException ;
 
-     ArrayList<ManageHallDto> getAllhall() throws SQLException;
-    boolean updateHall(ManageHallDto Dto) throws SQLException;
+     ArrayList<ManageHallDto> getAll() throws SQLException, ClassNotFoundException;
+    boolean update(ManageHallDto Dto) throws SQLException, ClassNotFoundException;
 
-    boolean deleteHall(String id) throws SQLException ;
+    boolean delete(String id) throws SQLException, ClassNotFoundException;
 
 }
 

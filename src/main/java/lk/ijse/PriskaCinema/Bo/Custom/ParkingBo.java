@@ -9,15 +9,15 @@ import java.util.List;
 
 public interface ParkingBo extends CrudDAO<ManageParkingDto> {
 
-    boolean saveParking(ManageParkingDto dto) throws SQLException;
+    boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException;
 
-     List<ManageParkingDto> loadAllparking() throws SQLException;
+     List<ManageParkingDto> loadAll() throws SQLException;
 
-   ArrayList<ManageParkingDto> getAllseat() throws SQLException ;
+   ArrayList<ManageParkingDto> getAll() throws SQLException, ClassNotFoundException;
 
-   boolean deleteParking(String id) throws SQLException;
+   boolean delete(String id) throws SQLException, ClassNotFoundException;
 
-   boolean updateParking(ManageParkingDto dto) throws SQLException;
+   boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException;
 
-     ManageParkingDto searchParking(String id) throws SQLException;
+    // ManageParkingDto searchParking(String id) throws SQLException;
 }

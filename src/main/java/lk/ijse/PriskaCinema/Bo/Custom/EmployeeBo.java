@@ -9,18 +9,16 @@ import java.util.List;
 
 public interface EmployeeBo extends CrudDAO<ManageEmployeeDto> {
 
-    boolean saveEmployee(ManageEmployeeDto dto) throws SQLException;
+    boolean save(ManageEmployeeDto dto) throws SQLException, ClassNotFoundException;
 
-    List<ManageEmployeeDto> loadAllemployee() throws SQLException;
+    List<ManageEmployeeDto> loadAll() throws SQLException;
 
     ArrayList<ManageEmployeeDto> getAll() throws SQLException;
 
-    boolean deleteEmployee(String id) throws SQLException;
+    boolean delete(String id) throws SQLException;
 
-    boolean updateEmployee(ManageEmployeeDto dto) throws SQLException;
+    boolean update(ManageEmployeeDto dto) throws SQLException;
 
-    List<ManageEmployeeDto> getAllEmployee() throws SQLException;
 
-    ManageEmployeeDto searchEmployee(String id) throws SQLException;
 
 }

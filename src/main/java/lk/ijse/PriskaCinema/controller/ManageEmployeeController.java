@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
+import lk.ijse.PriskaCinema.Bo.Impl.EmployeeBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.model.ManageEmployeeModel;
@@ -41,14 +43,15 @@ public class ManageEmployeeController {
     public AnchorPane root3;
     public TableView<EmployeeTm> tmEmployee;
 
-    private ManageEmployeeModel manageEmployeeModel = new ManageEmployeeModel();
+
+    EmployeeBo employeeBo = new EmployeeBoImpl();
 
     public void initialize() {
         setCellValueFactory();
         clearField();
         loadAllemployee();
         tableListener();
-        //setData();
+
     }
 
     private void clearField() {
@@ -78,7 +81,7 @@ public class ManageEmployeeController {
             }
             clearField();
             var dto = new ManageEmployeeDto(id, name, jobtype,mobile,nic, Double.valueOf(salary),address);
-            boolean isUpdated = ManageEmployeeModel.updateEmployee (dto);
+            boolean isUpdated = employeeBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee details updated").show();;
                 clearField();
@@ -86,6 +89,9 @@ public class ManageEmployeeController {
             } else {
                 new Alert(Alert.AlertType.ERROR, "Employee details not updated").show();;
             }
+            tmEmployee.getItems().add(new EmployeeTm(id,name,jobtype,mobile,nic,Double.parseDouble(salary),address));
+            loadAllemployee();
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
@@ -104,7 +110,6 @@ public class ManageEmployeeController {
         String jobtype = jobtype_txt.getText();
         String mobile = String.valueOf(mobilenumber_txt.getText());
         String nic = nic_txt.getText();
-
         double salary = Double.parseDouble(salary_txt.getText());
         String address = address_txt.getText();
 
@@ -117,28 +122,32 @@ public class ManageEmployeeController {
 
             var dto = new ManageEmployeeDto(id,name,jobtype,mobile,nic,salary,address);
 
-            boolean isSaved = ManageEmployeeModel.saveEmployee(dto);
+            boolean isSaved = employeeBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer Save").show();
                 loadAllemployee();
                 clearField();
             }
+            tmEmployee.getItems().add(new EmployeeTm(id,name,jobtype,mobile,nic,salary,address));
+            loadAllemployee();
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         tmEmployee.refresh();
 
     }
 
     private void loadAllemployee() {
-
-        ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
+        tmEmployee.getItems().clear();
 
         try {
-            ArrayList<ManageEmployeeDto> dtoList = (ArrayList<ManageEmployeeDto>) manageEmployeeModel.loadAllemployee();
+            ArrayList<ManageEmployeeDto> dtoList = (ArrayList<ManageEmployeeDto>) employeeBo.loadAll();
 
             for (ManageEmployeeDto dto : dtoList) {
-                obList.add(
+                tmEmployee.getItems().addAll(
                         new EmployeeTm(
                                 dto.getEmpid_txt(),
                                 dto.getEmpname_txt(),
@@ -151,7 +160,7 @@ public class ManageEmployeeController {
                         ));
             }
 
-            tmEmployee.setItems(obList);
+            //tmEmployee.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -190,26 +199,28 @@ public class ManageEmployeeController {
         String id = employeeid_txt.getText();
 
         try{
-            boolean isDelete = ManageEmployeeModel.deleteEmployee(id);
+            ManageEmployeeDto m = new ManageEmployeeDto(id);
+            boolean isDelete = employeeBo.delete(m);
+
             if (isDelete){
+                tmEmployee.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION,"employee delete").show();
                 loadAllemployee();
                 clearField();
-            }else{
-                new Alert(Alert.AlertType.CONFIRMATION,"employee not delete").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR,"employee not delete").show();
             }
+            tmEmployee.getItems().remove(tmEmployee.getSelectionModel().getSelectedItem());
+            loadAllemployee();
+
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void attendans_onaction(ActionEvent actionEvent) throws IOException {
-
-        root3.getChildren().clear();
-        root3.getChildren().add(FXMLLoader.load(getClass().getResource("/view/" + "attendans.fxml")));
-
-
-    }
 
 
 

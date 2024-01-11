@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EmployeeDao extends CrudDAO<ManageEmployeeDto> {
 
-    boolean save(ManageEmployeeDto dto) throws SQLException;
+    boolean save(ManageEmployeeDto dto) throws SQLException, ClassNotFoundException;
 
     List<ManageEmployeeDto> loadAll() throws SQLException;
 

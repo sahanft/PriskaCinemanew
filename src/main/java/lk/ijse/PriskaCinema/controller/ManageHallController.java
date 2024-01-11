@@ -12,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
+import lk.ijse.PriskaCinema.Bo.Impl.HallBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageHallDto;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.model.ManageHallModel;
@@ -36,7 +38,7 @@ public class ManageHallController {
     public TableColumn count_tm;
 
 
-    private ManageHallModel manageHallModel = new ManageHallModel();
+    HallBo hallBo = new HallBoImpl();
 
     public void initialize() throws IOException {
         setCellValueFactory();
@@ -56,8 +58,6 @@ public class ManageHallController {
 
     @FXML
     void add_onaction(ActionEvent event) {
-
-
         String number = number_txt.getText();
         String category = category_txt.getText();
         String count = count_txt.getText();
@@ -67,15 +67,20 @@ public class ManageHallController {
         var dto = new ManageHallDto(number,category,count);
 
         try {
-            boolean isSaved = ManageHallModel.saveHall(dto);
+            boolean isSaved = hallBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "hall Save").show();
                 loadAllhall();
                 clearField();
             }
+            hall_tm.getItems().add(new HallTm(number,category,count));
+            loadAllhall();
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         hall_tm.refresh();
 
@@ -86,7 +91,7 @@ public class ManageHallController {
         ObservableList<HallTm> obList = FXCollections.observableArrayList();
 
         try {
-            ArrayList<ManageHallDto> dtoList = (ArrayList<ManageHallDto>) manageHallModel.loadAllhall();
+            ArrayList<ManageHallDto> dtoList = (ArrayList<ManageHallDto>) hallBo.loadAll();
 
             for (ManageHallDto dto : dtoList) {
                 obList.add(
@@ -166,7 +171,7 @@ public class ManageHallController {
 
 
 
-    @FXML
+   /* @FXML
     void update_onaction(ActionEvent event) {
 
         String number = number_txt.getText();
@@ -192,7 +197,7 @@ public class ManageHallController {
 
 
     }
-
+*/
 
 
     public void back_onaction(ActionEvent actionEvent) throws IOException {

@@ -9,16 +9,16 @@ import java.util.List;
 
 public interface ProducerBo extends CrudDAO<ManageProducerDto> {
 
-     boolean saveProducer(ManageProducerDto dto) throws SQLException;
+     boolean save(ManageProducerDto dto) throws SQLException;
 
-    List<ManageProducerDto> loadAllproducer() throws SQLException ;
+    List<ManageProducerDto> loadAll() throws SQLException ;
 
-    ArrayList<ManageProducerDto> getAllproducer() throws SQLException;
+    ArrayList<ManageProducerDto> getAll() throws SQLException;
 
-   boolean updateProducer(ManageProducerDto Dto) throws SQLException ;
+   boolean update(ManageProducerDto Dto) throws SQLException ;
 
 
-    boolean deleteProducer(String id) throws SQLException;
+    boolean delete(String id) throws SQLException;
 
 
 }

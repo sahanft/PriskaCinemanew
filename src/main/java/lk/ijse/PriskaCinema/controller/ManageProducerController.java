@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
+import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.dto.ManageTicketDto;
@@ -38,7 +40,8 @@ public class ManageProducerController {
     public TableColumn address_tm;
     public TableColumn mobile_tm;
 
-    private ManageProducerModel manageProducerModel = new ManageProducerModel();
+
+    ProducerBo producerBo = new ProducerBoImpl();
 
     public void initialize() {
         setCellValueFactory();
@@ -68,12 +71,14 @@ public class ManageProducerController {
         var dto = new ManageProducerDto(id,name,address,mobile);
 
         try {
-            boolean isSaved = ManageProducerModel.saveProducer(dto);
+            boolean isSaved = producerBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Producer Save").show();
                 loadAllProducer();
                 clearField();
             }
+            producer_tm.getItems().add(new ProducerTm(id,name,address,mobile));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
 

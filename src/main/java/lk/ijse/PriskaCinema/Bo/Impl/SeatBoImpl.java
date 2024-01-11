@@ -1,5 +1,8 @@
 package lk.ijse.PriskaCinema.Bo.Impl;
 
+import lk.ijse.PriskaCinema.Bo.Custom.SeatBo;
+import lk.ijse.PriskaCinema.Dao.Custom.SeatDao;
+import lk.ijse.PriskaCinema.Dao.Impl.SeatDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.Seat1Dto;
@@ -11,91 +14,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeatBoImpl {
+public class SeatBoImpl implements SeatBo {
 
-    public static boolean saveSeat(Seat1Dto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("INSERT INTO Seats VALUES(?,?,?)",dto.getSeatnumber_txt(),dto.getScreen_txt(),dto.getRownumber_txt());
+  SeatDao seatDao = (SeatDao) new SeatDaoImpl();
+
+    @Override
+    public boolean save(Seat1Dto dto) throws SQLException {
+        return seatDao.save(dto);
     }
 
-    public static List<Seat1Dto> loadAllseat() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM Seats";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        List<Seat1Dto> itemList = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
-        while (resultSet.next()) {
-            itemList.add(new Seat1Dto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3)
-            ));
-        }
-
-        return itemList;
+    @Override
+    public ArrayList<Seat1Dto> getAll() throws SQLException, ClassNotFoundException {
+        return seatDao.getAll();
     }
 
-  /*  public static ArrayList<Seat1Dto> getAllseat() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM Seats";
-
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-
-        ArrayList<Seat1Dto> dtoList = new ArrayList<>();
-
-        while(resultSet.next()) {
-            dtoList.add(
-                    new Seat1Dto(
-                            resultSet.getString(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3)
-
-                    )
-            );
-        }
-        return dtoList;
-
-    }
-*/
-    public static boolean deleteSeat(String id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM Seats WHERE seat_num = ?", id);
+    @Override
+    public List<Seat1Dto> loadAll() throws SQLException {
+        return seatDao.loadAll();
     }
 
-
-    public static boolean updateSeat(Seat1Dto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("update Seats set screen = ?, row_num = ? where seat_num =?", dto.getScreen_txt(), dto.getRownumber_txt(), dto.getSeatnumber_txt());
+    @Override
+    public ArrayList<Seat1Dto> getAllseat() throws SQLException {
+        return seatDao.getAllseat();
     }
 
-
-  /*  public static Seat1Dto searchSeat(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM Seats WHERE seat_num = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, id);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-        Seat1Dto dto = null;
-
-        if(resultSet.next()) {
-            String screens = resultSet.getString(1);
-            String rownumber = resultSet.getString(2);
-            String seatnumbers = resultSet.getString(3);
-
-            dto = new Seat1Dto();
-        }
-        return dto;
+    @Override
+    public boolean delete(String id) throws SQLException {
+        return seatDao.delete(id);
     }
 
-*/
+    @Override
+    public boolean update(Seat1Dto dto) throws SQLException {
+        return seatDao.update(dto);
+    }
 
-
-
-
-
+    @Override
+    public boolean delete(Seat1Dto seat1Dto) throws SQLException, ClassNotFoundException {
+        return seatDao.delete(seat1Dto);
+    }
 }

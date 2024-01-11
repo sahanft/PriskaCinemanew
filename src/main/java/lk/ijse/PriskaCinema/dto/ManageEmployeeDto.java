@@ -34,5 +34,7 @@ public class ManageEmployeeDto {
     }
 
 
-
+    public ManageEmployeeDto(String id) {
+        this.empid_txt = id;
+    }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.PriskaCinema.Dao.Impl;
 
+import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
@@ -8,13 +9,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingDaoImpl {
+public class ParkingDaoImpl implements ParkingBo {
 
-    public static boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
-    public static List<ManageParkingDto> loadAll() throws SQLException {
+    public List<ManageParkingDto> loadAll() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM parking";
@@ -35,64 +36,24 @@ public class ParkingDaoImpl {
         return itemList;
     }
 
-   /* public static ArrayList<ManageParkingDto> getAllseat() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM parking";
-
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-
-        ArrayList<ManageParkingDto> dtoList = new ArrayList<>();
-
-        while(resultSet.next()) {
-            dtoList.add(
-                    new ManageParkingDto(
-                            resultSet.getString(1),
-                            resultSet.getString(2),
-                            resultSet.getDouble(3),
-                            resultSet.getDate(4).toLocalDate()
-
-                    )
-            );
-        }
-        return dtoList;
-
+    @Override
+    public ArrayList<ManageParkingDto> getAll() throws SQLException, ClassNotFoundException {
+        return null;
     }
-*/
-    public static boolean delete(String id) throws SQLException, ClassNotFoundException {
+
+
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM parking WHERE space_no = ?", id);
     }
 
-    public static boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
-
-   /* public static ManageParkingDto searchParking(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM parking WHERE space_no = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, id);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-        ManageParkingDto dto = null;
-
-        if(resultSet.next()) {
-            String spacenum = resultSet.getString(1);
-            String type = resultSet.getString(2);
-            Double parkingfee = Double.valueOf(resultSet.getString(3));
-            int date = resultSet.getInt(4);
-
-
-
-            dto = new ManageParkingDto();
-        }
-        return dto;
+    @Override
+    public boolean delete(ManageParkingDto manageParkingDto) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
-*/
 
 }

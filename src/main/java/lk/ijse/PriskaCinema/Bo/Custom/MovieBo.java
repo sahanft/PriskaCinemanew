@@ -10,16 +10,16 @@ import java.util.List;
 
 public interface MovieBo extends CrudDAO<ManageMoviesDto> {
 
-    boolean saveMovie(ManageMoviesDto dto) throws SQLException ;
-     boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException ;
+    boolean save(ManageMoviesDto dto) throws SQLException, ClassNotFoundException;
+    // boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 
 
-  List<ManageMoviesDto> loadAllmovie() throws SQLException ;
-     ArrayList<ManageMoviesDto> getAllmovie() throws SQLException;
+  List<ManageMoviesDto> loadAll() throws SQLException ;
+     ArrayList<ManageMoviesDto> getAll() throws SQLException, ClassNotFoundException;
 
-    boolean updateMovie(ManageMoviesDto Dto) throws SQLException ;
+    boolean update(ManageMoviesDto Dto) throws SQLException, ClassNotFoundException;
 
-    boolean deleteMovie(String id) throws SQLException;
+    boolean delete(String id) throws SQLException, ClassNotFoundException;
     boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 
 

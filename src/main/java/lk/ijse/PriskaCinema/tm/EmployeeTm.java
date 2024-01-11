@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.tm;
 
 import lombok.*;
 
+
 @NoArgsConstructor
 @Setter
 @Getter
@@ -24,5 +25,15 @@ public class EmployeeTm {
         this.nic = empnicTxt;
         this.salary = empsalaryTxt;
         this.address = empaddressTxt;
+    }
+
+    public EmployeeTm(String id, String name, String jobtype, String mobile, String nic, double salary, String address) {
+        this.empid = id;
+        this.empname = name;
+        this.jobtype = jobtype;
+        this.mobile = Integer.parseInt(mobile);
+        this.nic = nic;
+        this.salary = salary;
+        this.address = address;
     }
 }
