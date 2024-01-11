@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 /*import jdk.internal.org.objectweb.asm.TypeReference;*/
+import lk.ijse.PriskaCinema.Bo.Custom.TicketBo;
+import lk.ijse.PriskaCinema.Bo.Impl.TicketBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 import lk.ijse.PriskaCinema.dto.ManageTicketDto;
@@ -54,7 +56,7 @@ public class ManageTicketController implements Initializable {
     public Label lbltickettotal;
     private String tNum;
 
-    private ManageTicketModel manageTicketModel = new ManageTicketModel();
+    TicketBo ticketBo = new TicketBoImpl();
     private TicketTm newValue;
 
     public void initialize() {
@@ -82,16 +84,19 @@ public class ManageTicketController implements Initializable {
         var dto = new ManageTicketDto(ticketNum,tickettype,movieid,screen,price,empid,time,Date);
 
         try {
-            boolean isSaved = ManageTicketModel.saveTicket(dto);
+            boolean isSaved = ticketBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "vehicle Save").show();
                 loadAllTicket();
                 clearField();
                 totalTicket();
-
             }
+            manageticket_tm.getItems().add(new TicketTm(ticketNum,tickettype,movieid,screen,price,empid,time,Date));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         manageticket_tm.refresh();
 
@@ -114,7 +119,7 @@ public class ManageTicketController implements Initializable {
         ObservableList<TicketTm> obList = FXCollections.observableArrayList();
 
         try {
-            ArrayList<ManageTicketDto> dtoList = (ArrayList<ManageTicketDto>) manageTicketModel.loadAllparking();
+            ArrayList<ManageTicketDto> dtoList = (ArrayList<ManageTicketDto>) ticketBo.loadAll();
 
             for (ManageTicketDto dto : dtoList) {
                 obList.add(
@@ -183,7 +188,7 @@ public class ManageTicketController implements Initializable {
         try {
 
             var dto = new ManageTicketDto(tnumber, type,movieid,screen,price,empid,time,date);
-            boolean isUpdated = ManageTicketModel.updateTicket (dto);
+            boolean isUpdated = ticketBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();;
                 clearField();
@@ -192,7 +197,9 @@ public class ManageTicketController implements Initializable {
             } else {
                 new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();;
             }
-        } catch (SQLException e) {
+            manageticket_tm.getItems().add(new TicketTm(tnumber,type,movieid,screen,price,empid,time,date));
+
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
         }

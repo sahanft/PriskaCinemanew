@@ -20,7 +20,7 @@ public class TicketBoImpl implements TicketBo {
 
 
     @Override
-    public boolean save(ManageTicketDto dto) throws SQLException {
+    public boolean save(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
         return ticketDao.save(dto);
     }
 
@@ -35,12 +35,12 @@ public class TicketBoImpl implements TicketBo {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return ticketDao.delete(id);
     }
 
     @Override
-    public boolean update(ManageTicketDto dto) throws SQLException {
+    public boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
         return ticketDao.update(dto);
     }
 

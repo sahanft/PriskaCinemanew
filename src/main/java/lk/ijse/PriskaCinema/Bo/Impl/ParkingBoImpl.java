@@ -16,11 +16,11 @@ import java.util.List;
 
 public class ParkingBoImpl implements ParkingBo {
 
-    ParkingDao parkingDao = (ParkingDao) new ParkingDaoImpl();
+    ParkingDao parkingDao = new ParkingDaoImpl();
 
 
     @Override
-    public boolean save(ManageParkingDto dto) throws SQLException {
+    public boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
         return parkingDao.save(dto);
     }
 
@@ -35,12 +35,12 @@ public class ParkingBoImpl implements ParkingBo {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return parkingDao.delete(id);
     }
 
     @Override
-    public boolean update(ManageParkingDto dto) throws SQLException {
+    public boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
         return parkingDao.update(dto);
     }
 

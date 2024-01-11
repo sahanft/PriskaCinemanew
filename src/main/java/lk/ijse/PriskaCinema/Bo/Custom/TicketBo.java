@@ -9,14 +9,14 @@ import java.util.List;
 
 public interface TicketBo extends CrudDAO<ManageTicketDto> {
 
-    boolean save(ManageTicketDto dto) throws SQLException ;
+    boolean save(ManageTicketDto dto) throws SQLException, ClassNotFoundException;
 
      List<ManageTicketDto> loadAll() throws SQLException ;
 
      ArrayList<ManageTicketDto> getAll() throws SQLException, ClassNotFoundException;
-     boolean delete(String id) throws SQLException;
+     boolean delete(String id) throws SQLException, ClassNotFoundException;
 
-     boolean update(ManageTicketDto dto) throws SQLException ;
+     boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException;
 
    // ManageTicketDto searchTicket(String id) throws SQLException ;
 

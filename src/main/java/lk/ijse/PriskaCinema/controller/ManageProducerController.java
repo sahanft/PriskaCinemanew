@@ -82,6 +82,8 @@ public class ManageProducerController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         producer_tm.refresh();
 
@@ -103,9 +105,8 @@ public class ManageProducerController {
         address_txt.setText(row.getAddress());
         mobilenumber_txt.setText(row.getMobilenumber());
 
-
-
     }
+
     public void tableListener(){
         producer_tm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setData((ProducerTm) newValue);
@@ -130,7 +131,7 @@ public class ManageProducerController {
 
         try {
             var dto = new ManageProducerDto(id,name,address,tele);
-            boolean isUpdated = ManageProducerModel.updateProducer(dto);
+            boolean isUpdated = producerBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();;
                 clearField();
@@ -138,9 +139,13 @@ public class ManageProducerController {
             } else {
                 new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();;
             }
+            producer_tm.getItems().add(new ProducerTm(id,name,address,tele));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

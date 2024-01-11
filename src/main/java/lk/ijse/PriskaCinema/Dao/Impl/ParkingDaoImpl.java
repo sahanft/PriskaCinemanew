@@ -1,6 +1,7 @@
 package lk.ijse.PriskaCinema.Dao.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
+import lk.ijse.PriskaCinema.Dao.Custom.ParkingDao;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
@@ -9,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingDaoImpl implements ParkingBo {
+public class ParkingDaoImpl implements ParkingDao {
 
     public boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());

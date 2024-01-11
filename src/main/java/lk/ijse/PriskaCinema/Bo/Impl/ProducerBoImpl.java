@@ -20,7 +20,7 @@ public class ProducerBoImpl implements ProducerBo {
 
 
     @Override
-    public boolean save(ManageProducerDto dto) throws SQLException {
+    public boolean save(ManageProducerDto dto) throws SQLException, ClassNotFoundException {
         return producerDao.save(dto);
     }
 
@@ -35,7 +35,7 @@ public class ProducerBoImpl implements ProducerBo {
     }
 
     @Override
-    public boolean update(ManageProducerDto Dto) throws SQLException {
+    public boolean update(ManageProducerDto Dto) throws SQLException, ClassNotFoundException {
         return producerDao.update(Dto);
     }
 
@@ -45,7 +45,7 @@ public class ProducerBoImpl implements ProducerBo {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return producerDao.delete(id);
     }
 }

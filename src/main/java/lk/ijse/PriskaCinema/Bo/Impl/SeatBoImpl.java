@@ -19,7 +19,7 @@ public class SeatBoImpl implements SeatBo {
   SeatDao seatDao = (SeatDao) new SeatDaoImpl();
 
     @Override
-    public boolean save(Seat1Dto dto) throws SQLException {
+    public boolean save(Seat1Dto dto) throws SQLException, ClassNotFoundException {
         return seatDao.save(dto);
     }
 
@@ -39,12 +39,12 @@ public class SeatBoImpl implements SeatBo {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException {
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return seatDao.delete(id);
     }
 
     @Override
-    public boolean update(Seat1Dto dto) throws SQLException {
+    public boolean update(Seat1Dto dto) throws SQLException, ClassNotFoundException {
         return seatDao.update(dto);
     }
 
