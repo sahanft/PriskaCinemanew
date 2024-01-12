@@ -8,7 +8,7 @@ import lombok.*;
 //@AllArgsConstructor
 @NoArgsConstructor
 
-public class ProducerDetails {
+public class ProducerDetails extends Producer {
 
     private String pro_id;
     private String movie_id;

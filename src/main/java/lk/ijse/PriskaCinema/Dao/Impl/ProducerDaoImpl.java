@@ -5,6 +5,7 @@ import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
+import lk.ijse.PriskaCinema.entity.Producer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,21 +16,21 @@ import java.util.List;
 
 public class ProducerDaoImpl implements ProducerDao {
 
-    public boolean save(ManageProducerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Producer dto) throws SQLException, ClassNotFoundException {
        return SqlUtil.test("INSERT INTO Producers VALUES(?,?,?,?)",
                dto.getProducerid_txt(), dto.getName_txt(), dto.getAddress_txt(), dto.getMobilenumber_txt());
     }
 
 
 
-    public ArrayList<ManageProducerDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Producer> getAll() throws SQLException, ClassNotFoundException {
 
         ResultSet resultSet = SqlUtil.test("SELECT * FROM Seats");
-        ArrayList<ManageProducerDto> dtoList = new ArrayList<>();
+        ArrayList<Producer> dtoList = new ArrayList<>();
 
         while(resultSet.next()) {
             dtoList.add(
-                    new ManageProducerDto(
+                    new Producer(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
@@ -43,11 +44,11 @@ public class ProducerDaoImpl implements ProducerDao {
     }
 
     @Override
-    public ArrayList<ManageProducerDto> loadAll() throws SQLException {
+    public ArrayList<Producer> loadAll() throws SQLException {
         return null;
     }
 
-    public boolean update(ManageProducerDto Dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Producer Dto) throws SQLException, ClassNotFoundException {
        return SqlUtil.test("UPDATE Producers SET name = ?, pro_address = ?, pro_tele = ? WHERE pro_id = ?",
                Dto.getName_txt(), Dto.getAddress_txt(), Dto.getMobilenumber_txt(), Dto.getProducerid_txt());
     }
@@ -58,7 +59,7 @@ public class ProducerDaoImpl implements ProducerDao {
     }
 
     @Override
-    public boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException, ClassNotFoundException {
+    public boolean saveProducerMovieDetails(Producer producerDetailsDto) throws SQLException, ClassNotFoundException {
         return false;
     }
 

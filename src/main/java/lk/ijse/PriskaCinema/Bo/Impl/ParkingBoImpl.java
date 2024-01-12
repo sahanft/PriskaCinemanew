@@ -6,6 +6,7 @@ import lk.ijse.PriskaCinema.Dao.Impl.ParkingDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
+import lk.ijse.PriskaCinema.entity.Parking;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,27 +22,47 @@ public class ParkingBoImpl implements ParkingBo {
 
     @Override
     public boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
-        return parkingDao.save(dto);
+        return parkingDao.save(new Parking(dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt()));
     }
 
     @Override
     public List<ManageParkingDto> loadAll() throws SQLException, ClassNotFoundException {
-        return parkingDao.loadAll();
+        ArrayList<Parking> entityList = parkingDao.loadAll();
+        ArrayList<ManageParkingDto> dtoList = new ArrayList<>();
+        for (Parking entity : entityList) {
+            dtoList.add(new ManageParkingDto(
+                    entity.getSpacemen_txt(),
+                    entity.getType_txt(),
+                    entity.getParkingfee_txt(),
+                    entity.getDate_txt()
+            ));
+        }
+        return dtoList;
     }
 
     @Override
     public ArrayList<ManageParkingDto> getAll() throws SQLException, ClassNotFoundException {
-        return parkingDao.getAll();
+        ArrayList<Parking> entityList = parkingDao.getAll();
+        ArrayList<ManageParkingDto> dtoList = new ArrayList<>();
+        for (Parking entity : entityList) {
+            dtoList.add(new ManageParkingDto(
+                    entity.getSpacemen_txt(),
+                    entity.getType_txt(),
+                    entity.getParkingfee_txt(),
+                    entity.getDate_txt()
+            ));
+        }
+        return dtoList;
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return parkingDao.delete(id);
+        return parkingDao.delete(String.valueOf(new Parking(id)));
     }
 
     @Override
     public boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
-        return parkingDao.update(dto);
+        return parkingDao.update(new Parking(dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt()));
     }
 
 }
