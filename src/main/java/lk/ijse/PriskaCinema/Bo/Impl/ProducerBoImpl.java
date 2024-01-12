@@ -3,22 +3,15 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
 import lk.ijse.PriskaCinema.Dao.Impl.ProducerDaoImpl;
-import lk.ijse.PriskaCinema.Dao.SqlUtil;
-import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.entity.Producer;
-import lk.ijse.PriskaCinema.entity.ProducerDetails;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerBoImpl implements ProducerBo {
 
-    ProducerDao producerDao = (ProducerDao) new ProducerDaoImpl();
+    ProducerDao producerDao = new ProducerDaoImpl();
 
 
     @Override
@@ -38,6 +31,7 @@ public class ProducerBoImpl implements ProducerBo {
                     entity.getMobilenumber_txt()
             ));
         }
+        return dtoList;
     }
 
     @Override
