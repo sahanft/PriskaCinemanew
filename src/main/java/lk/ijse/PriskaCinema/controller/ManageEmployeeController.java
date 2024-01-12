@@ -85,7 +85,7 @@ public class ManageEmployeeController {
             tmEmployee.getItems().add(new EmployeeTm(id,name,jobtype,mobile,nic,Double.parseDouble(salary),address));
             loadAllemployee();
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
         }
@@ -156,6 +156,8 @@ public class ManageEmployeeController {
             //tmEmployee.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -207,7 +209,7 @@ public class ManageEmployeeController {
             tmEmployee.getItems().remove(tmEmployee.getSelectionModel().getSelectedItem());
             loadAllemployee();
 
-        }catch (SQLException e){
+        }catch (SQLException | ClassNotFoundException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }

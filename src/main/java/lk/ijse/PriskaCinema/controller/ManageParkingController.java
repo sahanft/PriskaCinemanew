@@ -128,7 +128,7 @@ public class ManageParkingController implements Initializable {
             }
 
             //parkingmain_txt.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

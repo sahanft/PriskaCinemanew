@@ -24,9 +24,10 @@ public class EmployeeBoImpl implements EmployeeBo {
 
     @Override
     public List<employeeDto> loadAll() throws SQLException, ClassNotFoundException {
-        ArrayList<employee> list =  employeeDao.loadAll();
 
+        ArrayList<employee> list =  employeeDao.loadAll();
         ArrayList<employeeDto> dtos = new ArrayList<>();
+
         for (employee entity: list) {
             dtos.add(new employeeDto(
                     entity.getEmpid_txt(),
@@ -43,8 +44,8 @@ public class EmployeeBoImpl implements EmployeeBo {
 
     @Override
     public ArrayList<employeeDto> getAll() throws SQLException {
-        ArrayList<employee> list =  employeeDao.getAll();
 
+        ArrayList<employee> list =  employeeDao.getAll();
         ArrayList<employeeDto> dtoList = new ArrayList<>();
 
         for (employee entity: list) {
@@ -64,11 +65,12 @@ public class EmployeeBoImpl implements EmployeeBo {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return employeeDao.delete(id);
+        return employeeDao.delete(String.valueOf(new employee(id)));
     }
 
     @Override
     public boolean update(employeeDto dto) throws SQLException, ClassNotFoundException {
-        return employeeDao.update(dto);
+        return employeeDao.update(new employee(dto.getEmpid_txt(), dto.getEmpname_txt(), dto.getEmpjobtype_txt(), dto.getEmpmobile_txt(),
+                dto.getEmpnic_txt(),dto.getEmpsalary_txt(),dto.getEmpaddress_txt()));
     }
 }

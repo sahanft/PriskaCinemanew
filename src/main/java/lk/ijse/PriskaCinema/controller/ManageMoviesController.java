@@ -73,7 +73,7 @@ public class ManageMoviesController {
             }
 
            // movie_tm.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -171,7 +171,7 @@ public class ManageMoviesController {
             }
 
            // movie_tm.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -268,9 +268,6 @@ public class ManageMoviesController {
 
     public AnchorPane testingAnhcor8;
 
-  /*  public void initialize() throws IOException {
-        loadslider();
-    }*/
 
     private void loadslider() throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));

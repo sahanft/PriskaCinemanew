@@ -93,20 +93,16 @@ public class ManageHallController {
 
             for (ManageHallDto dto : dtoList) {
                 hall_tm.getItems().addAll(
-
-
                         new HallTm(
                                 dto.getNumber_txt(),
                                 dto.getCategory_txt(),
                                 dto.getCount_txt()
 
-
-
                         ));
             }
 
            // hall_tm.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -133,16 +129,6 @@ public class ManageHallController {
             setData((HallTm) newValue);
         });
     }
-
-
-
-
-
-
-
-
-
-
 
 
     @FXML
@@ -172,37 +158,6 @@ public class ManageHallController {
     }
 
 
-
-
-   /* @FXML
-    void update_onaction(ActionEvent event) {
-
-        String number = number_txt.getText();
-        String category = category_txt.getText();
-        String count = count_txt.getText();
-
-        try {
-
-            var dto = new ManageHallDto(number,category,count);
-            boolean isUpdated = ManageHallModel.updateHall(dto);
-            if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "screens details updated").show();
-                clearField();
-                loadAllhall();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "screens details not updated").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            clearField();
-        }
-
-
-
-    }
-*/
-
-
     public void back_onaction(ActionEvent actionEvent) throws IOException {
 
         hallroot.getChildren().clear();
@@ -214,9 +169,6 @@ public class ManageHallController {
 
     public AnchorPane testingAnhcor9 ;
 
- /*  public void initialize() throws IOException {
-        loadslider();
-    }*/
 
     private void loadslider() throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));

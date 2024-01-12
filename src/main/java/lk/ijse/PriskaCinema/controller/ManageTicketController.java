@@ -141,7 +141,7 @@ public class ManageTicketController implements Initializable {
             }
 
           //  manageticket_tm.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

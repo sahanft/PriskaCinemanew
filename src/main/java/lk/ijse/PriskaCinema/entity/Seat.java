@@ -10,18 +10,18 @@ import lombok.*;
 @NoArgsConstructor
 
 
-public class Seat1Dto {
+public class Seat {
     private String seatnumber_txt;
     private String screen_txt;
     private String rownumber_txt;
 
-    public Seat1Dto(String seatnumber, String screen, String rownumber) {
+    public Seat(String seatnumber, String screen, String rownumber) {
         this.seatnumber_txt = seatnumber;
         this.screen_txt = screen;
         this.rownumber_txt = rownumber;
     }
 
-    public Seat1Dto(String seatnumber) {
+    public Seat(String seatnumber) {
         this.seatnumber_txt = seatnumber;
     }
 }
