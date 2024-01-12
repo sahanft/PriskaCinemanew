@@ -1,9 +1,6 @@
 package lk.ijse.PriskaCinema.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,13 +9,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Impl.EmployeeBoImpl;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
-import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.model.ManageEmployeeModel;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
+import lk.ijse.PriskaCinema.dto.employeeDto;
 import lk.ijse.PriskaCinema.tm.EmployeeTm;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -80,7 +73,7 @@ public class ManageEmployeeController {
                 return;
             }
             clearField();
-            var dto = new ManageEmployeeDto(id, name, jobtype,mobile,nic, Double.valueOf(salary),address);
+            var dto = new employeeDto(id, name, jobtype,mobile,nic, Double.valueOf(salary),address);
             boolean isUpdated = employeeBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee details updated").show();;
@@ -120,7 +113,7 @@ public class ManageEmployeeController {
                 return;
             }
 
-            var dto = new ManageEmployeeDto(id,name,jobtype,mobile,nic,salary,address);
+            var dto = new employeeDto(id,name,jobtype,mobile,nic,salary,address);
 
             boolean isSaved = employeeBo.save(dto);
             if (isSaved) {
@@ -144,9 +137,9 @@ public class ManageEmployeeController {
         tmEmployee.getItems().clear();
 
         try {
-            ArrayList<ManageEmployeeDto> dtoList = (ArrayList<ManageEmployeeDto>) employeeBo.loadAll();
+            ArrayList<employeeDto> dtoList = (ArrayList<employeeDto>) employeeBo.loadAll();
 
-            for (ManageEmployeeDto dto : dtoList) {
+            for (employeeDto dto : dtoList) {
                 tmEmployee.getItems().addAll(
                         new EmployeeTm(
                                 dto.getEmpid_txt(),
@@ -177,14 +170,14 @@ public class ManageEmployeeController {
 
           }
     private void setData(EmployeeTm row) {
-        empid_tbl.setText(row.getEmpid());
+     /*   empid_tbl.setText(row.getEmpid());
         empname_tbl.setText(row.getEmpname());
         empjobtype_tbl.setText(row.getJobtype());
         empmobile_tbl.setText(String.valueOf(row.getMobile()));
         empnic_tbl.setText(row.getNic());
         empsalary_tbl.setText(String.valueOf(row.getSalary()));
         empadress_tbl.setText(row.getAddress());
-
+*/
     }
     public void tableListener(){
         tmEmployee.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

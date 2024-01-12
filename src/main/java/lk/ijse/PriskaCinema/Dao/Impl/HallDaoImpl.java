@@ -23,15 +23,11 @@ public class HallDaoImpl implements HallDao {
         return null;
     }
 
-    public List<ManageHallDto> loadAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+    public ArrayList<ManageHallDto> loadAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * FROM Film_hall";
-        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM Film_hall");
+        ArrayList<ManageHallDto> itemList = new ArrayList<>();
 
-        List<ManageHallDto> itemList = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
         while (resultSet.next()) {
             itemList.add(new ManageHallDto(
                     resultSet.getString(1),
@@ -44,63 +40,18 @@ public class HallDaoImpl implements HallDao {
         return itemList;
     }
 
-    @Override
-    public ArrayList<ManageHallDto> getAllhall() throws SQLException {
-        return null;
-    }
-
-    /* public static ArrayList<ManageHallDto> getAllhall() throws SQLException {
-         Connection connection = DbConnection.getInstance().getConnection();
-
-         String sql = "SELECT * FROM Film_hall";
-
-         PreparedStatement pstm = connection.prepareStatement(sql);
-         ResultSet resultSet = pstm.executeQuery();
-
-         ArrayList<ManageHallDto> dtoList = new ArrayList<>();
-
-         while(resultSet.next()) {
-             dtoList.add(
-                     new ManageHallDto(
-                             resultSet.getString(1),
-                             resultSet.getString(2),
-                             resultSet.getString(3)
 
 
-                     )
-             );
-         }
-         return dtoList;
 
-     }
- */
     public boolean update(ManageHallDto Dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("UPDATE Movies SET category = ?, seat_count = ? where hall_no = ?", Dto.getCategory_txt(), Dto.getCount_txt(), Dto.getNumber_txt());
-    }
-
-    @Override
-    public boolean delete(ManageHallDto manageHallDto) throws SQLException, ClassNotFoundException {
-        return false;
+        return SqlUtil.test("UPDATE Movies SET category = ?, seat_count = ? where hall_no = ?",
+                Dto.getCategory_txt(), Dto.getCount_txt(), Dto.getNumber_txt());
     }
 
 
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM Film_hall WHERE hall_no = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1, id);
-
-
         return SqlUtil.test("DELETE FROM Film_hall WHERE hall_no = ?", id);
     }
-
-
-
-
-
-
 
 }
 

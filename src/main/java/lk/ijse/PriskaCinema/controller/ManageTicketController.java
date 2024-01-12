@@ -115,14 +115,18 @@ public class ManageTicketController implements Initializable {
     }
 
     private void loadAllTicket() {
+        manageticket_tm.getItems().clear();
 
-        ObservableList<TicketTm> obList = FXCollections.observableArrayList();
+       // ObservableList<TicketTm> obList = FXCollections.observableArrayList();
 
         try {
             ArrayList<ManageTicketDto> dtoList = (ArrayList<ManageTicketDto>) ticketBo.loadAll();
 
             for (ManageTicketDto dto : dtoList) {
-                obList.add(
+                //obList.add(
+                manageticket_tm.getItems().addAll(
+
+
                         new TicketTm(
                                 dto.getTicketnumber_txt(),
                                 dto.getTickettype_txt(),
@@ -136,7 +140,7 @@ public class ManageTicketController implements Initializable {
                         ));
             }
 
-            manageticket_tm.setItems(obList);
+          //  manageticket_tm.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -215,15 +219,23 @@ public class ManageTicketController implements Initializable {
         String id = ticketnumber_txt.getText();
 
         try{
-            boolean isDelete = ManageTicketModel.deleteTicket(id);
+            boolean isDelete = ticketBo.delete(id);
             if (isDelete){
+                manageticket_tm.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION,"ticket delete").show();
                 loadAllTicket();
                 clearField();
                 totalTicket();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"ticket not delete").show();
             }
+            manageticket_tm.getItems().remove(manageticket_tm.getSelectionModel().getSelectedItem());
+            loadAllTicket();
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

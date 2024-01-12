@@ -14,13 +14,13 @@ public interface MovieDao extends CrudDAO<ManageMoviesDto> {
     /* boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 */
 
-  List<ManageMoviesDto> loadAll() throws SQLException ;
-     ArrayList<ManageMoviesDto> getAllmovie() throws SQLException;
+  ArrayList<ManageMoviesDto> loadAll() throws SQLException, ClassNotFoundException;
+     //ArrayList<ManageMoviesDto> getAllmovie() throws SQLException;
 
     boolean update(ManageMoviesDto Dto) throws SQLException, ClassNotFoundException;
 
     boolean delete(String id) throws SQLException, ClassNotFoundException;
-    boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException ;
+    //boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 
 
 

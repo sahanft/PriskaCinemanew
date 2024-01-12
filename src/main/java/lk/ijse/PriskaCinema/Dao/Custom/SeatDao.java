@@ -10,9 +10,9 @@ import java.util.List;
 public interface SeatDao extends CrudDAO<Seat1Dto> {
 
    boolean save(Seat1Dto dto) throws SQLException, ClassNotFoundException;
-   List<Seat1Dto> loadAll() throws SQLException ;
+   ArrayList<Seat1Dto> loadAll() throws SQLException, ClassNotFoundException;
 
-   ArrayList<Seat1Dto> getAllseat() throws SQLException;
+   ArrayList<Seat1Dto> getAll() throws SQLException;
    boolean delete(String id) throws SQLException, ClassNotFoundException;
    boolean update(Seat1Dto dto) throws SQLException, ClassNotFoundException;
 

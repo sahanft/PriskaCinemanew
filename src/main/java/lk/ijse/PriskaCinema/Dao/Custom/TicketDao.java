@@ -11,9 +11,9 @@ public interface TicketDao extends CrudDAO<ManageTicketDto> {
 
     boolean save(ManageTicketDto dto) throws SQLException, ClassNotFoundException;
 
-     List<ManageTicketDto> loadAll() throws SQLException ;
+     ArrayList<ManageTicketDto> loadAll() throws SQLException, ClassNotFoundException;
 
-     ArrayList<ManageTicketDto> getAllseat() throws SQLException;
+     //ArrayList<ManageTicketDto> getAllseat() throws SQLException;
      boolean delete(String id) throws SQLException, ClassNotFoundException;
 
      boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException;

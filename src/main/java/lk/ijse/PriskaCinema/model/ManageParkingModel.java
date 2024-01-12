@@ -1,8 +1,6 @@
 package lk.ijse.PriskaCinema.model;
 
-import javafx.scene.control.Alert;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 
 import java.sql.*;

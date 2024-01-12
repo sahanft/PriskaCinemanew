@@ -1,25 +1,25 @@
 package lk.ijse.PriskaCinema.Dao.Custom;
 
 import lk.ijse.PriskaCinema.Dao.CrudDAO;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
+import lk.ijse.PriskaCinema.dto.employeeDto;
+import lk.ijse.PriskaCinema.entity.employee;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public interface EmployeeDao extends CrudDAO<ManageEmployeeDto> {
+public interface EmployeeDao extends CrudDAO<employee> {
 
-    boolean save(ManageEmployeeDto dto) throws SQLException, ClassNotFoundException;
+    boolean save(employee dto) throws SQLException, ClassNotFoundException;
 
-    List<ManageEmployeeDto> loadAll() throws SQLException;
+    ArrayList<employee> loadAll() throws SQLException, ClassNotFoundException;
 
-    ArrayList<ManageEmployeeDto> getAll() throws SQLException;
+    ArrayList<employee> getAll() throws SQLException;
 
-    boolean delete(String id) throws SQLException;
+    boolean delete(String id) throws SQLException, ClassNotFoundException;
 
-    boolean update(ManageEmployeeDto dto) throws SQLException;
+    boolean update(employeeDto dto) throws SQLException, ClassNotFoundException;
 
-    List<ManageEmployeeDto> getAllEmployee() throws SQLException;
-
-    ManageEmployeeDto searchEmployee(String id) throws SQLException;
 
 }

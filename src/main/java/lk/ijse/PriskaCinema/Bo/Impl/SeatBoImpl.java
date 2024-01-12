@@ -16,26 +16,22 @@ import java.util.List;
 
 public class SeatBoImpl implements SeatBo {
 
-  SeatDao seatDao = (SeatDao) new SeatDaoImpl();
+  SeatDao seatDao = new SeatDaoImpl();
 
     @Override
     public boolean save(Seat1Dto dto) throws SQLException, ClassNotFoundException {
         return seatDao.save(dto);
     }
 
-    @Override
-    public ArrayList<Seat1Dto> getAll() throws SQLException, ClassNotFoundException {
-        return seatDao.getAll();
-    }
 
     @Override
-    public List<Seat1Dto> loadAll() throws SQLException {
+    public List<Seat1Dto> loadAll() throws SQLException, ClassNotFoundException {
         return seatDao.loadAll();
     }
 
     @Override
-    public ArrayList<Seat1Dto> getAllseat() throws SQLException {
-        return seatDao.getAllseat();
+    public ArrayList<Seat1Dto> getAll() throws SQLException {
+        return seatDao.getAll();
     }
 
     @Override
@@ -48,8 +44,5 @@ public class SeatBoImpl implements SeatBo {
         return seatDao.update(dto);
     }
 
-    @Override
-    public boolean delete(Seat1Dto seat1Dto) throws SQLException, ClassNotFoundException {
-        return seatDao.delete(seat1Dto);
-    }
+
 }

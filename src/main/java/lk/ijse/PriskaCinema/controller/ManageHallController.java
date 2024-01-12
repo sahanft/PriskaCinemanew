@@ -15,11 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
 import lk.ijse.PriskaCinema.Bo.Impl.HallBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageHallDto;
-import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.model.ManageHallModel;
-import lk.ijse.PriskaCinema.model.ManageMoviesModel;
 import lk.ijse.PriskaCinema.tm.HallTm;
-import lk.ijse.PriskaCinema.tm.MovieTm;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -87,14 +84,17 @@ public class ManageHallController {
     }
 
     private void loadAllhall() {
+        hall_tm.getItems().clear();
 
-        ObservableList<HallTm> obList = FXCollections.observableArrayList();
+       // ObservableList<HallTm> obList = FXCollections.observableArrayList();
 
         try {
             ArrayList<ManageHallDto> dtoList = (ArrayList<ManageHallDto>) hallBo.loadAll();
 
             for (ManageHallDto dto : dtoList) {
-                obList.add(
+                hall_tm.getItems().addAll(
+
+
                         new HallTm(
                                 dto.getNumber_txt(),
                                 dto.getCategory_txt(),
@@ -105,7 +105,7 @@ public class ManageHallController {
                         ));
             }
 
-            hall_tm.setItems(obList);
+           // hall_tm.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -146,24 +146,27 @@ public class ManageHallController {
 
 
     @FXML
-    void delete_onaction(ActionEvent event) {
-
-
+    void delete_onaction(ActionEvent actionEvent) {
         String id = number_txt.getText();
 
 //        var model = new CustomerModel();
         try {
-            boolean isDeleted = ManageHallModel.deleteHall(id);
-            if(isDeleted) {
+            boolean isDelete = hallBo.delete(id);
+            if(isDelete) {
+                hall_tm.getSelectionModel().clearSelection();
                 new Alert(Alert.AlertType.CONFIRMATION, "Hall deleted!").show();
                 loadAllhall();
                 clearField();
 
             } else {
-                new Alert(Alert.AlertType.CONFIRMATION, "Hall not deleted!").show();
+                new Alert(Alert.AlertType.ERROR, "Hall not deleted!").show();
             }
+            hall_tm.getItems().remove(hall_tm.getSelectionModel().getSelectedItem());
+            loadAllhall();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

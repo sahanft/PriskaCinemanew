@@ -25,7 +25,7 @@ public class TicketBoImpl implements TicketBo {
     }
 
     @Override
-    public List<ManageTicketDto> loadAll() throws SQLException {
+    public List<ManageTicketDto> loadAll() throws SQLException, ClassNotFoundException {
         return ticketDao.loadAll();
     }
 
@@ -44,8 +44,5 @@ public class TicketBoImpl implements TicketBo {
         return ticketDao.update(dto);
     }
 
-    @Override
-    public boolean delete(ManageTicketDto manageTicketDto) throws SQLException, ClassNotFoundException {
-        return ticketDao.delete(manageTicketDto);
-    }
+
 }

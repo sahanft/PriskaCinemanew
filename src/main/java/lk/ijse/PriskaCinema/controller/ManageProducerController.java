@@ -12,21 +12,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.dto.ManageTicketDto;
-import lk.ijse.PriskaCinema.model.ManageEmployeeModel;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
-import lk.ijse.PriskaCinema.tm.EmployeeTm;
 import lk.ijse.PriskaCinema.tm.ProducerTm;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-import static lk.ijse.PriskaCinema.model.ManageProducerModel.loadAllproducer;
+import java.util.List;
 
 public class ManageProducerController {
     public TextField producerid_txt;
@@ -135,7 +125,7 @@ public class ManageProducerController {
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();;
                 clearField();
-                loadAllProducer();
+                //loadAllProducer();
             } else {
                 new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();;
             }
@@ -157,29 +147,36 @@ public class ManageProducerController {
 
 //        var model = new CustomerModel();
         try {
-            boolean isDeleted = ManageProducerModel.deleteProducer(id);
+            boolean isDeleted = producerBo.delete(id);
             if(isDeleted) {
+                producer_tm.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION, "producer deleted!").show();
-                loadAllProducer();
+                //loadAllProducer();
+                clearField();
 
             } else {
                 new Alert(Alert.AlertType.CONFIRMATION, "producer not deleted!").show();
             }
-        } catch (SQLException e) {
+            producer_tm.getItems().remove(producer_tm.getSelectionModel().getSelectedItem());
+            //loadAllProducer();
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
     }
 
     private void loadAllProducer() {
+        producer_tm.getItems().clear();
 
         ObservableList<ProducerTm> obList = FXCollections.observableArrayList();
 
         try {
-            ArrayList<ManageProducerDto> dtoList = (ArrayList<ManageProducerDto>) loadAllproducer();
-
+           // ArrayList<ManageProducerDto> dtoList = (ArrayList<ManageProducerDto>) producerBo.loadAll();
+            List<ManageProducerDto> dtoList = producerBo.getAll();
             for (ManageProducerDto dto : dtoList) {
-                obList.add(
+                producer_tm.getItems().addAll(
+               // obList.add(
                         new ProducerTm(
                                 dto.getProducerid_txt(),
                                 dto.getName_txt(),
@@ -191,11 +188,12 @@ public class ManageProducerController {
                 );
             }
 
-            producer_tm.setItems(obList);
+           // producer_tm.setItems(obList);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 }

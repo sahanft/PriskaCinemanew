@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
 import lk.ijse.PriskaCinema.Dao.Custom.MovieDao;
+import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
 import lk.ijse.PriskaCinema.Dao.Impl.MovieDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -17,7 +18,8 @@ import java.util.List;
 
 public class MovieBoImpl implements MovieBo {
 
-    MovieDao movieDao = (MovieDao) new MovieDaoImpl();
+    MovieDao movieDao = new MovieDaoImpl();
+    ProducerDao producerDao = new ProducerDaoImpl();
 
 
     @Override
@@ -26,7 +28,7 @@ public class MovieBoImpl implements MovieBo {
     }
 
     @Override
-    public List<ManageMoviesDto> loadAll() throws SQLException {
+    public List<ManageMoviesDto> loadAll() throws SQLException, ClassNotFoundException {
         return movieDao.loadAll();
     }
 
@@ -40,10 +42,6 @@ public class MovieBoImpl implements MovieBo {
         return movieDao.update(Dto);
     }
 
-    @Override
-    public boolean delete(ManageMoviesDto manageMoviesDto) throws SQLException, ClassNotFoundException {
-        return movieDao.delete(manageMoviesDto);
-    }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
@@ -51,7 +49,12 @@ public class MovieBoImpl implements MovieBo {
     }
 
     @Override
-    public boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException {
-        return movieDao.saveProducerMovieDetails(producerDetailsDto);
+    public boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException, ClassNotFoundException {
+        return producerDao.saveProducerMovieDetails(producerDetailsDto);
+    }
+
+    @Override
+    public boolean saveMovie(ManageMoviesDto dto) throws SQLException, ClassNotFoundException {
+        return movieDao.save(dto);
     }
 }

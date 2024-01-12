@@ -25,12 +25,12 @@ public class ProducerBoImpl implements ProducerBo {
     }
 
     @Override
-    public List<ManageProducerDto> loadAll() throws SQLException {
+    public List<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException {
         return producerDao.loadAll();
     }
 
     @Override
-    public ArrayList<ManageProducerDto> getAll() throws SQLException {
+    public ArrayList<ManageProducerDto> getAll() throws SQLException, ClassNotFoundException {
         return producerDao.getAll();
     }
 
@@ -39,10 +39,7 @@ public class ProducerBoImpl implements ProducerBo {
         return producerDao.update(Dto);
     }
 
-    @Override
-    public boolean delete(ManageProducerDto manageProducerDto) throws SQLException, ClassNotFoundException {
-        return producerDao.delete(manageProducerDto);
-    }
+
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {

@@ -25,7 +25,7 @@ public class ParkingBoImpl implements ParkingBo {
     }
 
     @Override
-    public List<ManageParkingDto> loadAll() throws SQLException {
+    public List<ManageParkingDto> loadAll() throws SQLException, ClassNotFoundException {
         return parkingDao.loadAll();
     }
 
@@ -44,8 +44,4 @@ public class ParkingBoImpl implements ParkingBo {
         return parkingDao.update(dto);
     }
 
-    @Override
-    public boolean delete(ManageParkingDto manageParkingDto) throws SQLException, ClassNotFoundException {
-        return parkingDao.delete(manageParkingDto);
-    }
 }

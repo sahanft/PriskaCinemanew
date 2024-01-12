@@ -1,6 +1,5 @@
 package lk.ijse.PriskaCinema.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,13 +11,9 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
 import lk.ijse.PriskaCinema.Bo.Impl.ParkingBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
-import lk.ijse.PriskaCinema.model.ManageEmployeeModel;
 import lk.ijse.PriskaCinema.model.ManageParkingModel;
 import lk.ijse.PriskaCinema.tm.ParkingTm;
-import lk.ijse.PriskaCinema.tm.SeateTm;
-import lk.ijse.PriskaCinema.tm.TicketTm;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -32,12 +27,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
-import static lk.ijse.PriskaCinema.model.ManageEmployeeModel.loadAllemployee;
 
 public class ManageParkingController implements Initializable {
 
@@ -114,16 +106,17 @@ public class ManageParkingController implements Initializable {
 
 
     private void loadAllParking() {
+        parkingmain_txt.getItems().clear();
 
-        ObservableList<ParkingTm> obList = FXCollections.observableArrayList();
+
+        //ObservableList<ParkingTm> obList = FXCollections.observableArrayList();
 
         try {
-            ArrayList<ManageParkingDto> dtoList = (ArrayList<ManageParkingDto>) manageParkingModel.loadAllparking();
+            ArrayList<ManageParkingDto> dtoList = (ArrayList<ManageParkingDto>) parkingBo.loadAll();
 
             for (ManageParkingDto dto : dtoList) {
-                Button btn = new Button("remove");
+                parkingmain_txt.getItems().addAll(
                 //setDeleteBtnOnAction(btn,dto.getSpacemen_txt());
-                obList.add(
                         new ParkingTm(
                                 dto.getSpacemen_txt(),
                                 dto.getType_txt(),
@@ -134,7 +127,7 @@ public class ManageParkingController implements Initializable {
                         ));
             }
 
-            parkingmain_txt.setItems(obList);
+            //parkingmain_txt.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -181,15 +174,23 @@ public class ManageParkingController implements Initializable {
         String id = spacemen_txt.getText();
 
         try{
-            boolean isDelete = ManageParkingModel.deleteParking(id);
+            boolean isDelete = parkingBo.delete(id);
             if (isDelete){
+                parkingmain_txt.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION,"vehicle delete").show();
                 loadAllParking();
                 totalParking();
                 clearField();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"vehicle not delete").show();
             }
+            parkingmain_txt.getItems().remove(parkingmain_txt.getSelectionModel().getSelectedItem());
+            loadAllParking();
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

@@ -13,18 +13,15 @@ import java.util.List;
 public class ParkingDaoImpl implements ParkingDao {
 
     public boolean save(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
+        return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)",
+                dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
-    public List<ManageParkingDto> loadAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+    public ArrayList<ManageParkingDto> loadAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * FROM parking";
-        PreparedStatement pstm = connection.prepareStatement(sql);
+        ArrayList<ManageParkingDto> itemList = new ArrayList<>();
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM parking");
 
-        List<ManageParkingDto> itemList = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
         while (resultSet.next()) {
             itemList.add(new ManageParkingDto(
                     resultSet.getString(1),
@@ -33,6 +30,7 @@ public class ParkingDaoImpl implements ParkingDao {
                     resultSet.getDate(4).toLocalDate()
 
             ));
+
         }
         return itemList;
     }
@@ -48,13 +46,10 @@ public class ParkingDaoImpl implements ParkingDao {
     }
 
     public boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?", dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
+        return SqlUtil.test("update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?",
+                dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
-    @Override
-    public boolean delete(ManageParkingDto manageParkingDto) throws SQLException, ClassNotFoundException {
-        return false;
-    }
 
 
 }

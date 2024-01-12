@@ -12,22 +12,14 @@ import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
 import lk.ijse.PriskaCinema.Bo.Impl.MovieBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
-import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.dto.ManageTicketDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
-import lk.ijse.PriskaCinema.model.ManageMoviesModel;
 import lk.ijse.PriskaCinema.model.ManageProducerModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
 import lk.ijse.PriskaCinema.tm.MovieTm;
-import lk.ijse.PriskaCinema.tm.ProducerTm;
-import lk.ijse.PriskaCinema.tm.TicketTm;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ManageMoviesController {
     public AnchorPane movieroot;
@@ -46,7 +38,7 @@ public class ManageMoviesController {
     public TextField proid_txt;
     public ComboBox cmb_producer;
 
-    MovieBo movieBo = new MovieBoImpl();
+    private MovieBo movieBo = new MovieBoImpl();
 
     public void initialize() throws IOException, SQLException {
         setCellValueFactory();
@@ -133,9 +125,9 @@ public class ManageMoviesController {
         Connection connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
         try {
-            boolean isSaved1 = ManageMoviesModel.saveMovie(dto);
+            boolean isSaved1 = movieBo.saveMovie(dto);
             if (isSaved1) {
-                boolean isSaved2 = ManageMoviesModel.saveProducerMovieDetails(dto1);
+                boolean isSaved2 = movieBo.saveProducerMovieDetails(dto1);
                 if (isSaved2) {
                     connection.commit();
                     new Alert(Alert.AlertType.CONFIRMATION, "movie added!").show();
@@ -149,6 +141,8 @@ public class ManageMoviesController {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         loadAllmovie();
@@ -250,8 +244,10 @@ public class ManageMoviesController {
 
 //        var model = new CustomerModel();
         try {
-            boolean isDeleted = ManageMoviesModel.deleteMovie(id);
-            if (isDeleted) {
+            boolean isDelete = movieBo.delete(id);
+            if (isDelete) {
+                movie_tm.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION, "movie deleted!").show();
                 loadAllmovie();
                 clearField();
@@ -259,8 +255,13 @@ public class ManageMoviesController {
             } else {
                 new Alert(Alert.AlertType.CONFIRMATION, "movie not deleted!").show();
             }
+            movie_tm.getItems().remove(movie_tm.getSelectionModel().getSelectedItem());
+            loadAllmovie();
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

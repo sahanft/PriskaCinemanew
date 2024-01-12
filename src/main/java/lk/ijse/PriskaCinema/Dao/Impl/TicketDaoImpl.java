@@ -8,11 +8,15 @@ import lk.ijse.PriskaCinema.dto.ManageTicketDto;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class TicketDaoImpl implements TicketDao {
 
+    @Override
     public boolean save(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("INSERT INTO ticket VALUES(?,?,?,?,?,?,?,?)", dto.getTicketnumber_txt(),dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),dto.getEmpid_txt(),dto.getTime_txt(),String.valueOf(dto.getDate_txt()));
+        return SqlUtil.test("INSERT INTO ticket VALUES(?,?,?,?,?,?,?,?)",
+                dto.getTicketnumber_txt(),dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),
+                dto.getEmpid_txt(),dto.getTime_txt(),String.valueOf(dto.getDate_txt()));
     }
 
     @Override
@@ -20,15 +24,12 @@ public class TicketDaoImpl implements TicketDao {
         return null;
     }
 
-    public List<ManageTicketDto> loadAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+    @Override
+    public ArrayList<ManageTicketDto> loadAll() throws SQLException, ClassNotFoundException {
 
-        String sql = "SELECT * FROM ticket";
-        PreparedStatement pstm = connection.prepareStatement(sql);
+        ArrayList<ManageTicketDto> itemList = new ArrayList<>();
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM ticket");
 
-        List<ManageTicketDto> itemList = new ArrayList<>();
-
-        ResultSet resultSet = pstm.executeQuery();
         while (resultSet.next()) {
             itemList.add(new ManageTicketDto(
                     resultSet.getString(1),
@@ -45,23 +46,19 @@ public class TicketDaoImpl implements TicketDao {
         return itemList;
     }
 
+
     @Override
-    public ArrayList<ManageTicketDto> getAllseat() throws SQLException {
-        return null;
-    }
-
-
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM ticket WHERE t_num = ?",id);
     }
 
+    @Override
     public boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException {
-               return SqlUtil.test("update ticket set t_type = ?, movie_id = ?,screen = ?,price = ?,time = ?,date = ?, e_id = ? where t_num =?",dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),dto.getTime_txt(),String.valueOf(dto.getDate_txt()),dto.getEmpid_txt(),dto.getTicketnumber_txt());
+               return SqlUtil.test("update ticket set t_type = ?, movie_id = ?,screen = ?,price = ?,time = ?,date = ?, e_id = ? where t_num =?",
+                       dto.getTickettype_txt(),dto.getMovieid_txt(),dto.getScreen_txt(),dto.getPrice_txt(),dto.getTime_txt(),
+                       String.valueOf(dto.getDate_txt()),dto.getEmpid_txt(),dto.getTicketnumber_txt());
     }
 
-    @Override
-    public boolean delete(ManageTicketDto manageTicketDto) throws SQLException, ClassNotFoundException {
-        return false;
-    }
+
 
 }

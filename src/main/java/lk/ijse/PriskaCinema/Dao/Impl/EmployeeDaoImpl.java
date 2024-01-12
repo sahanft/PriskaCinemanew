@@ -3,7 +3,8 @@ package lk.ijse.PriskaCinema.Dao.Impl;
 import lk.ijse.PriskaCinema.Dao.Custom.EmployeeDao;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
+import lk.ijse.PriskaCinema.dto.employeeDto;
+import lk.ijse.PriskaCinema.entity.employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,22 +15,24 @@ import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    public boolean save(ManageEmployeeDto dto) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("INSERT INTO employee VALUES(?,?,?,?,?,?,?)", dto.getEmpid_txt(), dto.getEmpname_txt(), dto.getEmpjobtype_txt(), dto.getEmpmobile_txt(),
-                dto.getEmpnic_txt(), dto.getEmpsalary_txt(), dto.getEmpaddress_txt());
+    public boolean save(employee entity) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("INSERT INTO employee VALUES(?,?,?,?,?,?,?)", entity.getEmpid_txt(), entity.getEmpname_txt(), entity.getEmpjobtype_txt(), entity.getEmpmobile_txt(),
+                entity.getEmpnic_txt(), entity.getEmpsalary_txt(), entity.getEmpaddress_txt());
     }
 
-    public List<ManageEmployeeDto> loadAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+    @Override
+    public boolean update(employee employee) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
-        String sql = "SELECT * FROM employee";
-        PreparedStatement pstm = connection.prepareStatement(sql);
+    public ArrayList<employee>  loadAll() throws SQLException, ClassNotFoundException {
 
-        List<ManageEmployeeDto> itemList = new ArrayList<>();
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM employee");
 
-        ResultSet resultSet = pstm.executeQuery();
+        ArrayList<employee> itemList = new ArrayList<>();
+
         while (resultSet.next()) {
-            itemList.add(new ManageEmployeeDto(
+            itemList.add(new employee(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
@@ -45,81 +48,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public ArrayList<ManageEmployeeDto> getAll() throws SQLException {
+    public ArrayList<employee> getAll() throws SQLException {
         return null;
     }
 
-   /* public static ArrayList<ManageEmployeeDto> getAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM employee";
-
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-
-        ArrayList<ManageEmployeeDto> dtoList = new ArrayList<>();
-
-        while(resultSet.next()) {
-            dtoList.add(
-                    new ManageEmployeeDto(
-                            resultSet.getString(1),
-                            resultSet.getString(2),
-                            resultSet.getString(3),
-                            resultSet.getInt(4),
-                            resultSet.getString(5),
-                            resultSet.getDouble(6),
-                            resultSet.getString(7)
-
-
-                    )
-            );
-        }
-        return dtoList;
-
-    }
-*/
-
-    public boolean delete(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM employee WHERE e_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,id);
-
-        return pstm.executeUpdate()>0;
-    }
-
-
-    public boolean update(ManageEmployeeDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "update employee set name = ?, type = ?, e_tele = ?,nic = ?,salary = ?,address = ? where e_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1, dto.getEmpname_txt());
-        pstm.setString(2, dto.getEmpjobtype_txt());
-        pstm.setString(3, String.valueOf(dto.getEmpmobile_txt()));
-        pstm.setString(4, dto.getEmpnic_txt());
-        pstm.setDouble(5, dto.getEmpsalary_txt());
-        pstm.setString(6, dto.getEmpaddress_txt());
-        pstm.setString(7, dto.getEmpid_txt());
-
-        return pstm.executeUpdate() > 0;
-
-    }
 
     @Override
-    public List<ManageEmployeeDto> getAllEmployee() throws SQLException {
-        return null;
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("DELETE FROM employee WHERE e_id = ?", id);
     }
 
-    @Override
-    public ManageEmployeeDto searchEmployee(String id) throws SQLException {
-        return null;
-    }
 
     @Override
-    public boolean delete(ManageEmployeeDto manageEmployeeDto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(employeeDto dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("update employee set name = ?, type = ?, e_tele = ?,nic = ?,salary = ?,address = ? where e_id = ?",
+                dto.getEmpname_txt(),dto.getEmpjobtype_txt(),dto.getEmpmobile_txt(),dto.getEmpnic_txt(),dto.getEmpsalary_txt(),
+                dto.getEmpaddress_txt(),dto.getEmpid_txt());
+
     }
+
 
 }

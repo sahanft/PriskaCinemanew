@@ -4,6 +4,7 @@ import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
+import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,38 +16,15 @@ import java.util.List;
 public class ProducerDaoImpl implements ProducerDao {
 
     public boolean save(ManageProducerDto dto) throws SQLException, ClassNotFoundException {
-       return SqlUtil.test("INSERT INTO Producers VALUES(?,?,?,?)", dto.getProducerid_txt(), dto.getName_txt(), dto.getAddress_txt(), dto.getMobilenumber_txt());
+       return SqlUtil.test("INSERT INTO Producers VALUES(?,?,?,?)",
+               dto.getProducerid_txt(), dto.getName_txt(), dto.getAddress_txt(), dto.getMobilenumber_txt());
     }
 
-   /* public static List<ManageProducerDto> loadAllproducer() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM Producers";
-        PreparedStatement pstm = connection.prepareStatement(sql);
 
-        List<ManageProducerDto> itemList = new ArrayList<>();
+    public ArrayList<ManageProducerDto> getAll() throws SQLException, ClassNotFoundException {
 
-        ResultSet resultSet = pstm.executeQuery();
-        while (resultSet.next()) {
-            itemList.add(new ManageProducerDto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
-            ));
-        }
-
-        return itemList;
-    }*/
-
-    public ArrayList<ManageProducerDto> getAll() throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM Seats";
-
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM Seats");
         ArrayList<ManageProducerDto> dtoList = new ArrayList<>();
 
         while(resultSet.next()) {
@@ -65,17 +43,13 @@ public class ProducerDaoImpl implements ProducerDao {
     }
 
     @Override
-    public List<ManageProducerDto> loadAll() throws SQLException {
+    public ArrayList<ManageProducerDto> loadAll() throws SQLException {
         return null;
     }
 
     public boolean update(ManageProducerDto Dto) throws SQLException, ClassNotFoundException {
-       return SqlUtil.test("UPDATE Producers SET name = ?, pro_address = ?, pro_tele = ? WHERE pro_id = ?", Dto.getName_txt(), Dto.getAddress_txt(), Dto.getMobilenumber_txt(), Dto.getProducerid_txt());
-    }
-
-    @Override
-    public boolean delete(ManageProducerDto manageProducerDto) throws SQLException, ClassNotFoundException {
-        return false;
+       return SqlUtil.test("UPDATE Producers SET name = ?, pro_address = ?, pro_tele = ? WHERE pro_id = ?",
+               Dto.getName_txt(), Dto.getAddress_txt(), Dto.getMobilenumber_txt(), Dto.getProducerid_txt());
     }
 
 
@@ -83,8 +57,10 @@ public class ProducerDaoImpl implements ProducerDao {
         return SqlUtil.test( "DELETE FROM Producers WHERE pro_id = ?", id);
     }
 
-
-
+    @Override
+    public boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
 
 }

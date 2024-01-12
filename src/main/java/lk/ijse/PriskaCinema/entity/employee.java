@@ -1,8 +1,6 @@
-package lk.ijse.PriskaCinema.dto;
+package lk.ijse.PriskaCinema.entity;
 
 import lombok.*;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -11,7 +9,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 
 
-public class ManageEmployeeDto {
+public class employee {
 
     private String empid_txt;
     private String empname_txt;
@@ -22,7 +20,7 @@ public class ManageEmployeeDto {
     private String empaddress_txt;
 
 
-    public ManageEmployeeDto(String id, String name, String jobtype, String mobile, String nic, Double salary, String address) {
+    public employee(String id, String name, String jobtype, String mobile, String nic, Double salary, String address) {
         this.empid_txt = id;
         this.empname_txt = name;
         this.empjobtype_txt = jobtype;
@@ -34,7 +32,8 @@ public class ManageEmployeeDto {
     }
 
 
-    public ManageEmployeeDto(String id) {
+    public employee(String id) {
+
         this.empid_txt = id;
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class HallBoImpl implements HallBo {
 
-    HallDao hallDao = (HallDao) new HallDaoImpl();
+    HallDao hallDao = new HallDaoImpl();
 
     @Override
     public boolean save(ManageHallDto dto) throws SQLException, ClassNotFoundException {
@@ -24,7 +24,7 @@ public class HallBoImpl implements HallBo {
     }
 
     @Override
-    public List<ManageHallDto> loadAll() throws SQLException {
+    public List<ManageHallDto> loadAll() throws SQLException, ClassNotFoundException {
         return hallDao.loadAll();
     }
 
@@ -38,10 +38,7 @@ public class HallBoImpl implements HallBo {
         return hallDao.update(Dto);
     }
 
-    @Override
-    public boolean delete(ManageHallDto manageHallDto) throws SQLException, ClassNotFoundException {
-        return hallDao.delete(manageHallDto);
-    }
+
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
