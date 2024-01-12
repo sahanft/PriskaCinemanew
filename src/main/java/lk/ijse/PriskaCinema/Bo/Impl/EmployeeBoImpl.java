@@ -38,19 +38,13 @@ public class EmployeeBoImpl implements EmployeeBo {
     public boolean Add(ManageEmployeeDto manageEmployeeDto) throws SQLException, ClassNotFoundException {
         return employeeDao.Add(manageEmployeeDto);
     }*/
-
     @Override
     public boolean delete(String id) throws SQLException {
-        return false;
+        return employeeDao.delete(id);
     }
 
     @Override
     public boolean update(ManageEmployeeDto dto) throws SQLException {
         return employeeDao.update(dto);
-    }
-
-    @Override
-    public boolean delete(ManageEmployeeDto manageEmployeeDto) throws SQLException, ClassNotFoundException {
-        return employeeDao.delete(manageEmployeeDto);
     }
 }

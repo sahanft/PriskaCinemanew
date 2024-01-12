@@ -199,8 +199,8 @@ public class ManageEmployeeController {
         String id = employeeid_txt.getText();
 
         try{
-            ManageEmployeeDto m = new ManageEmployeeDto(id);
-            boolean isDelete = employeeBo.delete(m);
+
+            boolean isDelete = employeeBo.delete(id);
 
             if (isDelete){
                 tmEmployee.getSelectionModel().clearSelection();
@@ -216,8 +216,6 @@ public class ManageEmployeeController {
 
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 
