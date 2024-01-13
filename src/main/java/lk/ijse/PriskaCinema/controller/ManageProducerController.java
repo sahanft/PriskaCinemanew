@@ -16,6 +16,7 @@ import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.tm.ProducerTm;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManageProducerController {
@@ -61,6 +62,7 @@ public class ManageProducerController {
         var dto = new ManageProducerDto(id,name,address,mobile);
 
         try {
+
             boolean isSaved = producerBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Producer Save").show();
@@ -125,7 +127,7 @@ public class ManageProducerController {
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();;
                 clearField();
-                //loadAllProducer();
+                loadAllProducer();
             } else {
                 new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();;
             }
@@ -152,8 +154,9 @@ public class ManageProducerController {
                 producer_tm.getSelectionModel().clearSelection();
 
                 new Alert(Alert.AlertType.CONFIRMATION, "producer deleted!").show();
-                //loadAllProducer();
+                loadAllProducer();
                 clearField();
+
 
             } else {
                 new Alert(Alert.AlertType.CONFIRMATION, "producer not deleted!").show();
@@ -169,26 +172,17 @@ public class ManageProducerController {
     private void loadAllProducer() {
         producer_tm.getItems().clear();
 
-        ObservableList<ProducerTm> obList = FXCollections.observableArrayList();
-
         try {
-           // ArrayList<ManageProducerDto> dtoList = (ArrayList<ManageProducerDto>) producerBo.loadAll();
-            List<ManageProducerDto> dtoList = producerBo.getAll();
+            ArrayList<ManageProducerDto> dtoList = producerBo.getAll();
             for (ManageProducerDto dto : dtoList) {
-                producer_tm.getItems().addAll(
-               // obList.add(
+                producer_tm.getItems().add(
                         new ProducerTm(
                                 dto.getProducerid_txt(),
                                 dto.getName_txt(),
                                 dto.getAddress_txt(),
-                                dto.getMobilenumber_txt()
-
-
-                        )
-                );
+                                dto.getMobilenumber_txt()));
             }
 
-           // producer_tm.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

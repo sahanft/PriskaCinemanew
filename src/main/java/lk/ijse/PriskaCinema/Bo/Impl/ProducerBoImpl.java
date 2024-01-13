@@ -21,7 +21,7 @@ public class ProducerBoImpl implements ProducerBo {
 
     @Override
     public List<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException {
-        ArrayList<Producer> entityList = producerDao.loadAll();
+        ArrayList<Producer> entityList = producerDao.getAll();
         ArrayList<ManageProducerDto> dtoList = new ArrayList<>();
         for (Producer entity : entityList) {
             dtoList.add(new ManageProducerDto(

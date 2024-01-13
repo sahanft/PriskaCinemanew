@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class SqlUtil {
     public static <T> T test(String sql, Object... ob) throws SQLException, ClassNotFoundException {
+
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -20,7 +21,6 @@ public class SqlUtil {
         } else {
             return (T) (Boolean)(pstm.executeUpdate() > 0);
         }
+
     }
-
-
 }

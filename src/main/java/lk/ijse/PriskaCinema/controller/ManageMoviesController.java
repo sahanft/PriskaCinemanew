@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManageMoviesController {
     public AnchorPane movieroot;
@@ -114,7 +115,6 @@ public class ManageMoviesController {
     public void add_onaction(ActionEvent actionEvent) throws SQLException {
 
         String selected_producerId = cmb_producer.getSelectionModel().getSelectedItem().toString();
-
         String movie_id = id_txt.getText();
         String name = name_txt.getText();
         String genre = genre_txt.getText();
@@ -132,7 +132,7 @@ public class ManageMoviesController {
                 boolean isSaved2 = movieBo.saveProducerMovieDetails(dto1);
                 if (isSaved2) {
                     connection.commit();
-                    new Alert(Alert.AlertType.CONFIRMATION, "movie added!").show();
+                    throw new RuntimeException();//new Alert(Alert.AlertType.CONFIRMATION, "movie added!").show();
                 } else {
                     connection.rollback();
                     new Alert(Alert.AlertType.CONFIRMATION, "movie details not added!").show();
@@ -157,7 +157,7 @@ public class ManageMoviesController {
         movie_tm.getItems().clear();
 
         try {
-            ArrayList<ManageMoviesDto> dtoList = (ArrayList<ManageMoviesDto>) movieBo.loadAll();
+            List<ManageMoviesDto> dtoList =  movieBo.loadAll();
 
             for (ManageMoviesDto dto : dtoList) {
                 movie_tm.getItems().addAll(

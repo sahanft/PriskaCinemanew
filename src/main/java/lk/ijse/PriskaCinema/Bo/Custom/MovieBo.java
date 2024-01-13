@@ -15,7 +15,7 @@ public interface MovieBo extends SuperBo {
     // boolean saveMovieIdAssociate(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 
 
-  List<ManageMoviesDto> loadAll() throws SQLException, ClassNotFoundException;
+    List<ManageMoviesDto> loadAll() throws SQLException, ClassNotFoundException;
      ArrayList<ManageMoviesDto> getAll() throws SQLException, ClassNotFoundException;
 
     boolean update(ManageMoviesDto Dto) throws SQLException, ClassNotFoundException;
