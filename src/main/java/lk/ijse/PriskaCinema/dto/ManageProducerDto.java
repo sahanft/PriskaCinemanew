@@ -21,6 +21,10 @@ public class ManageProducerDto {
         this.mobilenumber_txt = mobilenumber_txt;
     }
 
+    public ManageProducerDto(String id) {
+        this.producerid_txt = id;
+    }
+
     public String getId_txt() {
         return producerid_txt;
     }

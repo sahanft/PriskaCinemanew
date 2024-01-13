@@ -119,10 +119,10 @@ public class Seat1Controller {
 
     public void delete_onaction(ActionEvent actionEvent) {
         String id = seatnumber_txt.getText();
+        Seat1Dto dto = new Seat1Dto(id);
 
-//        var model = new CustomerModel();
         try {
-            boolean isDelete = seatBo.delete(id);
+            boolean isDelete = seatBo.delete(dto);
             if(isDelete) {
                 seatTM.getSelectionModel().clearSelection();
 

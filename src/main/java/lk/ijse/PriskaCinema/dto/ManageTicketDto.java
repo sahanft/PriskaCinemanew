@@ -25,5 +25,7 @@ public class ManageTicketDto {
     private LocalDate date_txt;
 
 
-
+    public ManageTicketDto(String id) {
+        this.ticketnumber_txt = id;
+    }
 }

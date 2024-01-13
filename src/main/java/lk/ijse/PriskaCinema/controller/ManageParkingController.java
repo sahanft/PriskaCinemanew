@@ -172,9 +172,10 @@ public class ManageParkingController implements Initializable {
     public void delete_onaction(ActionEvent actionEvent) {
 
         String id = spacemen_txt.getText();
+        ManageParkingDto dto = new ManageParkingDto(id);
 
         try{
-            boolean isDelete = parkingBo.delete(id);
+            boolean isDelete = parkingBo.delete(dto);
             if (isDelete){
                 parkingmain_txt.getSelectionModel().clearSelection();
 

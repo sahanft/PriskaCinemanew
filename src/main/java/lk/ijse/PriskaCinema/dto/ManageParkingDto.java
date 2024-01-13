@@ -25,6 +25,10 @@ public class ManageParkingDto {
 
     public ManageParkingDto(String rownumber, String screen, String seatnumber) {
     }
+
+    public ManageParkingDto(String id) {
+        this.spacemen_txt = id;
+    }
 }
 
 

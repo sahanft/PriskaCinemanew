@@ -144,10 +144,10 @@ public class ManageProducerController {
 
     public void delete_onaction(ActionEvent actionEvent) {
         String id = producerid_txt.getText();
+        ManageProducerDto dto = new ManageProducerDto(id);
 
-//        var model = new CustomerModel();
         try {
-            boolean isDeleted = producerBo.delete(id);
+            boolean isDeleted = producerBo.delete(dto);
             if(isDeleted) {
                 producer_tm.getSelectionModel().clearSelection();
 

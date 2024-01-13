@@ -217,9 +217,10 @@ public class ManageTicketController implements Initializable {
     public void delete_onaction(ActionEvent actionEvent) {
 
         String id = ticketnumber_txt.getText();
+        ManageTicketDto dto = new ManageTicketDto(id);
 
         try{
-            boolean isDelete = ticketBo.delete(id);
+            boolean isDelete = ticketBo.delete(dto);
             if (isDelete){
                 manageticket_tm.getSelectionModel().clearSelection();
 
