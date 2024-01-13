@@ -45,7 +45,7 @@ public class Seat1Controller {
         var dto = new Seat1Dto(seat,screen,row);
 
         try {
-            boolean isSaved = Seat1Model.saveSeat(dto);
+            boolean isSaved = seatBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Seat Save").show();
                 loadAllSeat();
@@ -53,6 +53,8 @@ public class Seat1Controller {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         seatTM.refresh();
     }
@@ -92,7 +94,7 @@ public class Seat1Controller {
 
         try {
             var dto = new Seat1Dto(sNum,screen,rowNum);
-            boolean isUpdated = Seat1Model.updateSeat(dto);
+            boolean isUpdated = seatBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();
                 loadAllSeat();
@@ -103,6 +105,8 @@ public class Seat1Controller {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

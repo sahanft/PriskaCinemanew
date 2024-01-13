@@ -49,7 +49,7 @@ public class ManageParkingController implements Initializable {
     public TextField type_txt;
     public DatePicker date_txt;
     public TextField parking_txt;
-    private ManageParkingModel manageParkingModel = new ManageParkingModel();
+
 
     private ParkingTm newValue;
 

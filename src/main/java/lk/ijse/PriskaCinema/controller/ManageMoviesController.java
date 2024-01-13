@@ -9,7 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
+import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Bo.Impl.MovieBoImpl;
+import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
@@ -38,8 +40,9 @@ public class ManageMoviesController {
     public ComboBox cmb_producer;
 
     private MovieBo movieBo = new MovieBoImpl();
+    ProducerBo producerBo = new ProducerBoImpl();
 
-    public void initialize() throws IOException, SQLException {
+    public void initialize() throws IOException, SQLException, ClassNotFoundException {
         setCellValueFactory();
         clearField();
         loadAllMovie();
@@ -79,9 +82,9 @@ public class ManageMoviesController {
 
     }
 
-    private void loadCmb() throws SQLException {
+    private void loadCmb() throws SQLException, ClassNotFoundException {
         ObservableList<Object> objects = FXCollections.observableArrayList();
-        ManageProducerModel.loadAllproducer().forEach(element -> objects.add(element.getProducerid_txt()));
+        producerBo.loadAll().forEach(element -> objects.add(element.getProducerid_txt()));
         cmb_producer.setItems(objects);
 
     }
