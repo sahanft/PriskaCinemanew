@@ -15,4 +15,7 @@ public class ManageMoviesDto {
     private String duration_txt;
     private String time_txt;
 
+    public ManageMoviesDto(String id) {
+        this.id_txt = id;
+    }
 }

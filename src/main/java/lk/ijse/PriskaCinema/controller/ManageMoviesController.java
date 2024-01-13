@@ -241,10 +241,10 @@ public class ManageMoviesController {
     public void delete_onaction(ActionEvent actionEvent) {
 
         String id = id_txt.getText();
+        ManageMoviesDto dto = new ManageMoviesDto(id);
 
-//        var model = new CustomerModel();
         try {
-            boolean isDelete = movieBo.delete(id);
+            boolean isDelete = movieBo.delete(dto);
             if (isDelete) {
                 movie_tm.getSelectionModel().clearSelection();
 
