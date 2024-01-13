@@ -64,8 +64,8 @@ public class EmployeeBoImpl implements EmployeeBo {
 
 
     @Override
-    public boolean delete(employeeDto id) throws SQLException, ClassNotFoundException {
-        return employeeDao.delete(new employee(id.getEmpid_txt()));
+    public boolean delete(employeeDto dto) throws SQLException, ClassNotFoundException {
+        return employeeDao.delete(new employee(dto.getEmpid_txt()));
     }
 
     @Override

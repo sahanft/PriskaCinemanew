@@ -52,7 +52,7 @@ public class HallDaoImpl implements HallDao {
 
     @Override
     public boolean delete(Hall id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM Film_hall WHERE hall_no = ?", id);
+        return SqlUtil.test("DELETE FROM Film_hall WHERE hall_no = ?", id.getNumber_txt());
     }
 
 }

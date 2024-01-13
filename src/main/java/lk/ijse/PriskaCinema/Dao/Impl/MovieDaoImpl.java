@@ -57,7 +57,7 @@ public class MovieDaoImpl implements MovieDao {
 
     @Override
     public boolean delete(movie id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM Movies WHERE movie_id = ?", id);
+        return SqlUtil.test("DELETE FROM Movies WHERE movie_id = ?", id.getId_txt());
     }
 
 

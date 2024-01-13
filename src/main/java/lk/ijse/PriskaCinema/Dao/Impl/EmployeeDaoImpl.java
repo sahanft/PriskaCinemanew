@@ -51,7 +51,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public boolean delete(employee id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM employee WHERE e_id = ?", id);
+        return SqlUtil.test("DELETE FROM employee WHERE e_id = ?", id.getEmpid_txt());
     }
 
 

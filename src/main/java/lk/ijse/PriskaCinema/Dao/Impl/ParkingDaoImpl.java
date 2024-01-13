@@ -46,7 +46,7 @@ public class ParkingDaoImpl implements ParkingDao {
 
     @Override
     public boolean delete(Parking id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM parking WHERE space_no = ?", id);
+        return SqlUtil.test("DELETE FROM parking WHERE space_no = ?", id.getSpacemen_txt());
     }
 
     @Override

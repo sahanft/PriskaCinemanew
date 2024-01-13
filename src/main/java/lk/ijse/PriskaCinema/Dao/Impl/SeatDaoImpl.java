@@ -45,7 +45,7 @@ public class SeatDaoImpl implements SeatDao {
 
     @Override
     public boolean delete(Seat id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM Seats WHERE seat_num = ?", id);
+        return SqlUtil.test("DELETE FROM Seats WHERE seat_num = ?", id.getSeatnumber_txt());
     }
 
     @Override

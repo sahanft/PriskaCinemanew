@@ -50,7 +50,7 @@ public class TicketDaoImpl implements TicketDao {
 
     @Override
     public boolean delete(Ticket id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test("DELETE FROM ticket WHERE t_num = ?",id);
+        return SqlUtil.test("DELETE FROM ticket WHERE t_num = ?",id.getTicketnumber_txt());
     }
 
     @Override

@@ -210,7 +210,7 @@ public class ManageEmployeeController {
             loadAllemployee();
 
         }catch (SQLException | ClassNotFoundException e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+           throw new RuntimeException(e);
         }
     }
 

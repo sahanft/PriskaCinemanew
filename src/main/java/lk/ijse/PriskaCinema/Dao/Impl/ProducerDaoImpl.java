@@ -26,19 +26,16 @@ public class ProducerDaoImpl implements ProducerDao {
     @Override
     public ArrayList<Producer> getAll() throws SQLException, ClassNotFoundException {
 
-        ResultSet resultSet = SqlUtil.test("SELECT * FROM Seats");
+        ResultSet resultSet = SqlUtil.test("SELECT * FROM Producers");
         ArrayList<Producer> dtoList = new ArrayList<>();
 
         while(resultSet.next()) {
-            dtoList.add(
-                    new Producer(
+            Producer producer = new Producer(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
-                            resultSet.getString(4)
-
-                    )
-            );
+                            resultSet.getString(4));
+            dtoList.add(producer);
         }
         return dtoList;
 
@@ -57,7 +54,7 @@ public class ProducerDaoImpl implements ProducerDao {
 
     @Override
     public boolean delete(Producer id) throws SQLException, ClassNotFoundException {
-        return SqlUtil.test( "DELETE FROM Producers WHERE pro_id = ?", id);
+        return SqlUtil.test( "DELETE FROM Producers WHERE pro_id = ?", id.getProducerid_txt());
     }
 
     @Override
