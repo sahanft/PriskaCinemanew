@@ -19,7 +19,7 @@ public interface ProducerBo extends SuperBo {
    boolean update(ManageProducerDto Dto) throws SQLException, ClassNotFoundException;
 
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(ManageProducerDto id) throws SQLException, ClassNotFoundException;
 
 
 }

@@ -14,7 +14,7 @@ public interface SeatDao extends CrudDAO<Seat> {
    ArrayList<Seat> loadAll() throws SQLException, ClassNotFoundException;
 
    ArrayList<Seat> getAll() throws SQLException;
-   boolean delete(String id) throws SQLException, ClassNotFoundException;
+   boolean delete(Seat id) throws SQLException, ClassNotFoundException;
    boolean update(Seat dto) throws SQLException, ClassNotFoundException;
 
 

@@ -62,8 +62,8 @@ public class HallBoImpl implements HallBo {
 
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return hallDao.delete(String.valueOf(new Hall(id)));
+    public boolean delete(ManageHallDto id) throws SQLException, ClassNotFoundException {
+        return hallDao.delete(new Hall(id.getNumber_txt()));
     }
 }
 

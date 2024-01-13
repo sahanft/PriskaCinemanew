@@ -14,5 +14,5 @@ public interface CrudDAO<T> extends SupperDAO {
 
     boolean update(T t) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(T t) throws SQLException, ClassNotFoundException;
 }

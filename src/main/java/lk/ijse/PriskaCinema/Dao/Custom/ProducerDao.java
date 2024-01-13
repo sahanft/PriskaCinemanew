@@ -20,7 +20,7 @@ public interface ProducerDao extends CrudDAO<Producer> {
 
    boolean update(Producer Dto) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(Producer id) throws SQLException, ClassNotFoundException;
 
     boolean saveProducerMovieDetails(Producer producerDetailsDto) throws SQLException, ClassNotFoundException;
 }

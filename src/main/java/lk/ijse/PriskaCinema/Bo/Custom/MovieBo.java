@@ -20,7 +20,7 @@ public interface MovieBo extends SuperBo {
 
     boolean update(ManageMoviesDto Dto) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(ManageMoviesDto id) throws SQLException, ClassNotFoundException;
     boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException, ClassNotFoundException;
 
     boolean saveMovie(ManageMoviesDto dto) throws SQLException, ClassNotFoundException;

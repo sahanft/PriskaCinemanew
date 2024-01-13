@@ -192,10 +192,10 @@ public class ManageEmployeeController {
 
     public void delete_onaction(ActionEvent actionEvent) {
         String id = employeeid_txt.getText();
-
+        employeeDto dto = new employeeDto(id);
         try{
 
-            boolean isDelete = employeeBo.delete(id);
+            boolean isDelete = employeeBo.delete(dto);
 
             if (isDelete){
                 tmEmployee.getSelectionModel().clearSelection();

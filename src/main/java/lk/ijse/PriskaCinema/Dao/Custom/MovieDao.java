@@ -20,7 +20,7 @@ public interface MovieDao extends CrudDAO<movie> {
 
     boolean update(movie Dto) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(movie id) throws SQLException, ClassNotFoundException;
     //boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException ;
 
 

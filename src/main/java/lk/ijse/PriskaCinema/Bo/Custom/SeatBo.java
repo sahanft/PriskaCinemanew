@@ -14,7 +14,7 @@ public interface SeatBo extends SuperBo {
    List<Seat1Dto> loadAll() throws SQLException, ClassNotFoundException;
 
    ArrayList<Seat1Dto> getAll() throws SQLException;
-   boolean delete(String id) throws SQLException, ClassNotFoundException;
+   boolean delete(Seat1Dto id) throws SQLException, ClassNotFoundException;
    boolean update(Seat1Dto dto) throws SQLException, ClassNotFoundException;
 
 

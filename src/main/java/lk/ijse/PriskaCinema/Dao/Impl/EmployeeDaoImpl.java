@@ -20,10 +20,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 entity.getEmpnic_txt(), entity.getEmpsalary_txt(), entity.getEmpaddress_txt());
     }
 
-    @Override
-    public boolean update(employee employee) throws SQLException, ClassNotFoundException {
-        return false;
-    }
 
     public ArrayList<employee>  loadAll() throws SQLException, ClassNotFoundException {
 
@@ -54,13 +50,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean delete(employee id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM employee WHERE e_id = ?", id);
     }
 
 
     @Override
-    public boolean update(employeeDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(employee dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("update employee set name = ?, type = ?, e_tele = ?,nic = ?,salary = ?,address = ? where e_id = ?",
                 dto.getEmpname_txt(),dto.getEmpjobtype_txt(),dto.getEmpmobile_txt(),dto.getEmpnic_txt(),dto.getEmpsalary_txt(),
                 dto.getEmpaddress_txt(),dto.getEmpid_txt());

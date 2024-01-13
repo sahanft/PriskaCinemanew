@@ -16,7 +16,7 @@ public interface ParkingBo extends SuperBo {
 
    ArrayList<ManageParkingDto> getAll() throws SQLException, ClassNotFoundException;
 
-   boolean delete(String id) throws SQLException, ClassNotFoundException;
+   boolean delete(ManageParkingDto id) throws SQLException, ClassNotFoundException;
 
    boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException;
 

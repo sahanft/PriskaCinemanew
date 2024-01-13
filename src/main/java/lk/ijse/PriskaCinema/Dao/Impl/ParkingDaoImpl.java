@@ -13,11 +13,13 @@ import java.util.List;
 
 public class ParkingDaoImpl implements ParkingDao {
 
+    @Override
     public boolean save(Parking dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("INSERT INTO parking VALUES(?,?,?,?)",
                 dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());
     }
 
+    @Override
     public ArrayList<Parking> loadAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Parking> itemList = new ArrayList<>();
@@ -42,10 +44,12 @@ public class ParkingDaoImpl implements ParkingDao {
     }
 
 
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    @Override
+    public boolean delete(Parking id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM parking WHERE space_no = ?", id);
     }
 
+    @Override
     public boolean update(Parking dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("update parking set space_type = ?, parking_fee = ?, date = ? where space_no =?",
                 dto.getSpacemen_txt(), dto.getType_txt(), dto.getParkingfee_txt(), dto.getDate_txt());

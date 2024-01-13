@@ -16,13 +16,14 @@ import java.util.List;
 
 public class ProducerDaoImpl implements ProducerDao {
 
+    @Override
     public boolean save(Producer dto) throws SQLException, ClassNotFoundException {
        return SqlUtil.test("INSERT INTO Producers VALUES(?,?,?,?)",
                dto.getProducerid_txt(), dto.getName_txt(), dto.getAddress_txt(), dto.getMobilenumber_txt());
     }
 
 
-
+    @Override
     public ArrayList<Producer> getAll() throws SQLException, ClassNotFoundException {
 
         ResultSet resultSet = SqlUtil.test("SELECT * FROM Seats");
@@ -48,13 +49,14 @@ public class ProducerDaoImpl implements ProducerDao {
         return null;
     }
 
+    @Override
     public boolean update(Producer Dto) throws SQLException, ClassNotFoundException {
        return SqlUtil.test("UPDATE Producers SET name = ?, pro_address = ?, pro_tele = ? WHERE pro_id = ?",
                Dto.getName_txt(), Dto.getAddress_txt(), Dto.getMobilenumber_txt(), Dto.getProducerid_txt());
     }
 
-
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    @Override
+    public boolean delete(Producer id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test( "DELETE FROM Producers WHERE pro_id = ?", id);
     }
 

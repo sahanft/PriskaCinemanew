@@ -56,8 +56,8 @@ public class ParkingBoImpl implements ParkingBo {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return parkingDao.delete(String.valueOf(new Parking(id)));
+    public boolean delete(ManageParkingDto id) throws SQLException, ClassNotFoundException {
+        return parkingDao.delete(new Parking(id.getSpacemen_txt()));
     }
 
     @Override

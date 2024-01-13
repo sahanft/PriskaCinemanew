@@ -17,9 +17,9 @@ public interface EmployeeDao extends CrudDAO<employee> {
 
     ArrayList<employee> getAll() throws SQLException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(employee id) throws SQLException, ClassNotFoundException;
 
-    boolean update(employeeDto dto) throws SQLException, ClassNotFoundException;
+    boolean update(employee dto) throws SQLException, ClassNotFoundException;
 
 
 }

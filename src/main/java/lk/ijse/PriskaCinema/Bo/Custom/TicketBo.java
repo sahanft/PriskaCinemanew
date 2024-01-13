@@ -15,7 +15,7 @@ public interface TicketBo extends SuperBo {
      List<ManageTicketDto> loadAll() throws SQLException, ClassNotFoundException;
 
      ArrayList<ManageTicketDto> getAll() throws SQLException, ClassNotFoundException;
-     boolean delete(String id) throws SQLException, ClassNotFoundException;
+     boolean delete(ManageTicketDto id) throws SQLException, ClassNotFoundException;
 
      boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException;
 

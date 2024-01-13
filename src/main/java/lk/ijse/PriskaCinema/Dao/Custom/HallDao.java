@@ -16,7 +16,7 @@ public interface HallDao extends CrudDAO<Hall> {
      //ArrayList<ManageHallDto> getAllhall() throws SQLException;
     boolean update(Hall Dto) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(Hall id) throws SQLException, ClassNotFoundException;
 
 }
 

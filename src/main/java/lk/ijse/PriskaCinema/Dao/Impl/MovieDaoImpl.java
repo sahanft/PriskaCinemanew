@@ -14,6 +14,7 @@ import java.util.List;
 
 public class MovieDaoImpl implements MovieDao {
 
+    @Override
     public boolean save(movie dto) throws SQLException, ClassNotFoundException {
 
         return SqlUtil.test("INSERT INTO Movies VALUES(?,?,?,?,?)",
@@ -26,6 +27,7 @@ public class MovieDaoImpl implements MovieDao {
         return null;
     }
 
+    @Override
     public ArrayList<movie> loadAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<movie> itemList = new ArrayList<>();
@@ -45,6 +47,7 @@ public class MovieDaoImpl implements MovieDao {
     }
 
 
+    @Override
     public boolean update(movie Dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("UPDATE Movies SET  name = ?, genre = ?, duration = ?, time = ? where movie_id = ?",
                 Dto.getName_txt(), Dto.getGenre_txt(), Dto.getDuration_txt(), Dto.getTime_txt(), Dto.getId_txt());
@@ -52,9 +55,11 @@ public class MovieDaoImpl implements MovieDao {
 
 
 
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    @Override
+    public boolean delete(movie id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM Movies WHERE movie_id = ?", id);
     }
+
 
     //------------------------------------------------------------------------------------------------------------------
     public boolean saveProducerMovieDetails(ProducerDetails producerDetailsDto) throws SQLException {

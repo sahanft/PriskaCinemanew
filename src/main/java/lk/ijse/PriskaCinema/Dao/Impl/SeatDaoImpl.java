@@ -25,6 +25,7 @@ public class SeatDaoImpl implements SeatDao {
         return null;
     }
 
+    @Override
     public ArrayList<Seat> loadAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<Seat> itemList = new ArrayList<>();
@@ -42,11 +43,12 @@ public class SeatDaoImpl implements SeatDao {
     }
 
 
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    @Override
+    public boolean delete(Seat id) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("DELETE FROM Seats WHERE seat_num = ?", id);
     }
 
-
+    @Override
     public boolean update(Seat dto) throws SQLException, ClassNotFoundException {
         return SqlUtil.test("update Seats set screen = ?, row_num = ? where seat_num =?",
                 dto.getScreen_txt(), dto.getRownumber_txt(), dto.getSeatnumber_txt());

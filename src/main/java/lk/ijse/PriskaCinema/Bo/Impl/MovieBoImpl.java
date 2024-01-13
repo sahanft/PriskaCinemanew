@@ -4,6 +4,7 @@ import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
 import lk.ijse.PriskaCinema.Dao.Custom.MovieDao;
 import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
 import lk.ijse.PriskaCinema.Dao.Impl.MovieDaoImpl;
+import lk.ijse.PriskaCinema.Dao.Impl.ProducerDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
@@ -69,8 +70,8 @@ public class MovieBoImpl implements MovieBo {
 
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return movieDao.delete(String.valueOf(new movie(id)));
+    public boolean delete(ManageMoviesDto id) throws SQLException, ClassNotFoundException {
+        return movieDao.delete((new movie(id.getId_txt())));
     }
 
     @Override

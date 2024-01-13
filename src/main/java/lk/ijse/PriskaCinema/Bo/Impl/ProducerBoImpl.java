@@ -57,7 +57,7 @@ public class ProducerBoImpl implements ProducerBo {
 
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return producerDao.delete(String.valueOf(new Producer(id)));
+    public boolean delete(ManageProducerDto id) throws SQLException, ClassNotFoundException {
+        return producerDao.delete(new Producer(id.getProducerid_txt()));
     }
 }

@@ -16,7 +16,7 @@ public interface HallBo extends SuperBo {
      ArrayList<ManageHallDto> getAll() throws SQLException, ClassNotFoundException;
     boolean update(ManageHallDto Dto) throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(ManageHallDto id) throws SQLException, ClassNotFoundException;
 
 }
 

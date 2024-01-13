@@ -135,9 +135,9 @@ public class ManageHallController {
     void delete_onaction(ActionEvent actionEvent) {
         String id = number_txt.getText();
 
-//        var model = new CustomerModel();
+        ManageHallDto dto = new ManageHallDto(id);
         try {
-            boolean isDelete = hallBo.delete(id);
+            boolean isDelete = hallBo.delete(dto);
             if(isDelete) {
                 hall_tm.getSelectionModel().clearSelection();
                 new Alert(Alert.AlertType.CONFIRMATION, "Hall deleted!").show();
