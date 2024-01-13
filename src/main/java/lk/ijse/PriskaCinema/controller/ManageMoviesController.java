@@ -13,7 +13,6 @@ import lk.ijse.PriskaCinema.Bo.Impl.MovieBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
 import lk.ijse.PriskaCinema.tm.MovieTm;
 
 import java.io.IOException;

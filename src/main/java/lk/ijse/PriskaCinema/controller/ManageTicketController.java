@@ -1,7 +1,5 @@
 package lk.ijse.PriskaCinema.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.PriskaCinema.Bo.Custom.TicketBo;
 import lk.ijse.PriskaCinema.Bo.Impl.TicketBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
-import lk.ijse.PriskaCinema.dto.ManageParkingDto;
 import lk.ijse.PriskaCinema.dto.ManageTicketDto;
-import lk.ijse.PriskaCinema.model.ManageParkingModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
 import lk.ijse.PriskaCinema.tm.TicketTm;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;

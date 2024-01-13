@@ -1,7 +1,5 @@
 package lk.ijse.PriskaCinema.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
 import lk.ijse.PriskaCinema.Bo.Impl.HallBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageHallDto;
-import lk.ijse.PriskaCinema.model.ManageHallModel;
 import lk.ijse.PriskaCinema.tm.HallTm;
 
 import java.io.IOException;

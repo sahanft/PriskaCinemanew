@@ -1,7 +1,5 @@
 package lk.ijse.PriskaCinema.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +10,6 @@ import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
 import lk.ijse.PriskaCinema.Bo.Impl.ParkingBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageParkingDto;
-import lk.ijse.PriskaCinema.model.ManageParkingModel;
 import lk.ijse.PriskaCinema.tm.ParkingTm;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -211,14 +208,11 @@ public class ManageParkingController implements Initializable {
                 clearField();
                 loadAllParking();
                 totalParking();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "parking details not updated").show();;
             }
             parkingmain_txt.getItems().add(new ParkingTm(spaceNum,type,parkingfee,date));
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            clearField();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

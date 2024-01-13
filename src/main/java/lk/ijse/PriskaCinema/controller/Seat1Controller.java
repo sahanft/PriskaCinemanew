@@ -10,22 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.PriskaCinema.Bo.Custom.SeatBo;
 import lk.ijse.PriskaCinema.Bo.Impl.SeatBoImpl;
-import lk.ijse.PriskaCinema.dto.ManageParkingDto;
-import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.dto.ManageTicketDto;
 import lk.ijse.PriskaCinema.dto.Seat1Dto;
-import lk.ijse.PriskaCinema.model.ManageParkingModel;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
-import lk.ijse.PriskaCinema.model.Seat1Model;
 import lk.ijse.PriskaCinema.tm.SeateTm;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
-import static lk.ijse.PriskaCinema.model.Seat1Model.loadAllseat;
 
 public class Seat1Controller {
     public TextField seatnumber_txt;
