@@ -4,6 +4,7 @@ import lk.ijse.PriskaCinema.Dao.CrudDAO;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
 import lk.ijse.PriskaCinema.entity.Producer;
+import lk.ijse.PriskaCinema.entity.ProducerDetails;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,5 +23,5 @@ public interface ProducerDao extends CrudDAO<Producer> {
 
     boolean delete(Producer id) throws SQLException, ClassNotFoundException;
 
-    boolean saveProducerMovieDetails(Producer producerDetailsDto) throws SQLException, ClassNotFoundException;
+    boolean saveProducerMovieDetails(ProducerDetails producerDetailsDto) throws SQLException, ClassNotFoundException;
 }

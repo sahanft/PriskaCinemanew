@@ -6,6 +6,7 @@ import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
 import lk.ijse.PriskaCinema.entity.Producer;
+import lk.ijse.PriskaCinema.entity.ProducerDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,8 +59,8 @@ public class ProducerDaoImpl implements ProducerDao {
     }
 
     @Override
-    public boolean saveProducerMovieDetails(Producer producerDetailsDto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean saveProducerMovieDetails(ProducerDetails dto) throws SQLException, ClassNotFoundException {
+        return SqlUtil.test("INSERT INTO ProducerDetails VALUES(?,?)",dto.getProducerid_txt(),dto.getMovie_id());
     }
 
 

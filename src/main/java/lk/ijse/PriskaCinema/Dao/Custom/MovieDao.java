@@ -3,6 +3,7 @@ package lk.ijse.PriskaCinema.Dao.Custom;
 import lk.ijse.PriskaCinema.Dao.CrudDAO;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
+import lk.ijse.PriskaCinema.entity.ProducerDetails;
 import lk.ijse.PriskaCinema.entity.movie;
 
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public interface MovieDao extends CrudDAO<movie> {
     boolean update(movie Dto) throws SQLException, ClassNotFoundException;
 
     boolean delete(movie id) throws SQLException, ClassNotFoundException;
-    //boolean saveProducerMovieDetails(ProducerDetailsDto producerDetailsDto) throws SQLException ;
+    boolean saveProducerMovieDetails(ProducerDetails producerDetailsDto) throws SQLException ;
 
 
 
