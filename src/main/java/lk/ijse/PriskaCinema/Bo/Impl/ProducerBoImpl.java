@@ -2,16 +2,19 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.ProducerDaoImpl;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.entity.Producer;
+
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerBoImpl implements ProducerBo {
 
-    ProducerDao producerDao = new ProducerDaoImpl();
+    ProducerDao producerDao = (ProducerDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.PRODUCER);
 
 
     @Override
@@ -20,7 +23,7 @@ public class ProducerBoImpl implements ProducerBo {
     }
 
     @Override
-    public List<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException {
         ArrayList<Producer> entityList = producerDao.getAll();
         ArrayList<ManageProducerDto> dtoList = new ArrayList<>();
         for (Producer entity : entityList) {

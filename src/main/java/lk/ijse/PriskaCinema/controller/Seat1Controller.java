@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.SeatBo;
 import lk.ijse.PriskaCinema.Bo.Impl.SeatBoImpl;
 import lk.ijse.PriskaCinema.dto.Seat1Dto;
@@ -27,7 +29,7 @@ public class Seat1Controller {
 
     private ObservableList<SeateTm> obList = FXCollections.observableArrayList();
 
-    SeatBo seatBo = new SeatBoImpl();
+    SeatBo seatBo = (SeatBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.SEAT);
 
     public void initialize() {
         loadAllSeat();

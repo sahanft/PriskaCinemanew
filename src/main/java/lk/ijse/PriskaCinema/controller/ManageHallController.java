@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
 import lk.ijse.PriskaCinema.Bo.Impl.HallBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageHallDto;
@@ -32,7 +34,7 @@ public class ManageHallController {
     public TableColumn count_tm;
 
 
-    HallBo hallBo = new HallBoImpl();
+    HallBo hallBo = (HallBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.HALL);
 
     public void initialize() throws IOException {
         setCellValueFactory();

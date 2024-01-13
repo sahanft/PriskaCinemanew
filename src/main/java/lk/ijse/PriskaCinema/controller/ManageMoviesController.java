@@ -8,12 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
 import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Bo.Impl.MovieBoImpl;
 import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
 import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
+import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 import lk.ijse.PriskaCinema.dto.ProducerDetailsDto;
 import lk.ijse.PriskaCinema.tm.MovieTm;
 
@@ -40,8 +43,10 @@ public class ManageMoviesController {
     public TextField proid_txt;
     public ComboBox cmb_producer;
 
-    private MovieBo movieBo = new MovieBoImpl();
-    ProducerBo producerBo = new ProducerBoImpl();
+    private MovieBo movieBo = (MovieBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.MOVIE);
+    ProducerBo producerBo = (ProducerBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.PRODUCER);
+ //   String selected_producerId = cmb_producer.getSelectionModel().getSelectedItem().toString();
+
 
     public void initialize() throws IOException, SQLException, ClassNotFoundException {
         setCellValueFactory();
@@ -84,9 +89,17 @@ public class ManageMoviesController {
     }
 
     private void loadCmb() throws SQLException, ClassNotFoundException {
-        ObservableList<Object> objects = FXCollections.observableArrayList();
-        producerBo.loadAll().forEach(element -> objects.add(element.getProducerid_txt()));
-        cmb_producer.setItems(objects);
+        ArrayList<ManageProducerDto> dtoList =  producerBo.loadAll();
+        ObservableList<String> idlist = FXCollections.observableArrayList();
+        for (ManageProducerDto dto: dtoList) {
+            idlist.add(dto.getProducerid_txt());
+            System.out.println(dto.getProducerid_txt());
+        }
+        cmb_producer.setItems(idlist);
+
+       // ObservableList<Object> objects = FXCollections.observableArrayList();
+      //  producerBo.loadAll().forEach(element -> objects.add(element.getProducerid_txt()));
+      //  cmb_producer.setItems(objects);
 
     }
 
@@ -114,17 +127,16 @@ public class ManageMoviesController {
 
     public void add_onaction(ActionEvent actionEvent) throws SQLException {
 
-        String selected_producerId = cmb_producer.getSelectionModel().getSelectedItem().toString();
         String movie_id = id_txt.getText();
         String name = name_txt.getText();
         String genre = genre_txt.getText();
         String duration = duration_txt.getText();
         String time = time_txt.getText();
 
-
         var dto = new ManageMoviesDto(movie_id, name, genre, duration, time);
-        var dto1 = new ProducerDetailsDto(selected_producerId, movie_id);
+        var dto1 = new ProducerDetailsDto((String) cmb_producer.getValue(), movie_id);
         Connection connection = DbConnection.getInstance().getConnection();
+
         connection.setAutoCommit(false);
         try {
             boolean isSaved1 = movieBo.saveMovie(dto);
@@ -132,14 +144,14 @@ public class ManageMoviesController {
                 boolean isSaved2 = movieBo.saveProducerMovieDetails(dto1);
                 if (isSaved2) {
                     connection.commit();
-                    throw new RuntimeException();//new Alert(Alert.AlertType.CONFIRMATION, "movie added!").show();
+                    new Alert(Alert.AlertType.CONFIRMATION, "Movie details added!").show();
                 } else {
                     connection.rollback();
-                    new Alert(Alert.AlertType.CONFIRMATION, "movie details not added!").show();
+                    new Alert(Alert.AlertType.ERROR, "Movie details not added!").show();
                 }
             } else {
                 connection.rollback();
-                new Alert(Alert.AlertType.CONFIRMATION, "movie added!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Movie added!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -214,9 +226,6 @@ public class ManageMoviesController {
         String duration = duration_txt.getText();
         String time = time_txt.getText();
 
-
-
-
         try {
 
             var dto = new ManageMoviesDto(movie_id,name,genre,duration,time);
@@ -236,8 +245,6 @@ public class ManageMoviesController {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     public void delete_onaction(ActionEvent actionEvent) {

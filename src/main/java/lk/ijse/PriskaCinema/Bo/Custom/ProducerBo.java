@@ -4,6 +4,7 @@ import lk.ijse.PriskaCinema.Bo.SuperBo;
 import lk.ijse.PriskaCinema.Dao.CrudDAO;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public interface ProducerBo extends SuperBo {
 
      boolean save(ManageProducerDto dto) throws SQLException, ClassNotFoundException;
 
-    List<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException;
+    ArrayList<ManageProducerDto> loadAll() throws SQLException, ClassNotFoundException;
 
     ArrayList<ManageProducerDto> getAll() throws SQLException, ClassNotFoundException;
 

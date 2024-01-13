@@ -7,6 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
 import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Impl.EmployeeBoImpl;
 import lk.ijse.PriskaCinema.dto.employeeDto;
@@ -37,7 +38,7 @@ public class ManageEmployeeController {
     public TableView<EmployeeTm> tmEmployee;
 
 
-    EmployeeBo employeeBo = new EmployeeBoImpl();
+    EmployeeBo employeeBo = (EmployeeBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.EMPLOYEE);
 
     public void initialize() {
         setCellValueFactory();

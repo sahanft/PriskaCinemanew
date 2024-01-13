@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.TicketBo;
 import lk.ijse.PriskaCinema.Dao.Custom.TicketDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.TicketDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class TicketBoImpl implements TicketBo {
 
-    TicketDao ticketDao = (TicketDao) new TicketDaoImpl();
+    TicketDao ticketDao = (TicketDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.TICKET);
 
 
     @Override

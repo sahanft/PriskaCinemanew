@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
 import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
@@ -32,7 +34,7 @@ public class ManageProducerController {
     public TableColumn mobile_tm;
 
 
-    ProducerBo producerBo = new ProducerBoImpl();
+    ProducerBo producerBo = (ProducerBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.PRODUCER);
 
     public void initialize() {
         setCellValueFactory();

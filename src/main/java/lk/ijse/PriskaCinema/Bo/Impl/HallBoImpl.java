@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
 import lk.ijse.PriskaCinema.Dao.Custom.HallDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.HallDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class HallBoImpl implements HallBo {
 
-    HallDao hallDao = new HallDaoImpl();
+    HallDao hallDao = (HallDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.HALL);
 
     @Override
     public boolean save(ManageHallDto dto) throws SQLException, ClassNotFoundException {

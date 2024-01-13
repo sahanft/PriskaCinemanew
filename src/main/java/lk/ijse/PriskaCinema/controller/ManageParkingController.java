@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
 import lk.ijse.PriskaCinema.Bo.Impl.ParkingBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -55,7 +57,7 @@ public class ManageParkingController implements Initializable {
 
     private ParkingTm tm = new ParkingTm();
 
-    ParkingBo parkingBo = new ParkingBoImpl();
+    ParkingBo parkingBo = (ParkingBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.PARKING);
 
 
 

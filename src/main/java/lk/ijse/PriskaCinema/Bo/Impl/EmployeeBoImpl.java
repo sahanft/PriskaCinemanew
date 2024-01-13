@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Dao.Custom.EmployeeDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.EmployeeDaoImpl;
 import lk.ijse.PriskaCinema.dto.employeeDto;
 import lk.ijse.PriskaCinema.entity.employee;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class EmployeeBoImpl implements EmployeeBo {
 
-    EmployeeDao employeeDao =  new EmployeeDaoImpl();
+    EmployeeDao employeeDao = (EmployeeDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.EMPLOYEE);
 
 
     @Override

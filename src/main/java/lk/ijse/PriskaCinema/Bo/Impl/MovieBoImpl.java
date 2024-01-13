@@ -3,6 +3,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 import lk.ijse.PriskaCinema.Bo.Custom.MovieBo;
 import lk.ijse.PriskaCinema.Dao.Custom.MovieDao;
 import lk.ijse.PriskaCinema.Dao.Custom.ProducerDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.MovieDaoImpl;
 import lk.ijse.PriskaCinema.Dao.Impl.ProducerDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
@@ -21,8 +22,8 @@ import java.util.List;
 
 public class MovieBoImpl implements MovieBo {
 
-    MovieDao movieDao = new MovieDaoImpl();
-    ProducerDao producerDao = new ProducerDaoImpl();
+    MovieDao movieDao = (MovieDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.MOVIE);
+    ProducerDao producerDao = (ProducerDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.PRODUCER);
 
 
     @Override

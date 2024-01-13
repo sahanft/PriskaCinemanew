@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.ParkingBo;
 import lk.ijse.PriskaCinema.Dao.Custom.ParkingDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.ParkingDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class ParkingBoImpl implements ParkingBo {
 
-    ParkingDao parkingDao = new ParkingDaoImpl();
+    ParkingDao parkingDao = (ParkingDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.PARKING);
 
 
     @Override

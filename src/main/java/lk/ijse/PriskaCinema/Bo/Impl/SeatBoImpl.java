@@ -2,6 +2,7 @@ package lk.ijse.PriskaCinema.Bo.Impl;
 
 import lk.ijse.PriskaCinema.Bo.Custom.SeatBo;
 import lk.ijse.PriskaCinema.Dao.Custom.SeatDao;
+import lk.ijse.PriskaCinema.Dao.DaoFactory;
 import lk.ijse.PriskaCinema.Dao.Impl.SeatDaoImpl;
 import lk.ijse.PriskaCinema.Dao.SqlUtil;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class SeatBoImpl implements SeatBo {
 
-  SeatDao seatDao = new SeatDaoImpl();
+  SeatDao seatDao = (SeatDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DaoTyps.SEAT);
 
     @Override
     public boolean save(Seat1Dto dto) throws SQLException, ClassNotFoundException {

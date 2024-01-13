@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 /*import jdk.internal.org.objectweb.asm.TypeReference;*/
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
 import lk.ijse.PriskaCinema.Bo.Custom.TicketBo;
 import lk.ijse.PriskaCinema.Bo.Impl.TicketBoImpl;
 import lk.ijse.PriskaCinema.db.DbConnection;
@@ -51,7 +53,7 @@ public class ManageTicketController implements Initializable {
     public Label lbltickettotal;
     private String tNum;
 
-    TicketBo ticketBo = new TicketBoImpl();
+    TicketBo ticketBo = (TicketBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.TICKET);
     private TicketTm newValue;
 
     public void initialize() {
