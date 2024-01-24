@@ -140,8 +140,6 @@ public class Seat1Controller {
     private void loadAllSeat(){
         seatTM.getItems().clear();
 
-      //  ObservableList<SeateTm> obList = FXCollections.observableArrayList();
-
         try{
             ArrayList<Seat1Dto> dtoList = (ArrayList<Seat1Dto>) seatBo.loadAll();
 

@@ -13,6 +13,5 @@ public class ProducerDetailsDto {
     private String pro_id;
     private String movie_id;
 
-//    public ProducerDetailsDto(String id) {
-//    }
+
 }

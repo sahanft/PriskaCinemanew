@@ -19,6 +19,5 @@ public interface TicketBo extends SuperBo {
 
      boolean update(ManageTicketDto dto) throws SQLException, ClassNotFoundException;
 
-   // ManageTicketDto searchTicket(String id) throws SQLException ;
 
 }

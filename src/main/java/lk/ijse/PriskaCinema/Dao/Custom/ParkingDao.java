@@ -14,13 +14,9 @@ public interface ParkingDao extends CrudDAO<Parking> {
 
      ArrayList<Parking> loadAll() throws SQLException, ClassNotFoundException;
 
-  /* ArrayList<ManageParkingDto> getAllseat() throws SQLException ;
-*/
+
    boolean delete(Parking id) throws SQLException, ClassNotFoundException;
 
    boolean update(Parking dto) throws SQLException, ClassNotFoundException;
 
-/*
-     ManageParkingDto searchParking(String id) throws SQLException;
-*/
 }

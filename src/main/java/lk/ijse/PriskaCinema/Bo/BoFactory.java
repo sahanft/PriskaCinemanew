@@ -14,7 +14,7 @@ public class BoFactory {
     }
 
     public enum BoTyps{
-        EMPLOYEE,HALL,MOVIE,PARKING,PRODUCER,SEAT,TICKET
+        EMPLOYEE,HALL,MOVIE,PARKING,PRODUCER,SEAT,TICKET,EREGISTER,MREGISTER
     }
 
     public SuperBo getBo(BoTyps boTyps){
@@ -33,6 +33,10 @@ public class BoFactory {
                 return new SeatBoImpl();
             case TICKET:
                 return new TicketBoImpl();
+            case EREGISTER:
+                return new EregisterBoImpl();
+            case MREGISTER:
+                return new MregisterBoImpl();
             default:
                 return null;
         }

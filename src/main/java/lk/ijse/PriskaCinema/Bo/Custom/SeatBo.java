@@ -18,7 +18,6 @@ public interface SeatBo extends SuperBo {
    boolean update(Seat1Dto dto) throws SQLException, ClassNotFoundException;
 
 
-    // Seat1Dto searchSeat(String id) throws SQLException;
 
 
 

@@ -20,5 +20,5 @@ public interface ParkingBo extends SuperBo {
 
    boolean update(ManageParkingDto dto) throws SQLException, ClassNotFoundException;
 
-    // ManageParkingDto searchParking(String id) throws SQLException;
+
 }

@@ -7,8 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EregisterBo;
 import lk.ijse.PriskaCinema.dto.EmployeeRegisterDTO;
-import lk.ijse.PriskaCinema.model.ERegisterPageModel;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,7 +26,7 @@ public class ERegisterPageController {
     public PasswordField confirmpw_onaction;
     public AnchorPane root;
 
-
+    EregisterBo eregisterBo = (EregisterBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.EREGISTER);
 
     public void back_onaction(ActionEvent actionEvent) throws IOException {
 
@@ -42,13 +44,15 @@ public class ERegisterPageController {
             var dto = new EmployeeRegisterDTO(name,password);
 
             try {
-                boolean isRegister = ERegisterPageModel.registerAdmin(dto);
+                boolean isRegister = eregisterBo.saveER(dto);
                 if (isRegister) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Register Successful").show();
                     clearField();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
 
         root.getChildren().clear();

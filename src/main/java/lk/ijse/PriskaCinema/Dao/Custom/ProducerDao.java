@@ -15,8 +15,6 @@ public interface ProducerDao extends CrudDAO<Producer> {
 
     boolean save(Producer dto) throws SQLException, ClassNotFoundException;
 
-    /*List<ManageProducerDto> loadAllproducer() throws SQLException ;*/
-
     ArrayList<Producer> getAll() throws SQLException, ClassNotFoundException;
 
    boolean update(Producer Dto) throws SQLException, ClassNotFoundException;

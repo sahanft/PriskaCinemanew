@@ -14,11 +14,10 @@ public interface TicketDao extends CrudDAO<Ticket> {
 
      ArrayList<Ticket> loadAll() throws SQLException, ClassNotFoundException;
 
-     //ArrayList<ManageTicketDto> getAllseat() throws SQLException;
+
      boolean delete(Ticket id) throws SQLException, ClassNotFoundException;
 
      boolean update(Ticket dto) throws SQLException, ClassNotFoundException;
 
-  /*  ManageTicketDto searchTicket(String id) throws SQLException ;
-*/
+
 }

@@ -7,8 +7,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.MregisterBo;
 import lk.ijse.PriskaCinema.dto.LoginDto;
-import lk.ijse.PriskaCinema.model.MRegisterPageModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -25,6 +26,8 @@ public class MRegisterPageController {
     public TextField nic_txt;
     public TextField fullname_txt;
     public AnchorPane root;
+
+    MregisterBo mregisterBo = (MregisterBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.MREGISTER);
 
     public void mregisterpage_register_onaction(ActionEvent actionEvent) throws IOException {
 
@@ -72,13 +75,15 @@ public class MRegisterPageController {
         var dto = new LoginDto(name,password);
 
         try {
-            boolean isRegister = MRegisterPageModel.registerAdmin(dto);
+            boolean isRegister = mregisterBo.save(dto);
             if (isRegister) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Register Successful").show();
                 //clearField();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         root.getChildren().clear();
