@@ -10,21 +10,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.PriskaCinema.dto.ManageEmployeeDto;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
+import lk.ijse.PriskaCinema.Bo.Custom.ProducerBo;
+import lk.ijse.PriskaCinema.Bo.Impl.ProducerBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.dto.ManageTicketDto;
-import lk.ijse.PriskaCinema.model.ManageEmployeeModel;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
-import lk.ijse.PriskaCinema.tm.EmployeeTm;
 import lk.ijse.PriskaCinema.tm.ProducerTm;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-
-import static lk.ijse.PriskaCinema.model.ManageProducerModel.loadAllproducer;
+import java.util.List;
 
 public class ManageProducerController {
     public TextField producerid_txt;
@@ -38,7 +33,8 @@ public class ManageProducerController {
     public TableColumn address_tm;
     public TableColumn mobile_tm;
 
-    private ManageProducerModel manageProducerModel = new ManageProducerModel();
+
+    ProducerBo producerBo = (ProducerBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.PRODUCER);
 
     public void initialize() {
         setCellValueFactory();
@@ -68,15 +64,20 @@ public class ManageProducerController {
         var dto = new ManageProducerDto(id,name,address,mobile);
 
         try {
-            boolean isSaved = ManageProducerModel.saveProducer(dto);
+
+            boolean isSaved = producerBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Producer Save").show();
                 loadAllProducer();
                 clearField();
             }
+            producer_tm.getItems().add(new ProducerTm(id,name,address,mobile));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         producer_tm.refresh();
 
@@ -98,9 +99,8 @@ public class ManageProducerController {
         address_txt.setText(row.getAddress());
         mobilenumber_txt.setText(row.getMobilenumber());
 
-
-
     }
+
     public void tableListener(){
         producer_tm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setData((ProducerTm) newValue);
@@ -125,7 +125,7 @@ public class ManageProducerController {
 
         try {
             var dto = new ManageProducerDto(id,name,address,tele);
-            boolean isUpdated = ManageProducerModel.updateProducer(dto);
+            boolean isUpdated = producerBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();;
                 clearField();
@@ -133,9 +133,13 @@ public class ManageProducerController {
             } else {
                 new Alert(Alert.AlertType.ERROR, "ticket details not updated").show();;
             }
+            producer_tm.getItems().add(new ProducerTm(id,name,address,tele));
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -144,48 +148,48 @@ public class ManageProducerController {
 
     public void delete_onaction(ActionEvent actionEvent) {
         String id = producerid_txt.getText();
+        ManageProducerDto dto = new ManageProducerDto(id);
 
-//        var model = new CustomerModel();
         try {
-            boolean isDeleted = ManageProducerModel.deleteProducer(id);
+            boolean isDeleted = producerBo.delete(dto);
             if(isDeleted) {
+                producer_tm.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION, "producer deleted!").show();
                 loadAllProducer();
+                clearField();
+
 
             } else {
                 new Alert(Alert.AlertType.CONFIRMATION, "producer not deleted!").show();
             }
-        } catch (SQLException e) {
+            producer_tm.getItems().remove(producer_tm.getSelectionModel().getSelectedItem());
+            //loadAllProducer();
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
     }
 
     private void loadAllProducer() {
-
-        ObservableList<ProducerTm> obList = FXCollections.observableArrayList();
+        producer_tm.getItems().clear();
 
         try {
-            ArrayList<ManageProducerDto> dtoList = (ArrayList<ManageProducerDto>) loadAllproducer();
-
+            ArrayList<ManageProducerDto> dtoList = producerBo.getAll();
             for (ManageProducerDto dto : dtoList) {
-                obList.add(
+                producer_tm.getItems().add(
                         new ProducerTm(
                                 dto.getProducerid_txt(),
                                 dto.getName_txt(),
                                 dto.getAddress_txt(),
-                                dto.getMobilenumber_txt()
-
-
-                        )
-                );
+                                dto.getMobilenumber_txt()));
             }
 
-            producer_tm.setItems(obList);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 }

@@ -14,4 +14,7 @@ public class ManageHallDto {
     private String category_txt;
     private String count_txt;
 
+    public ManageHallDto(String id) {
+        this.number_txt = id;
+    }
 }

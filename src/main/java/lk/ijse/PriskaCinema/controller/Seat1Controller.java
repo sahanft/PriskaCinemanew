@@ -8,22 +8,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.PriskaCinema.dto.ManageParkingDto;
-import lk.ijse.PriskaCinema.dto.ManageProducerDto;
-import lk.ijse.PriskaCinema.dto.ManageTicketDto;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
+import lk.ijse.PriskaCinema.Bo.Custom.SeatBo;
+import lk.ijse.PriskaCinema.Bo.Impl.SeatBoImpl;
 import lk.ijse.PriskaCinema.dto.Seat1Dto;
-import lk.ijse.PriskaCinema.model.ManageParkingModel;
-import lk.ijse.PriskaCinema.model.ManageProducerModel;
-import lk.ijse.PriskaCinema.model.ManageTicketModel;
-import lk.ijse.PriskaCinema.model.Seat1Model;
 import lk.ijse.PriskaCinema.tm.SeateTm;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
-import static lk.ijse.PriskaCinema.model.Seat1Model.loadAllseat;
 
 public class Seat1Controller {
     public TextField seatnumber_txt;
@@ -35,6 +28,8 @@ public class Seat1Controller {
     public TableColumn <?,?> seatnumber_tm;
 
     private ObservableList<SeateTm> obList = FXCollections.observableArrayList();
+
+    SeatBo seatBo = (SeatBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.SEAT);
 
     public void initialize() {
         loadAllSeat();
@@ -52,7 +47,7 @@ public class Seat1Controller {
         var dto = new Seat1Dto(seat,screen,row);
 
         try {
-            boolean isSaved = Seat1Model.saveSeat(dto);
+            boolean isSaved = seatBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Seat Save").show();
                 loadAllSeat();
@@ -60,6 +55,8 @@ public class Seat1Controller {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         seatTM.refresh();
     }
@@ -99,7 +96,7 @@ public class Seat1Controller {
 
         try {
             var dto = new Seat1Dto(sNum,screen,rowNum);
-            boolean isUpdated = Seat1Model.updateSeat(dto);
+            boolean isUpdated = seatBo.update(dto);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "ticket details updated").show();
                 loadAllSeat();
@@ -110,16 +107,20 @@ public class Seat1Controller {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             clearField();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public void delete_onaction(ActionEvent actionEvent) {
         String id = seatnumber_txt.getText();
+        Seat1Dto dto = new Seat1Dto(id);
 
-//        var model = new CustomerModel();
         try {
-            boolean isDeleted = Seat1Model.deleteSeat(id);
-            if(isDeleted) {
+            boolean isDelete = seatBo.delete(dto);
+            if(isDelete) {
+                seatTM.getSelectionModel().clearSelection();
+
                 new Alert(Alert.AlertType.CONFIRMATION, "seat deleted!").show();
                 loadAllSeat();
                 clearField();
@@ -129,21 +130,24 @@ public class Seat1Controller {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-
-
 
 
     }
 
     private void loadAllSeat(){
-        ObservableList<SeateTm> obList = FXCollections.observableArrayList();
+        seatTM.getItems().clear();
 
         try{
-            ArrayList<Seat1Dto> dtoList = (ArrayList<Seat1Dto>) loadAllseat();
+            ArrayList<Seat1Dto> dtoList = (ArrayList<Seat1Dto>) seatBo.loadAll();
 
                     for (Seat1Dto dto :  dtoList){
-                        obList.add(
+                      //  obList.add(
+                        seatTM.getItems().addAll(
+
+
                                 new SeateTm(
                                         dto.getScreen_txt(),
                                         dto.getRownumber_txt(),
@@ -152,9 +156,11 @@ public class Seat1Controller {
                                 )
                         );
                     }
-                    seatTM.setItems(obList);
+                //    seatTM.setItems(obList);
                 }catch (SQLException e) {
                     throw new RuntimeException(e);
-                }
+                } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

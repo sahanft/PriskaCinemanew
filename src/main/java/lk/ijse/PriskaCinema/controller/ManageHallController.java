@@ -1,7 +1,5 @@
 package lk.ijse.PriskaCinema.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +10,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.PriskaCinema.Bo.BoFactory;
+import lk.ijse.PriskaCinema.Bo.Custom.EmployeeBo;
+import lk.ijse.PriskaCinema.Bo.Custom.HallBo;
+import lk.ijse.PriskaCinema.Bo.Impl.HallBoImpl;
 import lk.ijse.PriskaCinema.dto.ManageHallDto;
-import lk.ijse.PriskaCinema.dto.ManageMoviesDto;
-import lk.ijse.PriskaCinema.model.ManageHallModel;
-import lk.ijse.PriskaCinema.model.ManageMoviesModel;
 import lk.ijse.PriskaCinema.tm.HallTm;
-import lk.ijse.PriskaCinema.tm.MovieTm;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,7 +34,7 @@ public class ManageHallController {
     public TableColumn count_tm;
 
 
-    private ManageHallModel manageHallModel = new ManageHallModel();
+    HallBo hallBo = (HallBo) BoFactory.getBoFactory().getBo(BoFactory.BoTyps.HALL);
 
     public void initialize() throws IOException {
         setCellValueFactory();
@@ -56,8 +54,6 @@ public class ManageHallController {
 
     @FXML
     void add_onaction(ActionEvent event) {
-
-
         String number = number_txt.getText();
         String category = category_txt.getText();
         String count = count_txt.getText();
@@ -67,41 +63,45 @@ public class ManageHallController {
         var dto = new ManageHallDto(number,category,count);
 
         try {
-            boolean isSaved = ManageHallModel.saveHall(dto);
+            boolean isSaved = hallBo.save(dto);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "hall Save").show();
                 loadAllhall();
                 clearField();
             }
+            hall_tm.getItems().add(new HallTm(number,category,count));
+            loadAllhall();
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
 
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         hall_tm.refresh();
 
     }
 
     private void loadAllhall() {
+        hall_tm.getItems().clear();
 
-        ObservableList<HallTm> obList = FXCollections.observableArrayList();
+       // ObservableList<HallTm> obList = FXCollections.observableArrayList();
 
         try {
-            ArrayList<ManageHallDto> dtoList = (ArrayList<ManageHallDto>) manageHallModel.loadAllhall();
+            ArrayList<ManageHallDto> dtoList = (ArrayList<ManageHallDto>) hallBo.loadAll();
 
             for (ManageHallDto dto : dtoList) {
-                obList.add(
+                hall_tm.getItems().addAll(
                         new HallTm(
                                 dto.getNumber_txt(),
                                 dto.getCategory_txt(),
                                 dto.getCount_txt()
 
-
-
                         ));
             }
 
-            hall_tm.setItems(obList);
-        } catch (SQLException e) {
+           // hall_tm.setItems(obList);
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -130,69 +130,31 @@ public class ManageHallController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     @FXML
-    void delete_onaction(ActionEvent event) {
-
-
+    void delete_onaction(ActionEvent actionEvent) {
         String id = number_txt.getText();
 
-//        var model = new CustomerModel();
+        ManageHallDto dto = new ManageHallDto(id);
         try {
-            boolean isDeleted = ManageHallModel.deleteHall(id);
-            if(isDeleted) {
+            boolean isDelete = hallBo.delete(dto);
+            if(isDelete) {
+                hall_tm.getSelectionModel().clearSelection();
                 new Alert(Alert.AlertType.CONFIRMATION, "Hall deleted!").show();
                 loadAllhall();
                 clearField();
 
             } else {
-                new Alert(Alert.AlertType.CONFIRMATION, "Hall not deleted!").show();
+                new Alert(Alert.AlertType.ERROR, "Hall not deleted!").show();
             }
+            hall_tm.getItems().remove(hall_tm.getSelectionModel().getSelectedItem());
+            loadAllhall();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
-
-
-
-
-    @FXML
-    void update_onaction(ActionEvent event) {
-
-        String number = number_txt.getText();
-        String category = category_txt.getText();
-        String count = count_txt.getText();
-
-        try {
-
-            var dto = new ManageHallDto(number,category,count);
-            boolean isUpdated = ManageHallModel.updateHall(dto);
-            if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "screens details updated").show();
-                clearField();
-                loadAllhall();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "screens details not updated").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            clearField();
-        }
-
-
-
-    }
-
 
 
     public void back_onaction(ActionEvent actionEvent) throws IOException {
@@ -206,9 +168,6 @@ public class ManageHallController {
 
     public AnchorPane testingAnhcor9 ;
 
- /*  public void initialize() throws IOException {
-        loadslider();
-    }*/
 
     private void loadslider() throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/autoimageslider.fxml"));
